@@ -1,0 +1,55 @@
+.rightMenu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #FFF;
+  box-shadow: 0 2px 8px rgba($color: #000026, $alpha: .4);
+  border-radius: 4px;
+  padding: 5px 0;
+  :deep(.item){
+    padding: 7px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    &:hover{
+      color: #4EA5FF;
+      background-color: #ECF5FF;
+    }
+    &.disable{
+      color: #999;
+      background-color: transparent !important;
+      cursor: not-allowed;
+    }
+    .icon{
+      margin-right: 8px;
+      font-size: 12px;
+    }
+    .name{
+    }
+  }
+  &.show{
+    animation: show 0.3s 1;
+    -webkit-animation: show 0.3s 1;
+    @keyframes show {
+      from {
+        opacity: 0;
+        margin-top: 50px;
+      }
+      to {
+        opacity: 1;
+        margin-top: 0px;
+      }
+    }
+    /*Safari 和 Chrome:*/
+    @-webkit-keyframes show {
+      from {
+        opacity: 0;
+        margin-top: 50px;
+      }
+      to {
+        opacity: 1;
+        margin-top: 0px;
+      }
+    }
+  }
+}

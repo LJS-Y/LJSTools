@@ -1,0 +1,34 @@
+.textAbbreviation{
+  .textAbbreviation-line{
+    width: 100%;
+    .textAbbreviation-line-content{
+      width: 100%;
+      overflow: hidden;
+			word-wrap: break-word;
+			overflow-wrap: break-word;
+    }
+    .textAbbreviation-line-more{
+      cursor: pointer;
+      color: #1e80ff;
+    }
+  }
+  .textAbbreviation-last{
+    width: 100%;
+    position: relative;
+    .textAbbreviation-last-content{
+      width: 100%;
+      overflow: hidden;
+			word-wrap: break-word;
+			overflow-wrap: break-word;
+    }
+    .textAbbreviation-last-more{
+      cursor: pointer;
+      color: #1e80ff;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      padding-left: 20px;
+      background: linear-gradient(to right, transparent, #FFF 20%);
+    }
+  }
+}

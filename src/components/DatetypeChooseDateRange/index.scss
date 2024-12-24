@@ -1,0 +1,60 @@
+.frequency{
+  width: calc(32px * var(--dateTypeNum) + 10px * (var(--dateTypeNum) - 1));
+  height: 32px;
+  float: left;
+  overflow: hidden;
+  margin-right: 15px;
+  .one{
+    width: 32px;
+    height: 32px;
+    float: left;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #CCC;
+    font-size: 12px;
+    color: #666;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    &:last-child{
+      margin-right: 0;
+    }
+    &.active{
+      line-height: 28px;
+      border: 2px solid #386DD8;
+      color: #386DD8;
+    }
+  }
+}
+.frequencyDate{
+  overflow: hidden;
+  float: left;
+  .oneDate{
+    width: 130px;
+    float: left;
+  }
+  .line{
+    float: left;
+    height: 32px;
+    line-height: 30px;
+    margin: 0 5px;
+    color: #666;
+  }
+}
+// 进入(显示)开始时和离开(隐藏)结束时效果
+.frequencyDate-enter,
+.frequencyDate-leave-to {
+  // 设置透明度，0表示隐藏，1表示显示，我这里解释的并不是很对，这是css基础知识，大家可以在w3C中查找资料了解一下
+  opacity: 0;
+}
+
+// 进入(显示)过程中和离开(隐藏)过程中的效果
+.frequencyDate-enter-active,
+.frequencyDate-leave-active {
+  // 设置过渡持续时间
+  transition: all .5s;
+}
+.zhi{
+  margin: 0 5px;
+}

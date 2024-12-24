@@ -1,0 +1,52 @@
+{
+  "name": "ljs-tools",
+  "version": "0.6.2",
+  "private": false,
+  "description": "ljs-tools和常用插件",
+  "main": "./index.umd.cjs",
+  "keywords": [
+    "工具",
+    "tools",
+    "日期",
+    "常用插件",
+    "loading",
+    "表单验证",
+    "数据处理",
+    "编辑器",
+    "粒子"
+  ],
+  "license": "MIT",
+  "author": "龙九山",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "crypto-js": "^4.2.0",
+    "element-plus": "^2.3.4",
+    "html2canvas": "^1.4.1",
+    "js-cookie": "^3.0.5",
+    "jspdf": "^2.5.1",
+    "mqtt": "^5.3.4",
+    "uid": "^2.0.2",
+    "vue": "~3.3.4",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "jsdoc": "^4.0.2",
+    "minami": "^1.2.3",
+    "sass": "~1.26.3",
+    "taffydb": "^2.7.3",
+    "terser": "^5.17.1",
+    "vite": "~4.4.4",
+    "vite-plugin-html": "^3.2.0",
+    "vite-plugin-svg-icons": "^2.0.1",
+    "vitepress": "^1.0.1"
+  }
+}
