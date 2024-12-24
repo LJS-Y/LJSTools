@@ -36,6 +36,6 @@ Vite+Vue3构建的PC端的管理系统。
 
 
 ## 去下载
-[Gitlab](https://gitlab.com/frame-project/ljs-vue3/-/tree/main/ljs-vue3-vite?ref_type=heads) <!-- 或者可以添加 .html -->
+[github](https://github.com/LJS-Y/ljs-vue3/tree/main/ljs-vue3-vite) <!-- 或者可以添加 .html -->
 
 

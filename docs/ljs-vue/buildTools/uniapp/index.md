@@ -41,4 +41,4 @@ Uniapp+Vue2构建的移动端的框架（可快速开发：安卓，移动端H5�
 
 
 ## 去下载
-[Gitlab](https://gitlab.com/frame-project/ljs-vue3/-/tree/main/ljs-uniapp?ref_type=heads) <!-- 或者可以添加 .html -->
+[github](https://github.com/LJS-Y/ljs-vue3/tree/main/ljs-uniapp) <!-- 或者可以添加 .html -->

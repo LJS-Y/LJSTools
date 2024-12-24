@@ -5,10 +5,10 @@ export default {
   title: 'ljs-vue3',
   description: '一款基于若依分离板V3.8.5后端服务和自主框架vue3JS版（下文中简称：V3JS）提供的前端框架级支持的依赖工具。目前支持vite和rsbuild',
   outDir: '../public',
-  base: '/nv3-ljs-tools/',
+  base: '/ljs-vue3/',
   head: [
     ['meta', { name: "keywords", content: "ljs-vue3, 若依, ruoyi, ljs-tools, vite搭建vue3项目, vue3, rsbuild, rspack, rsbuild搭建vue3项目, ljs-vue3文档, ljsI文档, 龙九山, ljs, LJS" }],
-    ['link', { rel: 'icon', href: '/nv3-ljs-tools/favicon.ico' }]
+    ['link', { rel: 'icon', href: '/ljs-vue3/favicon.ico' }]
   ],
   // 主题级选项
   themeConfig: {
@@ -22,7 +22,7 @@ export default {
     nav: [
       { text: '联系我', link: '/callMe' },
       { text: 'ljs-tools', link: 'https://www.npmjs.com/package/ljs-tools' },
-      { text: '框架ljs-vue3版(V3JS)', link: 'https://gitlab.com/frame-project/ljs-vue3' },
+      { text: '框架ljs-vue3版(V3JS)', link: 'https://github.com/LJS-Y/ljs-vue3' },
     ],
     sidebar: [
       {
@@ -44,10 +44,10 @@ export default {
             collapsible: true, // 收起图标
             collapsed: false, // 是否默认收起
             items: [
-              { text: 'vite', link: '/ljs-vue3/buildTools/vite/' },
-              { text: 'rsbuild', link: '/ljs-vue3/buildTools/rsbuild/' },
-              { text: 'rsbuild-module-platform', link: '/ljs-vue3/buildTools/rsbuildModule/' },
-              { text: 'uniapp', link: '/ljs-vue3/buildTools/uniapp/' },
+              { text: 'vite', link: '/ljs-vue/buildTools/vite/' },
+              { text: 'rsbuild', link: '/ljs-vue/buildTools/rsbuild/' },
+              { text: 'rsbuild-module-platform', link: '/ljs-vue/buildTools/rsbuildModule/' },
+              { text: 'uniapp', link: '/ljs-vue/buildTools/uniapp/' },
             ]
           },
           { 
@@ -55,19 +55,19 @@ export default {
             collapsible: true, // 收起图标
             collapsed: false, // 是否默认收起
             items: [
-              { text: '全局参数', link: '/ljs-vue3/frontManual/config' },
-              { text: '通用方法', link: '/ljs-vue3/frontManual/function' },
-              { text: '请求', link: '/ljs-vue3/frontManual/request' },
-              { text: '字典', link: '/ljs-vue3/frontManual/dict' },
-              { text: '路由', link: '/ljs-vue3/frontManual/router' },
-              { text: '组件', link: '/ljs-vue3/frontManual/components' },
-              { text: '权限', link: '/ljs-vue3/frontManual/power' },
-              { text: '生成页面', link: '/ljs-vue3/frontManual/page' },
-              { text: 'echarts的快速应用', link: '/ljs-vue3/frontManual/echarts' },
+              { text: '全局参数', link: '/ljs-vue/frontManual/config' },
+              { text: '通用方法', link: '/ljs-vue/frontManual/function' },
+              { text: '请求', link: '/ljs-vue/frontManual/request' },
+              { text: '字典', link: '/ljs-vue/frontManual/dict' },
+              { text: '路由', link: '/ljs-vue/frontManual/router' },
+              { text: '组件', link: '/ljs-vue/frontManual/components' },
+              { text: '权限', link: '/ljs-vue/frontManual/power' },
+              { text: '生成页面', link: '/ljs-vue/frontManual/page' },
+              { text: 'echarts的快速应用', link: '/ljs-vue/frontManual/echarts' },
             ]
           },
-          { text: '前端运行部署', link: '/ljs-vue3/runAndBuild/' },
-          { text: 'Nginx配置', link: '/ljs-vue3/nginxConfig/' },
+          { text: '前端运行部署', link: '/ljs-vue/runAndBuild/' },
+          { text: 'Nginx配置', link: '/ljs-vue/nginxConfig/' },
         ]
       },
       {

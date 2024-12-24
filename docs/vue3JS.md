@@ -9,7 +9,7 @@ so，你看到了，有了它！
 若依原有的，它应该都有的哦。
 
 ### 去下载
-[Gitlab](https://gitlab.com/frame-project/ljs-vue3) <!-- 或者可以添加 .html -->
+[github](https://github.com/LJS-Y/ljs-vue3) <!-- 或者可以添加 .html -->
 
 [Gitee（暂不维护）](https://gitee.com/ljs-framework/ljs-vue3) <!-- 或者可以添加 .html -->
 

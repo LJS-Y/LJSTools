@@ -22,9 +22,9 @@ ljs-vue3版（下文简称：V3JS），这是一款基于若依分离版后端�
 基于若依分离版后端服务V3.8.5+
 
 ## 前端框架版本
-[Vite版](/ljs-vue3/buildTools/vite/)
+[Vite版](/ljs-vue/buildTools/vite/)
 
-[Rsbuild版](/ljs-vue3/buildTools/rsbuild/)
+[Rsbuild版](/ljs-vue/buildTools/rsbuild/)
 
 ## 框架长啥样
 ![登录页](/dom/login.jpg)

@@ -33,7 +33,7 @@ this.$run.goExternalUrl(url)
 
 我们提供以下方式：
 
-[权限](/ljs-vue3/frontManual/power)
+[权限](/ljs-vue/frontManual/power)
 
 ## $cache对象
 废弃！

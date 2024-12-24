@@ -1,5 +1,5 @@
-# ljs-vue3-rsbuild
-Rsbuild+Vue3构建的PC端的管理系统。
+# ljs-vue3-rsbuild-module-platform
+Rsbuild+Vue3构建的PC端的模块化管理系统（俗称大平台）。
 
 ## 项目结构
 ```
@@ -38,4 +38,4 @@ Rsbuild+Vue3构建的PC端的管理系统。
 
 
 ## 去下载
-[Gitlab](https://gitlab.com/frame-project/ljs-vue3/-/tree/main/ljs-vue3-rsbuild?ref_type=heads) <!-- 或者可以添加 .html -->
+[github](https://github.com/LJS-Y/ljs-vue3/tree/main/ljs-vue3-rsbuild-module-platform) <!-- 或者可以添加 .html -->

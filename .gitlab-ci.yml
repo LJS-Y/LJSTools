@@ -11,4 +11,4 @@ pages:
     paths:
       - public
   only:
-    - v0.6
+    - main

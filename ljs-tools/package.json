@@ -1,0 +1,21 @@
+{
+  "name": "ljs-tools",
+  "version": "0.6.4",
+  "private": false,
+  "description": "ljs-tools和常用插件",
+  "main": "./index.umd.cjs",
+  "keywords": [
+    "工具",
+    "tools",
+    "日期",
+    "常用插件",
+    "loading",
+    "表单验证",
+    "数据处理",
+    "编辑器",
+    "粒子"
+  ],
+  "license": "MIT",
+  "author": "龙九山",
+  "type": "module"
+}
