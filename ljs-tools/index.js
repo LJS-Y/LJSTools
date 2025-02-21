@@ -11052,14 +11052,15 @@ class Ht {
    * 获取真实的地址
    * @param {String} wsUrl mqtt地址。例如：//192.168.1.100:8083/mqtt
    * @param {String} NODE_ENV 模式：开发（development）、测试、生产
+   * @param {Boolean} proxy 是否走nginx的代理。开发模式不走代理。默认true。
    * @returns {String} 返回前端可用的Mqtt地址。
    * @example 
    * const mqttUrl = this.publicMqtt.getUrl(({}).VITE_APP_MQTT_URL, "production"); // 返回：ws://192.168.1.100:8083/mqtt
    * */
-  getUrl(r, n) {
-    n !== "development" && (r = location.host + r);
-    let t = "";
-    return location.protocol === "http:" ? t = "ws:" + r : location.protocol === "https:" ? t = "wss:" + r : t = "ws:" + r, t;
+  getUrl(r, n, t = !0) {
+    n !== "development" && t && (r = location.host + r);
+    let a = "";
+    return location.protocol === "http:" ? a = "ws:" + r : location.protocol === "https:" ? a = "wss:" + r : a = "ws:" + r, a;
   }
 }
 //创建公共变量
