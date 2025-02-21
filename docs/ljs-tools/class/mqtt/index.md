@@ -151,7 +151,7 @@ this.publicMqtt.client.publish('/furnace/msg', JSON.stringify(msg));
 
 ### 8.获取真实的地址
 
-方法：getUrl(wsUrl: String, NODE_ENV: String)
+方法：getUrl(wsUrl: String, NODE_ENV: String, proxy: Boolean)
 
 返回值（String）：返回前端可用的Mqtt地址。
 
@@ -166,3 +166,4 @@ const mqttUrl = this.publicMqtt.getUrl(import.meta.env.VITE_APP_MQTT_URL, import
 | ----- | :----: | :-----: | ----- | --- |
 | wsUrl | String | √ | | mqtt地址。例如：//192.168.1.100:8083/mqtt。 |
 | NODE_ENV | String | √ | | 模式：开发（development）、测试、生产。可根据开发和非开发模式，生成正确的地址。 |
+| proxy | Boolean | × | true | 是否走nginx的代理。开发模式不走代理。 |

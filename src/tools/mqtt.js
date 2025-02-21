@@ -102,12 +102,13 @@ class mqttCreateds {
    * 获取真实的地址
    * @param {String} wsUrl mqtt地址。例如：//192.168.1.100:8083/mqtt
    * @param {String} NODE_ENV 模式：开发（development）、测试、生产
+   * @param {Boolean} proxy 是否走nginx的代理。开发模式不走代理。默认true。
    * @returns {String} 返回前端可用的Mqtt地址。
    * @example 
    * const mqttUrl = this.publicMqtt.getUrl(import.meta.env.VITE_APP_MQTT_URL, import.meta.env.VITE_NODE_ENV); // 返回：ws://192.168.1.100:8083/mqtt
    * */
-  getUrl(wsUrl, NODE_ENV) {
-    if (NODE_ENV !== 'development') {
+  getUrl(wsUrl, NODE_ENV, proxy = true) {
+    if (NODE_ENV !== 'development' && proxy) {
       wsUrl = location.host + wsUrl;
     }
     // 部署时配置代理，/mqtt加在nginx配置里面
