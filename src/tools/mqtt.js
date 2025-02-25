@@ -68,16 +68,18 @@ class mqttCreateds {
   }
   
   /**
-   * 取消订阅
+   * 取消订阅，返回一个Promise。{msg: '取消订阅成功', path: 订阅地址}
    * @example this.publicMqtt.unsubscribes();
    * */
   unsubscribes() {
-    this.client.unsubscribe(this.subscribe, (error) => {
-      if (!error) {
-        console.info(this.subscribe, "取消订阅成功");
-      } else {
-        console.info(this.subscribe, "取消订阅失败");
-      }
+    return new Promise((resolve, reject) => {
+      this.client.unsubscribe(this.subscribe, (error) => {
+        if (!error) {
+          resolve({msg: '取消订阅成功', path: this.subscribe});
+        } else {
+          reject(error);
+        }
+      });
     });
   }
 

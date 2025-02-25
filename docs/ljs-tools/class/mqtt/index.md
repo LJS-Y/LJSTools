@@ -22,8 +22,11 @@ export default {
   beforeUnmount() {
     //页面销毁结束订阅
     if (this.publicMqtt) {
-      this.publicMqtt.unsubscribes();
-      this.publicMqtt.over();
+      this.publicMqtt.unsubscribes().then((res) => {
+        this.publicMqtt.over();
+      }).catch((error) => {
+        console.warn(error);
+      });
     }
   },
   methods: {
@@ -106,11 +109,17 @@ this.publicMqtt.link();
 
 ### 4.取消订阅
 
+取消订阅，返回一个Promise。{msg: '取消订阅成功', path: 订阅地址}
+
 方法：unsubscribes()
 
 ##### 示例
 ```js
-this.publicMqtt.unsubscribes();
+this.publicMqtt.unsubscribes().then((res) => {
+  console.log(res);
+}).catch((error) => {
+  console.warn(error.msg);
+});;
 ```
 
 
