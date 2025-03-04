@@ -13,7 +13,7 @@
 this.$LJSmenu.fristOpenMenu(this.$store)
 ```
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -23,14 +23,14 @@ this.$LJSmenu.fristOpenMenu(this.$store)
 ### 手动跳转
 手动触发一个菜单跳转，可打开一个页卡。
 
-方法：handPush(store: Object, run: Object, path: String, query: Object)
+方法：handPush(params: Object)
 
 ##### 示例
 ```js
-this.$LJSmenu.handPush(this.$store, this.$run, '/carbonTrade/policyInfo')
+this.$LJSmenu.handPush({store: this.$store, run: this.$run, path: '/carbonTrade/policyInfo'})
 ```
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -43,14 +43,14 @@ this.$LJSmenu.handPush(this.$store, this.$run, '/carbonTrade/policyInfo')
 ### 打开菜单
 菜单打开机制，总控(Menu组件控制，单独跳转需求控制)。
 
-方法：menuControl(store: Object, run: Object, menuObj: Object, query: Object)
+方法：menuControl(params: Object)
 
 ##### 示例
 ```js
-this.$LJSmenu.menuControl(this.$store, this.$run, menuObj);
+this.$LJSmenu.menuControl({store: this.$store, run: this.$run, menuObj});
 ```
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -62,14 +62,14 @@ this.$LJSmenu.menuControl(this.$store, this.$run, menuObj);
 
 ### 更新菜单展开选项
 
-方法：updateTreeOpen(menuList: Array, parents: Array, key: String)
+方法：updateTreeOpen(params: Object)
 
 ##### 示例
 ```js
-this.$LJSmenu.updateTreeOpen(this.menuList, parents);
+this.$LJSmenu.updateTreeOpen({menuList: this.menuList, parents});
 ```
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |

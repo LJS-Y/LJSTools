@@ -55,7 +55,7 @@ export function init(url, token = null, dataChangeF) {
     ws = new WebSocket(url, wsT);
 
     ws.onopen = function () {
-      LJSbase.colorLog(['websocket', '已连接，正在接收数据....']);
+      LJSbase.colorLog({content: ['websocket', '已连接，正在接收数据....']});
       // Web Socket 已连接上，使用 send() 方法发送数据
       // ws.send('发送数据');
     };
@@ -67,7 +67,7 @@ export function init(url, token = null, dataChangeF) {
 
     ws.onclose = function () {
       // 关闭 websocket
-      LJSbase.colorLog(['websocket', '已关闭！']);
+      LJSbase.colorLog({content: ['websocket', '已关闭！']});
     };
     return ws;
   } else {

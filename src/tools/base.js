@@ -58,10 +58,10 @@ export function getTreeParents({data, value, key = 'id', children = 'children', 
  * @param {String} opts.key 需要禁用项的对比值对应的键名
  * @param {Boolean} disabled 是否可以选择，自用参数，不对外开放。
  * @returns {Array} 根据条件返回一个部分禁用选择的树数据。
- * @example this.$LJSbase.editTreeParentIdCheck(data, [{value: 32, key: 'id'}, {value: 3, key: 'level'}]);
- * @example this.$LJSbase.editTreeParentIdCheck(data);
+ * @example this.$LJSbase.editTreeParentIdCheck({data, opts: [{value: 32, key: 'id'}, {value: 3, key: 'level'}]});
+ * @example this.$LJSbase.editTreeParentIdCheck({data});
  */
-export function editTreeParentIdCheck(data, opts = [], disabled = false) {
+export function editTreeParentIdCheck({data, opts = [], disabled = false}) {
   if (!data) {
     return;
   }
@@ -79,10 +79,10 @@ export function editTreeParentIdCheck(data, opts = [], disabled = false) {
     }
     if (bool) {
       data[i].disabled = true;
-      data[i].children = editTreeParentIdCheck(data[i].children, opts, true);
+      data[i].children = editTreeParentIdCheck({data: data[i].children, opts, disabled: true});
     } else {
       if(data[i].children !== undefined){
-        data[i].children = editTreeParentIdCheck(data[i].children, opts, disabled);
+        data[i].children = editTreeParentIdCheck({data: data[i].children, opts, disabled});
       }
     }
   }
@@ -92,10 +92,11 @@ export function editTreeParentIdCheck(data, opts = [], disabled = false) {
 /**
  * 数据转换 - tree转list
  * @param {Array} treeList 待转换的树结构数据。
- * @param {Array} list 转换后的数据。
- * @example this.$LJSbase.handleTreeList(tree, []);
+ * @returns {Array} 转换后的数据。
+ * @example this.$LJSbase.handleTreeList(tree);
  */
-export function handleTreeList(treeList, list = []) {
+export function handleTreeList(treeList) {
+  let list = [];
   if (!treeList || !treeList.length) {
     return []
   }
@@ -104,8 +105,10 @@ export function handleTreeList(treeList, list = []) {
     let newRow = JSON.parse(JSON.stringify(currentRow));
     newRow.children = undefined;
     list.push(newRow);
-    this.handleTreeList(currentRow.children, list)
+    const tempList = this.handleTreeList(currentRow.children);
+    list = list.concat(tempList);
   }
+  return list;
 }
 
 /**
@@ -114,14 +117,10 @@ export function handleTreeList(treeList, list = []) {
  * @param {String} id 自身id键。
  * @param {String} parentId 父id键。
  * @param {String} children children键。
- * @example this.$LJSbase.handleListTree(arr, 'id', 'pid');
+ * @example this.$LJSbase.handleListTree({data});
  */
-export function handleListTree(data, id, parentId, children) {
-  let config = {
-    id: id || 'id',
-    parentId: parentId || 'parentId',
-    childrenList: children || 'children'
-  };
+export function handleListTree({data, id = 'id', parentId = 'parentId', children = 'children'}) {
+  let config = { id, parentId, childrenList: children };
 
   var childrenListMap = {};
   var nodeIds = {};
@@ -172,26 +171,26 @@ export function setRemUnit() {
 
 /**
  * 字典值回显，接口值回显
- * @param {Array} datas 基础数据
+ * @param {Array} data 基础数据
  * @param {String} value value
  * @param {String} labelKey 查找的名称key。如果参数值为$index，则返回索引值。
  * @param {String} valueKey 比对的数据key
  * @param {Boolean} isTrue false时为字符串，true时为布尔型
  * @returns {Array} 返回值所对应的文本。
- * @example this.$LJSbase.selectDictLabel(data, '1')
+ * @example this.$LJSbase.selectDictLabel({data, value: '1'})
  */
-export function selectDictLabel(datas, value, labelKey = 'label', valueKey = 'value', isTrue = false) {
+export function selectDictLabel({data, value, labelKey = 'distLabel', valueKey = 'distValue', isTrue = false}) {
   if (value === undefined) {
     return '';
   }
   let actions = [];
-  Object.keys(datas).some((key, i) => {
-    if (datas[key][valueKey] == ('' + value)) {
+  Object.keys(data).some((key, i) => {
+    if (data[key][valueKey] == ('' + value)) {
 			if (labelKey === '$index') {
 				actions = i;
 				return i;
 			} else {
-				actions.push(datas[key][labelKey]);
+				actions.push(data[key][labelKey]);
 			}
       return true;
     }
@@ -215,12 +214,12 @@ export function selectDictLabel(datas, value, labelKey = 'label', valueKey = 'va
  * @param {String} type 日志类型，与console同步
  * @param {Array} color 颜色，与content数据同步
  * @example const technicalSupport = ['技术支持：', ''];
- * colorLog(technicalSupport);
+ * colorLog({content: technicalSupport});
  */
-export function colorLog(content = ['暂无内容'], type = 'info', color = [
+export function colorLog({content = ['暂无内容'], type = 'info', color = [
   'background: #666666; color: #fff; border-radius: 4px 0 0 4px; padding: 3px 6px;',
   'background: #1475B2; color: #fff; border-radius: 0 4px 4px 0; padding: 3px 6px;'
-]) {
+]}) {
   let logStr = '';
   content.forEach((item) => {
     logStr += `%c${item}`;
@@ -233,9 +232,9 @@ export function colorLog(content = ['暂无内容'], type = 'info', color = [
  * @param {Object} _this this
  * @param {String} url 图片的绝对路径
  * @param {String} name 图片名称
- * @example this.$LJSbase.downloadImage(this, scope.row.quickResponseCode, `${scope.row.itemName}-${scope.row.typeName}-${scope.row.itemNo}`);
+ * @example this.$LJSbase.downloadImage({_this: this, url: scope.row.quickResponseCode, name: `${scope.row.itemName}-${scope.row.typeName}-${scope.row.itemNo}`});
  */
-export function downloadImage(_this, url, name = new Date().valueOf()) {
+export function downloadImage({_this, url, name = new Date().valueOf()}) {
   let image = new Image();
   // 解决跨域 canvas污染问题
   image.setAttribute('crossOrigin', 'anonymous');

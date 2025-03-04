@@ -41,7 +41,7 @@ this.$LJSbase.deepCopy(obj);
 
 可获取该值对应的对象及其所有父级对象。
 
-方法：getTreeParents({data: Array, value: String, key: String, children: String})
+方法：getTreeParents(params: Object)
 
 返回值（String）：选中的数据包括直系父的集合
 ##### 示例
@@ -49,7 +49,7 @@ this.$LJSbase.deepCopy(obj);
 const parents = this.$LJSbase.getTreeParents({data, value, key});
 ```
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -63,20 +63,20 @@ const parents = this.$LJSbase.getTreeParents({data, value, key});
 
 根据指定条件进行禁用处理并返回新的树型数据。
 
-方法：editTreeParentIdCheck(data: Array, opts: data)
+方法：editTreeParentIdCheck(params: Object)
 
 返回值（Array）：根据条件返回一个部分禁用选择的树数据。
 ##### 示例 - 多禁用条件
 ```js
-this.$LJSbase.editTreeParentIdCheck(data, [{value: 32, key: 'id'}, {value: 3, key: 'level'}]);
+this.$LJSbase.editTreeParentIdCheck({data, opts: [{value: 32, key: 'id'}, {value: 3, key: 'level'}]});
 ```
 
 ##### 示例 - 清空禁用条件
 ```js
-this.$LJSbase.editTreeParentIdCheck(data);
+this.$LJSbase.editTreeParentIdCheck({data});
 ```
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -92,11 +92,12 @@ this.$LJSbase.editTreeParentIdCheck(data);
 
 
 ### 数据转换 - tree转list
-方法：handleTreeList(treeList: Array, list: Array)
+方法：handleTreeList(treeList: Array)
+
+返回值（Array）：转换后的数据。
 ##### 示例
 ```js
-const list = [];
-this.$LJSbase.handleTreeList(tree, list);
+this.$LJSbase.handleTreeList(tree);
 ```
 
 #### 参数
@@ -104,17 +105,16 @@ this.$LJSbase.handleTreeList(tree, list);
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | treeList | Array | √ | | 待转换的树结构数据。 |
-| list | Array | √ | | 转换后的数据。 |
 
 
 ### 数据转换 - list转tree
-方法：handleListTree(data: Array, id: String, parentId: String, children: String)
+方法：handleListTree(params: Object)
 ##### 示例
 ```js
-this.$LJSbase.handleListTree(arr, 'id', 'pid');
+this.$LJSbase.handleListTree({data});
 ```
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -140,22 +140,22 @@ this.$LJSbase.setRemUnit();
 
 常用于：字典值回显，接口值回显。
 
-方法：selectDictLabel(datas: Array, value: String, labelKey: String, valueKey: String, isTrue: Boolean)
+方法：selectDictLabel(params: Object)
 
 返回值（Array）：返回值所对应的文本。
 ##### 示例
 ```js
-this.$LJSbase.selectDictLabel(datas, '1')
+this.$LJSbase.selectDictLabel({data, value: '1'})
 ```
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | datas | Array | √ | | 基础数据。 |
 | value | String | √ | | 值。 |
-| labelKey | String | × | label | 查找的名称key。如果参数值为$index，则返回索引值。 |
-| valueKey | String | × | value | 比对的数据key。 |
+| labelKey | String | × | distLabel | 查找的名称key。如果参数值为$index，则返回索引值。 |
+| valueKey | String | × | distValue | 比对的数据key。 |
 | isTrue | Boolean | × | false | false时为字符串，true时为布尔型。 |
 
 
@@ -163,14 +163,14 @@ this.$LJSbase.selectDictLabel(datas, '1')
 
 可输出带颜色的日志。
 
-方法：colorLog(content: Array, type: String, color: Array)
+方法：colorLog(params: Object)
 ##### 示例
 ```js
 const technicalSupport = ['技术支持：', '龙九山'];
-colorLog(technicalSupport);
+colorLog({content: technicalSupport});
 ```
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -183,15 +183,15 @@ colorLog(technicalSupport);
 
 根据图片地址提供下载功能。
 
-方法：downloadImage(_this: Array, url: Array, name: Array)
+方法：downloadImage(params: Object)
 
 返回值（Array）：返回值所对应的文本。
 ##### 示例
 ```js
-this.$LJSbase.downloadImage(this, scope.row.quickResponseCode, `${scope.row.itemName}-${scope.row.typeName}-${scope.row.itemNo}`);
+this.$LJSbase.downloadImage({_this: this, url: scope.row.quickResponseCode, name: `${scope.row.itemName}-${scope.row.typeName}-${scope.row.itemNo}`});
 ```
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |

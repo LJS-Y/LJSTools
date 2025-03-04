@@ -18,26 +18,13 @@ this.$LJSfc.numDxsCheck({
   form: form,
   key: 'companyName',
   zs: 8,
-  ws: 4,
-  fu: true
+  ws: 4
 })
  * */
-export function numDxsCheck(opt) {
-  const allOpt = {
-    form: null, // 对象
-    key: 'money', // 键名，不叫money时需要传入新的键名
-    zs: '', // 几位整数，默认不限位数，传1代表1位整数
-    ws: '', // 几位小数，默认不限位数，传1代表1位小数
-    type: 'Number', // 默认数字类型的字符串，不支持首位多个0；传入String，支持以下格式。00.1；0001221。一般不会有这种使用需求。
-    fu: false // 是否支持-负数符号
-  };
-  for (let key in opt) {
-    allOpt[key] = opt[key];
-  }
-  const obj = allOpt.form;
-  const key = allOpt.key;
+export function numDxsCheck({ form, key = 'money', zs = 10, ws = 2, type = 'Number', fu = false }) {
+  const obj = form;
   obj[key] = obj[key] + '';
-  if (allOpt.type === 'Number') {
+  if (type === 'Number') {
     // 首位是0，第二位必须是.
     if (obj[key].slice(0, 1) === '0') {
       obj[key] = obj[key].slice(1, 2) !== '.'?'0':obj[key];
@@ -52,7 +39,7 @@ export function numDxsCheck(opt) {
     }
   }
   // 先把非数字的都替换掉，除了数字和.
-  if (allOpt.fu) {
+  if (fu) {
     obj[key] = obj[key].replace(/[^\d.-]/g, '');
   } else {
     obj[key] = obj[key].replace(/[^\d.]/g, '');
@@ -65,16 +52,16 @@ export function numDxsCheck(opt) {
   obj[key] = obj[key].slice(0, 1) + obj[key].slice(1, obj[key].length).replace(/\-/g, '');
 
   // 动态正则，小数位动态处理
-  const c = new RegExp('^(\\-)*(\\d+)\\.(\\d{0,' + allOpt.ws + '})\.*$');
+  const c = new RegExp('^(\\-)*(\\d+)\\.(\\d{0,' + ws + '})\.*$');
 
   // 限制整数位
-  if (allOpt.zs !== '' && obj[key].length > 0) {
+  if (zs !== '' && obj[key].length > 0) {
     const nums = obj[key].split('.');
     let zsNum = nums[0];
     let xsNum = '';
     const zsLength = zsNum.slice(0, 1) === '-' ? 1 : 0; // 负数时，整数位数需+1计算。
-    if (zsNum.length > allOpt.zs + zsLength) {
-      zsNum = zsNum.slice(0, allOpt.zs + zsLength);
+    if (zsNum.length > zs + zsLength) {
+      zsNum = zsNum.slice(0, zs + zsLength);
     }
     if (nums.length > 1) {
       xsNum = nums[1];
@@ -93,9 +80,9 @@ export function numDxsCheck(opt) {
   *  @param {String} key 键名不叫num时需要传入新的键名
   *  @param {String} type 默认数字类型的字符串，不支持首位多个0；传入String，支持以下格式。00.1；0001221。一般用于编码类需求。
   *  @param {Boolean} numberFristIs0 type = 'Number'的情况下，能否输入数字0，默认是可以输入
-  *  @example this.$LJSfc.numCheck(obj, 'goodsPrice')
+  *  @example this.$LJSfc.numCheck({form, key: 'goodsPrice'})
   * */
-export function numCheck(form, key = 'num', type = 'Number', numberFristIs0 = true) {
+export function numCheck({form, key = 'num', type = 'Number', numberFristIs0 = true}) {
   if (type === 'Number' && !numberFristIs0) {
     // 首位不能是0
     form[key] = form[key].slice(0, 1) === '0' ? '' : form[key];

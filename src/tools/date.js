@@ -3,7 +3,6 @@
  * @description 日期常用处理方法
  *  */
 import LJSnum from '@/tools/num';
-import LJSbase from '@/tools/base';
 
 /**
  * 通过传入的时间戳获取固定格式日期

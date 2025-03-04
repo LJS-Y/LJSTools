@@ -7,7 +7,7 @@
 import * as EC from 'echarts';
 import $pie3D from '@/tools/pie3D.min.js';
 
-const color = [
+const _color = [
   '#014EB5',
   '#A800FF',
   '#e82edb',
@@ -56,10 +56,15 @@ for (let i = 0; i < 10; i++) {
   data.push(num);
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getLine1(this.echartsDom, 'TEST', dataX, data);
+  this.echartsDom = ec.getLine1({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data
+  });
 });
  * */
-export function getLine1(myChart, id, dataX, data, dw = '') {
+export function getLine1({myChart, id, dataX, data, dw = ''}) {
   myChart = init(id); // 初始dom
 
   var option = {
@@ -163,7 +168,13 @@ for (let j = 0; j < 2; j++) {
   data.push(temp);
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getLine2(this.echartsDom, 'TEST', dataX, data, color);
+  this.echartsDom = ec.getLine2({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data,
+    color
+  });
 });
  *  @example 
 let dataX = [];
@@ -190,10 +201,16 @@ for (let j = 0; j < 2; j++) {
   data.push(temp);
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getLine2(this.echartsDom, 'TEST', dataX, data, color);
+  this.echartsDom = ec.getLine2({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data,
+    color
+  });
 });
  * */
-export function getLine2(myChart, id, dataX, data, color, dw = '') {
+export function getLine2({myChart, id, dataX, data, color = _color, dw = ''}) {
   myChart = init(id); // 初始dom
 
   var option = {
@@ -305,7 +322,13 @@ for (let j = 0; j < 2; j++) {
   data.push(temp);
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getBar1(this.echartsDom, 'TEST', dataX, data, color);
+  this.echartsDom = ec.getBar1({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data,
+    color
+  });
 });
  *  @example 
 // 注意：极大数据导致极小数据显示看不到问题解决办法
@@ -328,7 +351,7 @@ tooltip: {
   }
 },
  * */
-export function getBar1(myChart, id, dataX, data, color, dw = '') {
+export function getBar1({myChart, id, dataX, data, color = _color, dw = ''}) {
   myChart = init(id); // 初始dom
 
   var option = {
@@ -501,10 +524,16 @@ for (let j = 0; j < 3; j++) {
   data.push(stackTemp);
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getBar2(this.echartsDom, 'TEST', dataX, data, legend);
+  this.echartsDom = ec.getBar2({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data,
+    legend
+  });
 });
  * */
-export function getBar2(myChart, id, dataX, data, legend, dw = '') {
+export function getBar2({myChart, id, dataX, data, legend, dw = ''}) {
   myChart = init(id); // 初始dom
 
   var option = {
@@ -761,10 +790,16 @@ for (let j = 0; j < 3; j++) {
   data.push(temp4);
 }
 this.$nextTick(() => {
-  this.report.ecDom = ec.getBar3(this.report.ecDom, 'HbzxjcDom', dataX, data, legend);
+  this.report.ecDom = ec.getBar3({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data,
+    legend
+  });
 });
  * */
-export function getBar3(myChart, id, dataX, data, legend, dw = '') {
+export function getBar3({myChart, id, dataX, data, legend, dw = ''}) {
   myChart = init(id); // 初始dom
 
   var option = {
@@ -891,10 +926,15 @@ const temp = {
 };
 data.push(temp);
 this.$nextTick(() => {
-  this.left.monthStatistics.dom = ec.getBar4(this.left.monthStatistics.dom, 'monthStatistics', dataX, data, 'T');
+  this.left.monthStatistics.dom = ec.getBar4({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data
+  });
 });
  * */
-export function getBar4(myChart, id, dataX, data, dw = '') {
+export function getBar4({myChart, id, dataX, data, dw = ''}) {
   myChart = init(id); // 初始dom
 
   var option = {
@@ -996,10 +1036,14 @@ for (let i = 0; i < 3; i++) {
   pieData.push(temp)
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getPie1(this.echartsDom, 'TEST', pieData);
+  this.echartsDom = ec.getPie1({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    data: pieData
+  });
 });
  * */
-export function getPie1(myChart, id, data) {
+export function getPie1({myChart, id, data}) {
   myChart = init(id); // 初始dom
 
   var option = {
@@ -1098,10 +1142,14 @@ for (let i = 0; i < 3; i++) {
   pieData.push(temp)
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getPie2(this.echartsDom, 'TEST', pieData);
+  this.echartsDom = ec.getPie2({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    data: pieData
+  });
 });
  * */
-export function getPie2(myChart, id, data) {
+export function getPie2({myChart, id, data}) {
   myChart = init(id); // 初始dom
 
   var option = {
@@ -1246,10 +1294,14 @@ for (let i = 0; i < 2; i++) {
   pieData.push(temp)
 }
 this.$nextTick(() => {
-  this.report.ecDom = ec.getPie3(this.report.ecDom, 'ZnbfDom', pieData, color);
+  this.report.ecDom = ec.getPie3({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    data: pieData
+  });
 });
  * */
-export function getPie3(myChart, id, data) {
+export function getPie3({myChart, id, data}) {
   myChart = init(id); // 初始dom
 
   var option = $pie3D.getPie3D(

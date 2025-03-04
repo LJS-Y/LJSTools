@@ -4,7 +4,7 @@
 
 ### 1.只能输入固定位数的正负数字，可小数。
 
-方法：numDxsCheck(opt: Object)
+方法：numDxsCheck(params: Object)
 
 ##### 示例
 ```vue
@@ -16,7 +16,7 @@
 })" placeholder="请输入能耗折标系数"></el-input>
 ```
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -30,13 +30,13 @@
 
 ### 2.只能输入数字
 
-方法：numCheck(form: Object, key: String, type: String, numberFristIs0: Boolean)
+方法：numCheck(params: Object)
 ##### 示例
 ```vue
-<el-input v-model="form.data.orderNum" @input="$LJSfc.numCheck(form.data, 'orderNum')" maxlength="10" placeholder="请输入排序"></el-input>
+<el-input v-model="form.data.orderNum" @input="$LJSfc.numCheck({form: form.data, key: 'goodsPrice'})" maxlength="10" placeholder="请输入排序"></el-input>
 ```
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |

@@ -11,9 +11,9 @@ import LJSbase from '@/tools/base';
 export function fristOpenMenu(store) {
   // 处理首次打开的菜单。
   const menuList = store.getters.menuList;
-  const routeList = menuFristShow(menuList);
+  const routeList = menuFristShow({menuList: menuList});
   // 获取菜单文字导航数据address
-  const address = getAddress(menuList, routeList.url);
+  const address = getAddress({data: menuList, value: routeList.url});
   routeList.address = address;
   store.commit('SET_menuNowOpen', routeList);
   store.commit('SET_menuOpenList', [routeList]);
@@ -24,9 +24,9 @@ export function fristOpenMenu(store) {
  * @param {Array} data 树
  * @param {string} value 选中的数据唯一值
  * @param {string} key 选中的数据唯一值对应的key，默认url
- * @example const address = getAddress(menuList, routeList.url);
+ * @example const address = getAddress({data: menuList, value: routeList.url});
  */
-function getAddress(data, value, key = 'url') {
+function getAddress({data, value, key = 'url'}) {
   const parents = LJSbase.getTreeParents({data, value, key});
   const address = [];
   parents.forEach((item) => {
@@ -40,7 +40,7 @@ function getAddress(data, value, key = 'url') {
 }
 
 // 获取首次登录的选中菜单（不对外开放）
-function menuFristShow(menuList) {
+function menuFristShow({menuList}) {
   if (menuList.length === 0) {
     return {};
   }
@@ -49,7 +49,7 @@ function menuFristShow(menuList) {
     if (i === 0) {
       if (!LJSbase.fieldCheck(item.children) && item.children.length > 0) {
         item.open = true;
-        openObj = menuFristShow(item.children);
+        openObj = menuFristShow({menuList: item.children});
       } else {
         openObj = item;
       }
@@ -61,10 +61,9 @@ function menuFristShow(menuList) {
 /**
  * 根据路由地址获取菜单对象。（不对外开放）
  *  */
-function getItem(store, path) {
-  let menuList = [];
+function getItem({store, path}) {
   const menuTree = store.getters.menuList;
-  LJSbase.handleTreeList(menuTree, menuList)
+  const menuList = LJSbase.handleTreeList(menuTree)
   const nums = menuList.length;
   for (let i = 0; i < nums; i++) {
     const item = menuList[i];
@@ -79,20 +78,20 @@ function getItem(store, path) {
  * 手动跳转 - 菜单管理已注册的路由可用，不可跳转router/index.js配置的额外地址，这类地址需要走this.$router
  * @param {string} path 路由地址
  * @param {Object} query 携带参数
- * @example @click="$LJSmenu.handPush(this.$store, this.$run, '/carbonTrade/policyInfo')"
+ * @example @click="$LJSmenu.handPush({store: this.$store, run: this.$run, path: '/carbonTrade/policyInfo'})"
  */
-export function handPush(store, run, path, query) {
-  const menuObj = getItem(store, path);
-  menuControl(store, run, menuObj, query);
+export function handPush({store, run, path, query = {}}) {
+  const menuObj = getItem({store, path});
+  menuControl({store, run, menuObj, query});
 }
 
 /**
  * 菜单打开机制，总控(Menu组件控制，单独跳转需求控制)
  * @param {Object} menuObj 菜单对象
  * @param {Object} query 携带参数
- * @example this.$LJSmenu.menuControl(this.$store, this.$run, menuObj);
+ * @example this.$LJSmenu.menuControl({store: this.$store, run: this.$run, menuObj});
  */
-export function menuControl(store, run, menuObj, query) {
+export function menuControl({store, run, menuObj, query}) {
   let menuList = store.getters.menuList;
   if (LJSbase.fieldCheck(menuObj.children)) {
     menuObj.children = [];
@@ -110,7 +109,7 @@ export function menuControl(store, run, menuObj, query) {
         value: menuObj.menuId,
         key: 'menuId'
       });
-      updateTreeOpen(menuList, parents);
+      updateTreeOpen({menuList, parents});
     }
     store.commit('SET_menuList', menuList);
   } else {
@@ -121,7 +120,7 @@ export function menuControl(store, run, menuObj, query) {
       return;
     }
     // 获取菜单文字导航数据address
-    menuObj.address = getAddress(store.getters.menuList, menuObj.url);
+    menuObj.address = getAddress({data: store.getters.menuList, value: menuObj.url});
     let menuChoose = menuObj;
     // 更新数据集合中某个被选中的菜单数据。
     // this.$emit('updateMenuDataChooseState', menuObj);
@@ -154,7 +153,7 @@ export function menuControl(store, run, menuObj, query) {
 }
 
 // 更新菜单展开选项
-export function updateTreeOpen(menuList, parents, key = 'menuId') {
+export function updateTreeOpen({menuList, parents, key = 'menuId'}) {
   menuList.forEach((item) => {
     if (item[key] === parents[0][key]) {
       item.open = true;
@@ -165,7 +164,7 @@ export function updateTreeOpen(menuList, parents, key = 'menuId') {
       item.open = false;
     }
     if (item.children && item.children.length > 0) {
-      item.children = updateTreeOpen(item.children, parents, key);
+      item.children = updateTreeOpen({menuList: item.children, parents, key});
     }
   });
   return menuList;
