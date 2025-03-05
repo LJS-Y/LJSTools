@@ -4,9 +4,9 @@
 
 ## 饼图 - 常规环
 
-方法：ec.getPie1(myChart: Object, id: String, data: Array)
+方法：ec.getPie1(params: Object)
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -34,7 +34,11 @@ for (let i = 0; i < 3; i++) {
   pieData.push(temp)
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getPie1(this.echartsDom, 'dom', pieData);
+  this.echartsDom = ec.getPie1({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    data: pieData
+  });
 });
 ```
 ![登录页](/dom/echarts/getPie1.jpg)
@@ -42,9 +46,9 @@ this.$nextTick(() => {
 
 ## 饼图 - 内外环
 
-方法：ec.getPie2(myChart: Object, id: String, data: Array)
+方法：ec.getPie2(params: Object)
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -72,7 +76,11 @@ for (let i = 0; i < 3; i++) {
   pieData.push(temp)
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getPie2(this.echartsDom, 'dom', pieData);
+  this.echartsDom = ec.getPie2({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    data: pieData
+  });
 });
 ```
 ![登录页](/dom/echarts/getPie2.jpg)
@@ -80,9 +88,9 @@ this.$nextTick(() => {
 
 ## 饼图 - 3D
 
-方法：ec.getPie3(myChart: Object, id: String, data: Array)
+方法：ec.getPie3(params: Object)
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -114,7 +122,11 @@ for (let i = 0; i < 2; i++) {
   pieData.push(temp)
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getPie3(this.echartsDom, 'dom', pieData, color);
+  this.echartsDom = ec.getPie3({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    data: pieData
+  });
 });
 ```
 ![登录页](/dom/echarts/getPie3.jpg)
@@ -122,9 +134,9 @@ this.$nextTick(() => {
 
 ## 折线图 - 常规
 
-方法：ec.getLine1(myChart: Object, id: String, dataX: Array, data: Array, dw: String)
+方法：ec.getLine1(params: Object)
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -150,7 +162,12 @@ for (let i = 0; i < 10; i++) {
   data.push(num);
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getLine1(this.echartsDom, 'dom', dataX, data);
+  this.echartsDom = ec.getLine1({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data
+  });
 });
 ```
 ![登录页](/dom/echarts/getLine1.jpg)
@@ -158,9 +175,9 @@ this.$nextTick(() => {
 
 ## 折线图 - 好看
 
-方法：ec.getLine2(myChart: Object, id: String, dataX: Array, data: Array, dw: String)
+方法：ec.getLine2(params: Object)
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -205,7 +222,13 @@ for (let j = 0; j < 2; j++) {
   data.push(temp);
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getLine2(this.echartsDom, 'dom', dataX, data, color);
+  this.echartsDom = ec.getLine2({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data,
+    color
+  });
 });
 ```
 ![登录页](/dom/echarts/getLine2.jpg)
@@ -242,7 +265,13 @@ for (let j = 0; j < 2; j++) {
   data.push(temp);
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getLine2(this.echartsDom, 'dom', dataX, data, color);
+  this.echartsDom = ec.getLine2({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data,
+    color
+  });
 });
 ```
 ![登录页](/dom/echarts/getLine2_2.jpg)
@@ -250,9 +279,9 @@ this.$nextTick(() => {
 
 ## 柱状图 - 常规
 
-方法：ec.getBar1(myChart: Object, id: String, dataX: Array, data: Array, color: Array, dw: String)
+方法：ec.getBar1(params: Object)
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -291,7 +320,13 @@ for (let j = 0; j < 2; j++) {
   data.push(temp);
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getBar1(this.echartsDom, 'dom', dataX, data, color);
+  this.echartsDom = ec.getBar1({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data,
+    color
+  });
 });
 ```
 ![登录页](/dom/echarts/getBar1.jpg)
@@ -323,9 +358,9 @@ tooltip: {
 
 ## 柱状图 - 高端一点的
 
-方法：ec.getBar2(myChart: Object, id: String, dataX: Array, data: Array, color: Array, dw: String)
+方法：ec.getBar2(params: Object)
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -432,7 +467,13 @@ for (let j = 0; j < 3; j++) {
   data.push(stackTemp);
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getBar2(this.echartsDom, 'dom', dataX, data, legend);
+  this.echartsDom = ec.getBar2({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data,
+    legend
+  });
 });
 ```
 ![登录页](/dom/echarts/getBar2.jpg)
@@ -440,9 +481,9 @@ this.$nextTick(() => {
 
 ## 柱状图 - 3D
 
-方法：ec.getBar3(myChart: Object, id: String, dataX: Array, data: Array, legend: Array, dw: String)
+方法：ec.getBar3(params: Object)
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -622,7 +663,13 @@ for (let j = 0; j < 3; j++) {
   data.push(temp4);
 }
 this.$nextTick(() => {
-  this.echartsDom = ec.getBar3(this.echartsDom, 'dom', dataX, data, legend);
+  this.echartsDom = ec.getBar3({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data,
+    legend
+  });
 });
 ```
 ![登录页](/dom/echarts/getBar3.jpg)
@@ -630,9 +677,9 @@ this.$nextTick(() => {
 
 ## 柱状图 - 横向柱状图
 
-方法：ec.getBar4(myChart: Object, id: String, dataX: Array, data: Array, dw: String)
+方法：ec.getBar4(params: Object)
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
@@ -685,7 +732,12 @@ const temp = {
 };
 data.push(temp);
 this.$nextTick(() => {
-  this.echartsDom = ec.getBar4(this.echartsDom, 'dom', dataX, data, 'T');
+  this.echartsDom = ec.getBar4({
+    myChart: this.echartsDom,
+    id: 'TEST',
+    dataX,
+    data
+  });
 });
 ```
 ![登录页](/dom/echarts/getBar4.jpg)

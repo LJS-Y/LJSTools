@@ -13,7 +13,7 @@
 this.$LJSmenu.fristOpenMenu(this.$store)
 ```
 
-#### params参数
+#### 参数
 
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
