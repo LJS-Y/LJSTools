@@ -237,7 +237,7 @@ export function getLine2({myChart, id, dataX, data, color = _color, dw = ''}) {
       itemHeight: 12,
       top: 0
     },
-    color: color,
+    color: _color,
     xAxis: {
       data: dataX,
       axisLine: {
@@ -378,7 +378,7 @@ export function getBar1({myChart, id, dataX, data, color = _color, dw = ''}) {
       itemHeight: 4,
       top: 0
     },
-    color: color,
+    color: _color,
     xAxis: {
       data: dataX,
       axisLine: {
@@ -572,7 +572,7 @@ export function getBar2({myChart, id, dataX, data, legend, dw = ''}) {
       },
       data: legend
     },
-    color: color,
+    color: _color,
     xAxis: {
       data: dataX,
       axisLine: {
@@ -1169,7 +1169,7 @@ export function getPie2({myChart, id, data}) {
     legend: {
       show: false,
     },
-    color: color,
+    color: _color,
     series: [
       {
         name: '占比',
