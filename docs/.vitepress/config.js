@@ -48,6 +48,7 @@ export default {
               { text: 'rsbuild', link: '/ljs-vue/buildTools/rsbuild/' },
               { text: 'rsbuild-module-platform', link: '/ljs-vue/buildTools/rsbuildModule/' },
               { text: 'uniapp', link: '/ljs-vue/buildTools/uniapp/' },
+              { text: 'uniapp-vue3', link: '/ljs-vue/buildTools/uniapp-vue3/' },
             ]
           },
           { 
