@@ -1,5 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
+import router from './router';
+import '@/router/callback'; // permission control
 
 import {
   vLoading,
@@ -27,4 +29,5 @@ app.component(ElDialog.name, ElDialog);
 
 app.use(tools);
 
+app.use(router);
 app.mount('#app');
