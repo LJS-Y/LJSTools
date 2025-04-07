@@ -50,15 +50,6 @@
       v-model:dictValue="tableSearch.query.acquisitionFrequency"
       :datetypeData="acquisition_frequency">
       </DatetypeChooseDate> -->
-    <!-- <DateRange
-      v-model="allSearch.query.date"
-      dateType="date"
-      :clearable="false"
-      :disabledDate_start="allSearch.query.disabledDate_start"
-      :disabledDate_end="allSearch.query.disabledDate_end"
-      :visibleChange_start="tag => visibleChange_start(3, tag)"
-      :visibleChange_end="tag => visibleChange_end(3, tag)"
-    /> -->
     
     <!-- <input v-model="tableSearch.query.pageNum" @input="$LJSfc.numDxsCheck({
       form: tableSearch.query,
@@ -84,14 +75,6 @@
       :disabledDateSpan="-1">
     </DatetypeChooseDate> -->
     
-    <!-- <DateRange
-      formItemLabel="数据时间"
-      v-model="tableSearch.query.date"
-      dateType="date"
-      :change_start="aaaa"
-      :change_end="handleQuery">
-    </DateRange> -->
-    
     <!-- <TextAbbreviation
       mode="last"
       :data="data">
@@ -110,6 +93,30 @@
       })"
       style="width: 230px;"
     ></el-date-picker> -->
+    <!-- <el-date-picker
+      v-model="allSearch.query.date"
+      type="year"
+      :disabled-date="$LJSfc.pickerOptions({
+        dateType: '1',
+        span: 2
+      })"
+    /> -->
+    <div @click="aaaa">弹窗</div>
+    <el-dialog
+      v-model="dialogVisible"
+      title="Tips"
+      width="500"
+    >
+      <span>This is a message</span>
+      <template #footer>
+        <div class="dialog-footer">
+          <el-button @click="dialogVisible = false">Cancel</el-button>
+          <el-button type="primary" @click="bbb">
+            Confirm
+          </el-button>
+        </div>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -118,6 +125,12 @@ import { uid } from 'uid';
 export default {
   data() {
     return {
+      allSearch: {
+        query: {
+          date: []
+        }
+      },
+      dialogVisible: false
     };
   },
   mounted() {
@@ -127,12 +140,39 @@ export default {
       uid(32),
       ['一杯茶，一包烟，一个参数传一天', '龙九山']
     );
-    const list = [{"createBy":null,"createTime":"2025-01-09 10:02:13","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":0,"ancestors":"","children":[],"itemTypeId":315,"typeName":"测硫仪触摸屏","status":"0"},{"createBy":null,"createTime":"2025-01-09 10:00:27","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":0,"ancestors":"","children":[],"itemTypeId":314,"typeName":"编织袋","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:59:32","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":0,"ancestors":"","children":[],"itemTypeId":313,"typeName":"工业编织袋","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:57:28","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":0,"ancestors":"","children":[],"itemTypeId":312,"typeName":"吨袋","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:44:15","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":0,"ancestors":"","children":[],"itemTypeId":308,"typeName":"球阀","status":"0"},{"createBy":null,"createTime":"2025-01-08 16:26:07","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":0,"orderNum":1,"ancestors":"","children":[],"itemTypeId":291,"typeName":"原料","status":"0"},{"createBy":null,"createTime":"2025-01-08 16:26:34","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":291,"orderNum":1,"ancestors":"","children":[],"itemTypeId":294,"typeName":"石英砂","status":"0"},{"createBy":null,"createTime":"2025-01-08 16:27:22","updateBy":null,"updateTime":"2025-01-20 11:43:39","remark":null,"parentName":null,"parentId":292,"orderNum":1,"ancestors":"","children":[],"itemTypeId":297,"typeName":"碳化硅","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:41:13","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":1,"ancestors":"","children":[],"itemTypeId":299,"typeName":"砂纸","status":"0"},{"createBy":null,"createTime":"2025-01-08 16:26:16","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":0,"orderNum":2,"ancestors":"","children":[],"itemTypeId":292,"typeName":"产成品","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:41:33","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":2,"ancestors":"","children":[],"itemTypeId":300,"typeName":"交流接触器","status":"0"},{"createBy":null,"createTime":"2025-01-08 16:27:01","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":291,"orderNum":2,"ancestors":"","children":[],"itemTypeId":295,"typeName":"石油焦","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:41:51","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":3,"ancestors":"","children":[],"itemTypeId":301,"typeName":"电缆线","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:39:10","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":0,"orderNum":3,"ancestors":"","children":[],"itemTypeId":298,"typeName":"材料","status":"0"},{"createBy":null,"createTime":"2025-01-08 16:27:14","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":291,"orderNum":3,"ancestors":"","children":[],"itemTypeId":296,"typeName":"无烟煤","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:42:13","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":4,"ancestors":"","children":[],"itemTypeId":302,"typeName":"LED灯","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:42:33","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":5,"ancestors":"","children":[],"itemTypeId":303,"typeName":"节能灯","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:42:55","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":6,"ancestors":"","children":[],"itemTypeId":304,"typeName":"扫帚","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:43:30","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":6,"ancestors":"","children":[],"itemTypeId":306,"typeName":"软连接","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:43:08","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":7,"ancestors":"","children":[],"itemTypeId":305,"typeName":"笤帚","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:44:01","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":8,"ancestors":"","children":[],"itemTypeId":307,"typeName":"灯头","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:44:34","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":9,"ancestors":"","children":[],"itemTypeId":309,"typeName":"五孔插座","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:44:55","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":11,"ancestors":"","children":[],"itemTypeId":310,"typeName":"绝缘板","status":"0"},{"createBy":null,"createTime":"2025-01-09 09:45:08","updateBy":null,"updateTime":null,"remark":null,"parentName":null,"parentId":298,"orderNum":31,"ancestors":"","children":[],"itemTypeId":311,"typeName":"手电","status":"0"}]
-    const tree2 = this.$LJSbase.handleListTree({data: list, id: 'itemTypeId', parentId: 'parentId'});
-    console.log(list);
-    console.log(tree2);
   },
   methods: {
+    aaaa() {
+      this.dialogVisible = true;
+    },
+    bbb() {
+      this.$LJSEl.delMessageBox({
+        title: '系统提示1',
+        message: `是否确认删除的数据项？`,
+        draggable: true,
+        doSomething: () => {
+          this.$store.commit('loadingStore', {
+            tag: true,
+            text: '删除中....'
+          });
+          listDel(ids).then((res) => {
+            if (res.code === 200) {
+              this.getList();
+              this.$modal.msgSuccess('删除成功');
+            }
+            this.$store.commit('loadingStore', {
+              tag: false,
+              text: '删除中....'
+            });
+          }).catch(()=>{
+            this.$store.commit('loadingStore', {
+              tag: false,
+              text: '删除中....'
+            });
+          });
+        }
+      });
+    }
   }
 };
 </script>

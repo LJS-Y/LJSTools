@@ -1,6 +1,6 @@
 {
   "name": "ljs-tools",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "private": false,
   "description": "ljs-tools和常用插件",
   "main": "./index.umd.cjs",
@@ -28,7 +28,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
     "crypto-js": "^4.2.0",
-    "element-plus": "^2.3.4",
+    "element-plus": "^2.9.7",
     "html2canvas": "^1.4.1",
     "js-cookie": "^3.0.5",
     "jspdf": "^2.5.1",

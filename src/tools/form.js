@@ -131,20 +131,19 @@ export function downloadBlobData(data, title) {
 
 /**
   *  日期控件禁用项(Element-plus)
-  *  @param {String} opts.dateType 日期的字典value，默认3为日
+  *  @param {String} opts.dateType 日期的字典value，默认3为日，按照dateTypeKeyValue规则使用。
   *  @param {Number} opts.direction 禁用方向，1为禁用未来，-1为禁用以前。
   *  @param {Number} opts.span 结尾日期浮动数，1 向后推1天开始禁用规则，-1 向前推1天开始禁用规则；其他跨度以此类推。
-  *  @param {Array} opts.dateTypeKeyValue 字典value的数组，['1', '2', '3']对应['年', '月', '日']。
+  *  @param {Array} opts.dateTypeKeyValue 支持不同日期类型，根据字典value的数组处理。对应关系如下：['1', '2', '3', '4']对应['年', '月', '日', '秒']。
   *  @returns {Function} 禁止以后的日期函数
   *  @example :disabled-date="$LJSfc.pickerOptions()"
   * */
-let oneTimeDisabledDate = Date.now();
 export function pickerOptions(opts = {}) {
   const useOpts = {
     dateType: '3',
     direction: 1,
     span: 0,
-    dateTypeKeyValue: ['1', '2', '3']
+    dateTypeKeyValue: ['1', '2', '3', '4']
   };
   for (let key in opts) {
     useOpts[key] = opts[key];
@@ -153,8 +152,12 @@ export function pickerOptions(opts = {}) {
   const dayTime = 3600 * 1000 * 24;
   let year = null;
   let month = null;
-  oneTimeDisabledDate = Date.now();
+  let oneTimeDisabledDate = 0; // 规则下的固定量
   switch(useOpts.dateType) {
+    // 秒
+    case useOpts.dateTypeKeyValue[3]:
+      oneTimeDisabledDate += 1000 * useOpts.span;
+      break;
     // 日
     case useOpts.dateTypeKeyValue[2]:
       oneTimeDisabledDate += dayTime * useOpts.span;
@@ -162,7 +165,7 @@ export function pickerOptions(opts = {}) {
     // 月
     case useOpts.dateTypeKeyValue[1]:
       year = new Date(oneTimeDisabledDate).getFullYear();
-      month = new Date(oneTimeDisabledDate).getMonth() + useOpts.span;
+      month = (new Date(oneTimeDisabledDate).getMonth() + 1) + useOpts.span;
       if (month < 0) {
         year += useOpts.span;
         month = 12;
@@ -180,9 +183,9 @@ export function pickerOptions(opts = {}) {
   }
   return (time) => {
     if (useOpts.direction === 1) {
-      return time.getTime() > oneTimeDisabledDate
+      return time.getTime() > oneTimeDisabledDate + Date.now()
     } else if (useOpts.direction === -1) {
-      return time.getTime() < oneTimeDisabledDate
+      return time.getTime() < oneTimeDisabledDate + Date.now()
     }
   };
 }

@@ -5,16 +5,7 @@ elementPlus相关（LJSEl），V3JS框架中常用的基础库。
 ### 1.ElMessageBox封装
 用于删除时的提示框。
 
-方法：delMessageBox({
-  type: String,
-  title: String,
-  message: message,
-  showCancelButton: Boolean,
-  confirmButtonText: String,
-  cancelButtonText: String,
-  customStyle: Object,
-  doSomething: Function,
-})
+方法：delMessageBox(params: Object)
 ##### 示例
 ```js
 this.$LJSEl.delMessageBox({
@@ -49,10 +40,15 @@ this.$LJSEl.delMessageBox({
 | 参数  | 类型 | 必填项 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | o.type | String | × | warning | 提示框类型，适用ElMessageBox属性type。 |
+| o.icon | string / Component | × | '' | 自定义图标组件，会覆盖 type 的类型。 |
 | o.title | String | × | 系统提示 | 提示框标题。 |
 | o.message | String | √ | | 提示框内容。 |
 | o.showCancelButton | Boolean | × | true | 是否显示取消按钮。 |
 | o.confirmButtonText | String | × | 确定 | 确定按钮的文本内容。 |
 | o.cancelButtonText | String | × | 取消 | 取消按钮的文本内容。 |
+| o.center | Boolean | × | false | 是否居中布局。 |
+| o.draggable | Boolean | × | false | MessageBox 是否可拖放。 |
+| o.overflow <span style="background-color: #3498db; color: white; padding: 2px 5px; border-radius: 3px;"><small>el 2.5.4</small></span> | Boolean | × | false | MessageBox 拖动范围可以超出可视区。 |
+| o.appendTo <span style="background-color: #3498db; color: white; padding: 2px 5px; border-radius: 3px;"><small>el 2.2.19</small></span> | string / HTMLElement | × | | 设置组件的根元素。 |
 | o.customStyle | Object | × | | ElMessageBox属性custom-style。 |
 | o.doSomething | Function | × | | 确定后做什么事情。 |

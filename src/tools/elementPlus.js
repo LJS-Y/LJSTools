@@ -43,22 +43,31 @@ this.$LJSEl.delMessageBox({
  *  */
 export function delMessageBox({
   type = 'warning',
+  icon = '',
   title = '系统提示',
   message,
   showCancelButton = true,
   confirmButtonText = '确定',
   cancelButtonText = '取消',
+  center = false,
+  overflow = false,
+  draggable = false,
+  appendTo,
   customStyle = {},
   doSomething = () => {},
 }) {
   ElMessageBox({
-    icon: markRaw(Warning),
+    icon: icon === '' ? markRaw(Warning) : icon,
     type,
     title,
     message,
     showCancelButton,
     confirmButtonText,
     cancelButtonText,
+    center,
+    overflow,
+    draggable,
+    appendTo,
     customStyle,
     beforeClose: (action, instance, done) => {
       if (action === 'confirm') {
