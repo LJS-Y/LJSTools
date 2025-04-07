@@ -15,7 +15,7 @@ this.$LJSmenu.fristOpenMenu(this.$store)
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | store | Object | √ | | this.$store。 |
 
@@ -32,7 +32,7 @@ this.$LJSmenu.handPush({store: this.$store, run: this.$run, path: '/carbonTrade/
 
 #### params参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | store | Object | √ | | this.$store |
 | run | Object | √ | | 框架内的路由控制类公共变量。this.$run |
@@ -52,7 +52,7 @@ this.$LJSmenu.menuControl({store: this.$store, run: this.$run, menuObj});
 
 #### params参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | store | Object | √ | | this.$store |
 | run | Object | √ | | 框架内的路由控制类公共变量。this.$run |
@@ -71,7 +71,7 @@ this.$LJSmenu.updateTreeOpen({menuList: this.menuList, parents});
 
 #### params参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | menuList | Array | √ | | 菜单数据集 |
 | parents | Array | √ | | 被展开的菜单及所有父菜单的集合 |

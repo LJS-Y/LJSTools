@@ -31,7 +31,7 @@ export default {
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | plugin.html2Canvas | Any | √ | | 依赖，import html2Canvas from 'html2canvas';推荐版本1.4.1。 |
 | plugin.JsPDF | Any | √ | | 依赖，import JsPDF from 'jspdf';推荐版本2.5.1。 |

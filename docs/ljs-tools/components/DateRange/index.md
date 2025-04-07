@@ -60,7 +60,7 @@ export default {
 
 ### 主参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 参考值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 参考值 | 说明 |
 | ----- | ---- | ----- | ----- | ------ | --- |
 | v-model | Array | √ | | | 日期区间数据。 |
 | dateType | String | × | date | | 日期类型（datetime/date/month/year）。 |

@@ -52,7 +52,7 @@ export default {
 
 #### init()参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | url | String | √ | | websocket地址。 |
 | token | String | × | null | token。 |

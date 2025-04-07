@@ -68,7 +68,7 @@ this.publicMqtt = new mqttCreateds('/furnace/msg'); // 获取Mqtt
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | subscribe | String | √ | | 订阅地址。 |
 
@@ -89,7 +89,7 @@ this.publicMqtt.init(mqtt,
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | mqtt | Object | √ | | Mqtt包的引用。 import mqtt from 'mqtt';|
 | opts.username | String | √ | | 用户名。 |
@@ -171,7 +171,7 @@ const mqttUrl = this.publicMqtt.getUrl(import.meta.env.VITE_APP_MQTT_URL, import
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | wsUrl | String | √ | | mqtt地址。例如：//192.168.1.100:8083/mqtt。 |
 | NODE_ENV | String | √ | | 模式：开发（development）、测试、生产。可根据开发和非开发模式，生成正确的地址。 |

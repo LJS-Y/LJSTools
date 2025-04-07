@@ -35,7 +35,7 @@ const pieData = this.$LJSecDC.pieChange(res.data); // 处理饼图数据
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | data | Object | √ | | 接口返回的数据集。 |
 | o.name | String | × | name | name对应键。 |

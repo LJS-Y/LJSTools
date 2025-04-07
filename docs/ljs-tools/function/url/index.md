@@ -13,7 +13,7 @@ this.$LJSurl.getUrlParameter('moduleName');
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | key | String | √ | | 日期数据。 |
 
@@ -29,7 +29,7 @@ this.$LJSurl.getFileType(str);
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | str | String | √ | | 含有文件类型的名称串。 |
 | showDot | Boolean | × | | 是否包含点（如 .pdf）。 |
@@ -46,7 +46,7 @@ this.$LJSurl.getFileName(str);
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | str | String | √ | | 含有文件类型的名称串。 |
 | showSuffix | Boolean | × | | 是否包含后缀（如 .pdf）。 |
@@ -64,7 +64,7 @@ this.$LJSurl.isIPV4ValidIP(document.domain)
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | ip | String | √ | | document.domain，当前网站的地址。 |
 
@@ -81,7 +81,7 @@ this.$LJSurl.isIPV6ValidIP(document.domain)
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | ip | String | √ | | document.domain，当前网站的地址。 |
 
@@ -98,6 +98,6 @@ this.$LJSurl.isIPValid(document.domain);
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | ip | String | √ | | document.domain，当前网站的地址。 |

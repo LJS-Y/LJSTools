@@ -17,7 +17,7 @@ this.$LJSbase.fieldCheck(this.aaaa)
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | field | any | √ | | 需要判断的字段。 |
 
@@ -32,7 +32,7 @@ this.$LJSbase.deepCopy(obj);
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | obj | Any | √ | | 待深拷贝数据。 |
 
@@ -51,7 +51,7 @@ const parents = this.$LJSbase.getTreeParents({data, value, key});
 
 #### params参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | data | Array | √ | | 原始数据。 |
 | value | String | √ | | 选中的数据唯一值。 |
@@ -78,14 +78,14 @@ this.$LJSbase.editTreeParentIdCheck({data});
 
 #### params参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | data | Array | √ | | 原始数据。 |
 | opts | Array | × | [] | 条件数组。 |
 
 #### opts参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | value | String | √ | | 需要禁用项的对比值。 |
 | key | String | √ | | 需要禁用项的对比值对应的键名。 |
@@ -102,7 +102,7 @@ this.$LJSbase.handleTreeList(tree);
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | treeList | Array | √ | | 待转换的树结构数据。 |
 
@@ -116,7 +116,7 @@ this.$LJSbase.handleListTree({data});
 
 #### params参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | data | Array | √ | | 待转换的数据。 |
 | id | String | × | id | 自身id键。 |
@@ -150,7 +150,7 @@ this.$LJSbase.selectDictLabel({data, value: '1'})
 
 #### params参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | datas | Array | √ | | 基础数据。 |
 | value | String | √ | | 值。 |
@@ -172,7 +172,7 @@ colorLog({content: technicalSupport});
 
 #### params参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | content | Array | √ | | 基础数据。 |
 | type | String | × | info | 日志类型，与console同步。 |
@@ -193,7 +193,7 @@ this.$LJSbase.downloadImage({_this: this, url: scope.row.quickResponseCode, name
 
 #### params参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | _this | Object | √ | | this。 |
 | url | String | √ | | 图片的绝对路径。 |
@@ -211,7 +211,7 @@ const base64Str = await this.$LJSbase.imageFileToBase64(fileFlow);
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | fileFlow | Blob | √ | | 文件流。 |
 
@@ -254,7 +254,7 @@ this.$LJSbase.objectCopy(parameterObj, defaultObj);
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | parameterObj | Object | √ | | 参数对象。 |
 | defaultObj | Object | √ | | 默认对象。 |

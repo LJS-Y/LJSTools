@@ -37,7 +37,7 @@ this.$LJSEl.delMessageBox({
 
 #### 参数
 
-| 参数  | 类型 | 必填项 | 默认值 | 说明 |
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | o.type | String | × | warning | 提示框类型，适用ElMessageBox属性type。 |
 | o.icon | string / Component | × | '' | 自定义图标组件，会覆盖 type 的类型。 |
