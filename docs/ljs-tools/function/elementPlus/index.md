@@ -46,9 +46,30 @@ this.$LJSEl.delMessageBox({
 | o.showCancelButton | Boolean | × | true | 是否显示取消按钮。 |
 | o.confirmButtonText | String | × | 确定 | 确定按钮的文本内容。 |
 | o.cancelButtonText | String | × | 取消 | 取消按钮的文本内容。 |
-| o.center | Boolean | × | false | 是否居中布局。 |
-| o.draggable | Boolean | × | false | MessageBox 是否可拖放。 |
-| o.overflow <span style="background-color: #3498db; color: white; padding: 2px 5px; border-radius: 3px;"><small>el 2.5.4</small></span> | Boolean | × | false | MessageBox 拖动范围可以超出可视区。 |
-| o.appendTo <span style="background-color: #3498db; color: white; padding: 2px 5px; border-radius: 3px;"><small>el 2.2.19</small></span> | string / HTMLElement | × | | 设置组件的根元素。 |
+| o.center <span :class="$style.version">0.7.2</span> | Boolean | × | false | 是否居中布局。 |
+| o.draggable <span :class="$style.version">0.7.2</span> | Boolean | × | false | MessageBox 是否可拖放。 |
+| o.overflow <span :class="$style.version">0.7.2</span><span :class="$style.elVersion">el 2.5.4</span> | Boolean | × | false | MessageBox 拖动范围可以超出可视区。 |
+| o.appendTo <span :class="$style.version">0.7.2</span><span :class="$style.elVersion">el 2.2.19</span> | string / HTMLElement | × | | 设置组件的根元素。 |
 | o.customStyle | Object | × | | ElMessageBox属性custom-style。 |
 | o.doSomething | Function | × | | 确定后做什么事情。 |
+
+<style module>
+.version {
+  border: 1px solid #3498db;
+  color: #3498db;
+  padding: 2px 5px;
+  height: 32px;
+  line-height: 30px;
+  border-radius: 16px;
+  font-size: 12px;
+}
+.elVersion {
+  border: 1px solid orangered;
+  color: orangered;
+  padding: 2px 5px;
+  height: 32px;
+  line-height: 30px;
+  border-radius: 16px;
+  font-size: 12px;
+}
+</style>

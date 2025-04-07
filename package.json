@@ -1,6 +1,6 @@
 {
   "name": "ljs-tools",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "private": false,
   "description": "ljs-tools和常用插件",
   "main": "./index.umd.cjs",
@@ -47,6 +47,6 @@
     "vite": "~4.4.4",
     "vite-plugin-html": "^3.2.0",
     "vite-plugin-svg-icons": "^2.0.1",
-    "vitepress": "^1.0.1"
+    "vitepress": "^1.6.3"
   }
 }
