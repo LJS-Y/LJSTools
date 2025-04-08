@@ -1,5 +1,4 @@
 <template>
-  顶层
   <router-view />
 </template>
 

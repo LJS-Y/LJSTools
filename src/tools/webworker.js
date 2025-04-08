@@ -1,4 +1,4 @@
-/** @module mqtt */
+/** @module webworker */
 
 
 //封装一个类（可直接cv）
