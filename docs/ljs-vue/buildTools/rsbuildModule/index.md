@@ -36,6 +36,9 @@ Rsbuild+Vue3构建的PC端的模块化管理系统（俗称大平台）。
 
 基于若依后端服务版本：V~3.8.5。
 
-
-## 去下载
+## 去下载前端
 [github](https://github.com/LJS-Y/ljs-vue3/tree/main/ljs-vue3-rsbuild-module-platform) <!-- 或者可以添加 .html -->
+
+## 获取后端
+
+后端基于若依服务版本：V~3.8.5，进行二次改造，请联系我们获取后端代码。
