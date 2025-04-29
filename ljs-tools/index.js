@@ -5689,12 +5689,12 @@ function Hs(e, r = !0) {
   let n = e.lastIndexOf(".");
   return n === -1 ? null : (n = r ? n : n + 1, e.slice(n, e.length));
 }
-function Ns(e, r = !0) {
+function Ns(e, r = !1) {
   if (ie.fieldCheck(e))
     return null;
   const n = e.lastIndexOf("/"), t = e.lastIndexOf("\\");
   let a = n > t ? n : t;
-  return a === -1 ? null : (a++, r ? e.slice(a, e.length) : e.slice(a, e.lastIndexOf(".")));
+  return a !== -1 ? a++ : a = 0, r ? e.slice(a, e.length) : e.lastIndexOf(".") > -1 ? e.slice(a, e.lastIndexOf(".")) : e.slice(a, e.length);
 }
 function Ha(e) {
   var r = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;

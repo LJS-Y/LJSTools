@@ -49,7 +49,7 @@ this.$LJSurl.getFileName(str);
 | 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | str | String | √ | | 含有文件类型的名称串。 |
-| showSuffix | Boolean | × | | 是否包含后缀（如 .pdf）。 |
+| showSuffix | Boolean | × | false | 是否包含后缀（如 .pdf），默认不包含。 |
 
 
 ### 检测 - ipv4校验

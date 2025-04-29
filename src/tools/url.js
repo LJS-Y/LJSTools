@@ -52,11 +52,11 @@ export function getFileType(str, showDot = true) {
 /**
  * 获取文件名称
  * @param {String} str 含有文件名称的地址字符串
- * @param {Boolean} showSuffix 是否包含后缀（如 .pdf）
+ * @param {Boolean} showSuffix 是否包含后缀（如 .pdf），默认不包含
  * @returns {String} 返回文件类型的字符串。
  * @example this.$LJSurl.getFileName(url);
  */
-export function getFileName(str, showSuffix = true) {
+export function getFileName(str, showSuffix = false) {
   if (BASE.fieldCheck(str)) {
     console.warn(`传入参数不存在，请检查参数值。`);
     return null;
@@ -64,15 +64,19 @@ export function getFileName(str, showSuffix = true) {
   const index1 = str.lastIndexOf('/');
   const index2 = str.lastIndexOf('\\');
   let lastIndex = index1 > index2 ? index1 : index2;
-  if (lastIndex === -1) {
-    console.warn(`传入参数不是合法的文件名字符串，请检查参数值。`);
-    return null;
+  if (lastIndex !== -1) {
+    lastIndex++;
+  } else{
+    lastIndex = 0;
   }
-  lastIndex++;
   if (showSuffix) {
     return str.slice(lastIndex, str.length);
   } else {
-    return str.slice(lastIndex, str.lastIndexOf('.'));
+    if (str.lastIndexOf('.') > -1) {
+      return str.slice(lastIndex, str.lastIndexOf('.'));
+    } else {
+      return str.slice(lastIndex, str.length);
+    }
   }
 }
 
