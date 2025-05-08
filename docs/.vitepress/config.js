@@ -61,7 +61,7 @@ export default {
               { text: '请求', link: '/ljs-vue/frontManual/request' },
               { text: '字典', link: '/ljs-vue/frontManual/dict' },
               { text: '路由', link: '/ljs-vue/frontManual/router' },
-              { text: '组件', link: '/ljs-vue/frontManual/components' },
+              { text: '框架组件', link: '/ljs-vue/frontManual/components' },
               { text: '权限', link: '/ljs-vue/frontManual/power' },
               { text: '生成页面', link: '/ljs-vue/frontManual/page' },
               { text: 'echarts的快速应用', link: '/ljs-vue/frontManual/echarts' },
