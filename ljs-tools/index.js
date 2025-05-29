@@ -75,9 +75,9 @@ function go({ data: e, id: r = "id", parentId: n = "parentId", children: t = "ch
   }
   return l;
 }
-function yo() {
-  var e = document.documentElement, r = e.clientWidth / 120;
-  e.style.fontSize = r + "px";
+function yo(e = 120) {
+  var r = document.documentElement, n = r.clientWidth / e;
+  r.style.fontSize = n + "px";
 }
 function bo({ data: e, value: r, labelKey: n = "distLabel", valueKey: t = "distValue", isTrue: a = !1 }) {
   if (r === void 0)

@@ -161,11 +161,12 @@ export function handleListTree({data, id = 'id', parentId = 'parentId', children
 
 /**
  * 根节点字体大小计算
+ * @param {Number} xs PC端120为16号字；移动端25为30rpx；pad未处理
  * @example this.$LJSbase.setRemUnit(); 返回结果根节点的font-size大小。
  */
-export function setRemUnit() {
+export function setRemUnit(xs = 120) {
   var docEl = document.documentElement;
-  var rem = docEl.clientWidth / 120; // 可根据不同电脑分辨率进行手动修改（如1920*1080 为19.2
+  var rem = docEl.clientWidth / xs; // 可根据不同电脑分辨率进行手动修改（如1920*1080 为19.2
   docEl.style.fontSize = rem + 'px'
 }
 
