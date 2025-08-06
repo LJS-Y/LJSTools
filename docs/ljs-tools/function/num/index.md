@@ -63,20 +63,22 @@ this.$LJSnum.numberCeil(1234); // 返回结果为2000
 ### 4.数字单位升级
 数字进行万、亿、万亿处理。
 
-方法：longNumText(value: Number | String, ws: Number)
+方法：longNumText(params: Object)
 
-返回值（Array）：返回升级后的数据。
+返回值（Array）：返回升级后的数据。isMerge为true时返回合并后的字符串；false时返回一个对象，num为数字，unit为单位值。
 ##### 示例
 ```js
-this.$LJSnum.longNumText(12345, 1); // 返回1.2万
+this.$LJSnum.longNumText({ value: 12345, ws: 1}); // 返回1.2万
 ```
 
-#### 参数
+#### params参数
 
 | 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | value | Number, String | √ | | 原型数据。 |
-| ws | Number | × | 2 | 保留几位小数。 |
+| ws | Number | × | 0 | 保留几位小数。 |
+| units | Number | × | ['', '万', '亿万', '万亿'] | 单位文字的数组。保证数组为4个项。 |
+| isMerge | Boolean | × | true | 是否合并单位和数字。。 |
 
 
 ### 5.数字保留小数位

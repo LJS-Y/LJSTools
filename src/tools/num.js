@@ -70,24 +70,43 @@ export function numberCeil(value) {
  * 数字单位升级：数字进行万、亿、万亿处理
  * @param {string} value 原型数据
  * @param {Number} ws 保留几位小数
- * @returns {String} 返回升级后的数据。
- * @example this.$LJSnum.longNumText(12345, 1)，返回1.2万
+ * @param {Array} units 单位文字的数组
+ * @param {Boolean} isMerge 是否合并单位和数字。
+ * @returns {String} 返回升级后的数据。isMerge为true时返回合并后的字符串；false时返回一个对象，num为数字，unit为单位值
+ * @example this.$LJSnum.longNumText({ value: 12345, ws: 1})，返回1.2万
  * */
-export function longNumText(value, ws = 2) {
+export function longNumText({
+	value,
+	ws = 0,
+	units = ['', '万', '亿万', '万亿'],
+	isMerge = true,
+}) {
   if (checkNum(value)) {
     let result = '';
     const sign = Number(value) < 0 ? -1 : 1; // 正负符号
     const num = Math.abs(Number(value));
+	  let dwIndex = 0
     if (num < 10000) {
       result = sign * num;
+	    dwIndex = 0;
     } else if (num >= 10000 && num < 10000 * 10000) {
-      result = sign * (num / 10000 + limit_min_num).toFixed(ws) + '万';
+      result = sign * (num / 10000 + limit_min_num).toFixed(ws);
+	    dwIndex = 1;
     } else if (num >= 10000 * 10000 && num < 10000 * 10000 * 10000) {
-      result = sign * (num / (10000 * 10000) + limit_min_num).toFixed(ws) + '亿';
+      result = sign * (num / (10000 * 10000) + limit_min_num).toFixed(ws);
+	    dwIndex = 2;
     } else if (num >= 10000 * 10000 * 10000) {
-      result = sign * (num / (10000 * 10000 * 10000) + limit_min_num).toFixed(ws) + '万亿';
+      result = sign * (num / (10000 * 10000 * 10000) + limit_min_num).toFixed(ws);
+	    dwIndex = 3;
     }
-    return result;
+    if (isMerge) {
+      return result + units[dwIndex]
+    } else {
+      return {
+        num: result,
+        unit: units[dwIndex]
+      }
+    }
   }
   return value;
 }
