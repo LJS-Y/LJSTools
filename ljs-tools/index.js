@@ -276,7 +276,17 @@ function Io({
     let a = "";
     const i = Number(e) < 0 ? -1 : 1, o = Math.abs(Number(e));
     let s = 0;
-    return o < 1e4 ? (a = i * o, s = 0) : o >= 1e4 && o < 1e4 * 1e4 ? (a = i * (o / 1e4 + Zt).toFixed(r), s = 1) : o >= 1e4 * 1e4 && o < 1e4 * 1e4 * 1e4 ? (a = i * (o / (1e4 * 1e4) + Zt).toFixed(r), s = 2) : o >= 1e4 * 1e4 * 1e4 && (a = i * (o / (1e4 * 1e4 * 1e4) + Zt).toFixed(r), s = 3), t ? a + n[s] : {
+    if (o < 1e4)
+      a = i * o, s = 0;
+    else if (o >= 1e4 && o < 1e4 * 1e4) {
+      let c = o / 1e4 + Zt;
+      c = Number(c.toFixed(r)), c < 1e4 ? (a = i * c, s = 1) : (a = i * c / 1e4, s = 2);
+    } else if (o >= 1e4 * 1e4 && o < 1e4 * 1e4 * 1e4) {
+      let c = o / 1e8 + Zt;
+      c = Number(c.toFixed(r)), c < 1e4 ? (a = i * c, s = 2) : (a = i * c / 1e4, s = 3);
+    } else
+      o >= 1e4 * 1e4 * 1e4 && (a = i * (o / (1e4 * 1e4 * 1e4) + Zt).toFixed(r), s = 3);
+    return t ? a + n[s] : {
       num: a,
       unit: n[s]
     };
