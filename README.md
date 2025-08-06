@@ -22,3 +22,5 @@ app.use(LjsTools);
 import 'ljs-tools/index.css'; main中引入
 import { LJSLoading } from 'ljs-tools';
 ```
+
+[API](https://ljs-y.github.io/ljs-vue3/ljs-tools/function/base/)
