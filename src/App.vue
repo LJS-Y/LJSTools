@@ -7,6 +7,25 @@ import { uid } from 'uid';
 export default {
   data() {
     return {
+      
+			typeData: [
+				{
+					dictLabel: '是',
+					dictValue: 'Oui'
+				},
+				{
+					dictLabel: '非',
+					dictValue: 'Non'
+				},
+				{
+					dictLabel: '不确定',
+					dictValue: 'Indéfini'
+				},
+				{
+					dictLabel: '部分',
+					dictValue: 'Partiellement'
+				}
+			],
     };
   },
   mounted() {
@@ -16,7 +35,7 @@ export default {
       uid(32),
       ['一杯茶，一包烟，一个参数传一天', '龙九山']
     );
-    console.log(this.$LJSnum.longNumText({ value: 12345, ws: 1, isMerge: false}));
+    console.log(this.$LJSbase.selectDictLabel({data: this.typeData, value: 'Non'}));
     
   },
   methods: {

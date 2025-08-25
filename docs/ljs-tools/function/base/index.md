@@ -154,8 +154,8 @@ this.$LJSbase.selectDictLabel({data, value: '1'})
 | ----- | :----: | :-----: | ----- | --- |
 | datas | Array | √ | | 基础数据。 |
 | value | String | √ | | 值。 |
-| labelKey | String | × | distLabel | 查找的名称key。如果参数值为$index，则返回索引值。 |
-| valueKey | String | × | distValue | 比对的数据key。 |
+| labelKey | String | × | dictLabel | 查找的名称key。如果参数值为$index，则返回索引值。 |
+| valueKey | String | × | dictValue | 比对的数据key。 |
 | isTrue | Boolean | × | false | false时为字符串，true时为布尔型。 |
 
 

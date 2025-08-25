@@ -180,7 +180,7 @@ export function setRemUnit(xs = 120) {
  * @returns {Array} 返回值所对应的文本。
  * @example this.$LJSbase.selectDictLabel({data, value: '1'})
  */
-export function selectDictLabel({data, value, labelKey = 'distLabel', valueKey = 'distValue', isTrue = false}) {
+export function selectDictLabel({data, value, labelKey = 'dictLabel', valueKey = 'dictValue', isTrue = false}) {
   if (value === undefined) {
     return '';
   }

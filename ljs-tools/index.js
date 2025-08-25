@@ -79,7 +79,7 @@ function yo(e = 120) {
   var r = document.documentElement, n = r.clientWidth / e;
   r.style.fontSize = n + "px";
 }
-function bo({ data: e, value: r, labelKey: n = "distLabel", valueKey: t = "distValue", isTrue: a = !1 }) {
+function bo({ data: e, value: r, labelKey: n = "dictLabel", valueKey: t = "dictValue", isTrue: a = !1 }) {
   if (r === void 0)
     return "";
   let i = [];
