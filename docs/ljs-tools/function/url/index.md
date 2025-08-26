@@ -2,8 +2,23 @@
 ## 说明
 URL检测与应用（LJSurl），V3JS框架中常用的基础库。
 
+### 解析地址中所有的参数值，并返回一个对象
+方法：getUrlAllParameter(url: String)
+
+返回值（String）：返回中所有的参数值，并返回一个对象。
+##### 示例
+```js
+this.$LJSurl.getUrlAllParameter(url)
+```
+
+#### 参数
+
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
+| ----- | :----: | :-----: | ----- | --- |
+| url | String | √ | | 待解析的地址。 |
+
 ### 获取指定参数的值
-方法：getUrlParameter(key: String)
+方法：getUrlParameter(key: String, url: String)
 
 返回值（String）：返回指定key的参数值，如不存在返回null。
 ##### 示例
@@ -15,7 +30,8 @@ this.$LJSurl.getUrlParameter('moduleName');
 
 | 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
-| key | String | √ | | 日期数据。 |
+| key | String | √ | | key。 |
+| url | String | × | location.search | 待解析的地址。 |
 
 
 ### 获取文件类型

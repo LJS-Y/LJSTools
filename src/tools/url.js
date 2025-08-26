@@ -3,29 +3,47 @@
 import BASE from './base';
 
 /**
- * 获取请求中的指定参数的值
+ * 地址解析
+ * @param {String} url 待解析的地址
+ * @returns {String} 返回中所有的参数值，并返回一个对象。
+ * @example this.$LJSurl.getUrlAllParameter(url)
+ */
+export function getUrlAllParameter(url) {
+  if (BASE.fieldCheck(url)) {
+    console.warn(`传入参数不存在或不存在任何参数，请检查。`)
+    return null
+  }
+  const result = {}
+  let parameters = url.split('?')
+  if (parameters.length === 1) {
+    return [parameters[0], result]
+  }
+  const ps = parameters[1].split('&')
+  const nums = ps.length
+  for (let i = 0; i < nums; i++) {
+    const query = ps[i].split('=')
+    result[query[0]] = query[1]
+  }
+  return [parameters[0], result]
+}
+
+/**
+ * 获取地址中的指定参数的值
  * @param {String} key key
+ * @param {String} url 请求地址
  * @returns {String} 返回指定key的参数值，如不存在返回null。
  * @example this.$LJSurl.getUrlParameter('moduleName');
  */
-export function getUrlParameter(key) {
-  let parameter = location.search;
-  if (parameter === '' || parameter.length === 0) {
-    return null;
+export function getUrlParameter(key, url = location.search) {
+  const urlAllParameter = getUrlAllParameter(url)
+  if (urlAllParameter === null) {
+    return null
   }
-  parameter = parameter.slice(1, parameter.length);
-  const ps = parameter.split('&');
-  const nums = ps.length;
-  for (let i = 0; i < nums; i++) {
-    const query = ps[i].split('=');
-    if (query[0] === key) {
-      if (query.length === 2) {
-        return query[1];
-      }
-      break;
-    }
+  const parameter = urlAllParameter[1]
+  if (key in parameter) {
+    return parameter[key]
   }
-  return null;
+  return null
 }
 
 /**
@@ -113,6 +131,7 @@ export function isIPValid(ip) {
 }
 
 export default {
+  getUrlAllParameter,
   getUrlParameter,
   getFileType,
   getFileName,

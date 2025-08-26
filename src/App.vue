@@ -35,7 +35,8 @@ export default {
       uid(32),
       ['一杯茶，一包烟，一个参数传一天', '龙九山']
     );
-    console.log(this.$LJSbase.selectDictLabel({data: this.typeData, value: 'Non'}));
+    console.log(this.$LJSurl.getUrlAllParameter('http://192.168.34.68:9900/h5FromWx/?a=1&b=2'));
+    console.log(this.$LJSurl.getUrlParameter('a', 'http://192.168.34.68:9900/h5FromWx/?a=1&b=2'));
     
   },
   methods: {
