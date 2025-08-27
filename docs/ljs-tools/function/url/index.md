@@ -2,7 +2,7 @@
 ## 说明
 URL检测与应用（LJSurl），V3JS框架中常用的基础库。
 
-### 解析地址中所有的参数值，并返回一个对象
+### 地址解析
 方法：getUrlAllParameter(url: String)
 
 返回值（String）：返回中所有的参数值，并返回一个对象。
