@@ -2,6 +2,7 @@
  * @module date
  * @description 日期常用处理方法
  *  */
+import LJSbase from '@/tools/base';
 import LJSnum from '@/tools/num';
 
 /**
@@ -12,6 +13,9 @@ import LJSnum from '@/tools/num';
  * @example this.$LJSdate.formatTime(new Date().getTime(), '{y}-{m}-{d} {h}:{i}:{s}')，返回2021-12-22 09:56:58
  */
 export function formatTime(time, pattern) {
+  if (LJSbase.fieldCheck(time)) {
+    return time;
+  }
   const date = new Date(time);
   const format = pattern || '{y}-{m}-{d} {h}:{i}:{s}';
   const formatObj = {
@@ -39,6 +43,9 @@ export function formatTime(time, pattern) {
  * @example this.$LJSdate.customizedDate(new Date().getTime(), '{y}-{m}-{d}', -1); // 当前日期：2024-03-28，返回：2024-03-27
  */
 export function customizedDate(time, pattern, span = 0) {
+  if (LJSbase.fieldCheck(time)) {
+    return time;
+  }
   if (span === 0) {
     let t = new Date(time).getTime();
     return formatTime(t, pattern);
