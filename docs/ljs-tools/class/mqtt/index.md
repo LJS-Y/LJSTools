@@ -109,7 +109,10 @@ this.publicMqtt.link();
 
 ### 4.取消订阅
 
-取消订阅，返回一个Promise。{msg: '取消订阅成功', path: 订阅地址}
+取消订阅，返回一个Promise。
+```js
+{msg: '取消订阅成功', path: 订阅地址}
+```
 
 方法：unsubscribes()
 
