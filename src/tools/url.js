@@ -10,7 +10,7 @@ import BASE from './base';
  */
 export function getUrlAllParameter(url) {
   if (BASE.fieldCheck(url)) {
-    console.warn(`传入参数不存在或不存在任何参数，请检查。`)
+    console.warn(`传入参数不存，请检查。`)
     return null
   }
   const result = {}
