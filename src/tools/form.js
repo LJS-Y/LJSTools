@@ -3,6 +3,7 @@
  * @description 表单常用处理方法
  *  */
 import D from './date';
+import { checkNum } from './num';
 
 /**
  *  只能输入固定位数的正负数字，可小数。
@@ -79,19 +80,47 @@ export function numDxsCheck({ form, key = 'money', zs = 10, ws = 2, type = 'Numb
   *  @param {object} form 表单对象
   *  @param {String} key 键名不叫num时需要传入新的键名
   *  @param {String} type 默认数字类型的字符串，不支持首位多个0；传入String，支持以下格式。00.1；0001221。一般用于编码类需求。
-  *  @param {Boolean} numberFristIs0 type = 'Number'的情况下，能否输入数字0，默认是可以输入
+  *  @param {Boolean} fu type = 'Number'的情况下，能否输入负数，默认否
   *  @example this.$LJSfc.numCheck({form, key: 'goodsPrice'})
   * */
-export function numCheck({form, key = 'num', type = 'Number', numberFristIs0 = true}) {
-  if (type === 'Number' && !numberFristIs0) {
-    // 首位不能是0
-    form[key] = form[key].slice(0, 1) === '0' ? '' : form[key];
+export function numCheck({form, key = 'num', type = 'Number', fu = false}) {
+  if (type === 'Number') {
+    if (fu) {
+      form[key] = form[key].slice(0, 1) + form[key].slice(1, form[key].length).replace(/\-/g, '');
+    } else {
+      if (form[key].slice(0, 1) === '-') {
+        form[key] = form[key].slice(1, form[key].length);
+      }
+    }
   }
-  form[key] = form[key].replace(/[^\d]/g, '');
+  form[key] = form[key].replace(/[^\d-]/g, '');
 
   // 处理为数字
   if (type === 'Number' && form[key].length > 0) {
-    form[key] = Number(form[key]);
+    if (form[key] !== '-') {
+      form[key] = Number(form[key]);
+    }
+  }
+}
+
+/**
+  *  光标离开输入框时检查数字合法性，并处理不合法的数据
+  *  @param {object} form 表单对象
+  *  @param {String} key 键名不叫num时需要传入新的键名
+  *  @example this.$LJSfc.numBlurCheck({form, key: 'goodsPrice'})
+  * */
+export function numBlurCheck({form, key = 'num'}) {
+  if (!checkNum(form[key])) {
+    form[key] = ''
+    return;
+  }
+  if (form[key] === '0.' || form[key] === '-0.') {
+    form[key] = ''
+    return;
+  }
+  if (form[key] === '-0') {
+    form[key] = '0'
+    return;
   }
 }
 
@@ -267,6 +296,7 @@ export function pickerOptionsDynamic(day = 30, times) {
 
 export default {
   numCheck,
+  numBlurCheck,
   numEnCheck,
   numDxsCheck,
   downloadBlobData,

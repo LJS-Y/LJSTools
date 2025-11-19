@@ -1,13 +1,19 @@
+
+import {
+  ElInput
+} from 'element-plus';
 export default {
   name: 'Index',
+  components: {
+    ElInput
+  },
   data() {
     return {
-      allSearch: {
-        query: {
-          date: []
-        }
+      form: {
+        goodsPrice: '',
+        goodsPrice2: '',
+        goodsPrice3: ''
       },
-      dialogVisible: false
     };
   },
   created() {
@@ -18,18 +24,5 @@ export default {
     // 初始化数据
     async initData() {
     },
-    aaaa() {
-      this.dialogVisible = true;
-    },
-    bbb() {
-      this.$LJSEl.delMessageBox({
-        title: '系统提示1',
-        message: `是否确认删除的数据项？`,
-        draggable: true,
-        doSomething: () => {
-          
-        }
-      });
-    }
   }
 };

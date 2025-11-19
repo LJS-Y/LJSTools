@@ -2,7 +2,7 @@
 ## 说明
 表单（LJSfc），V3JS框架中常用的基础库。
 
-### 1.只能输入固定位数的正负数字，可小数。
+### 只能输入固定位数的正负数字，可小数。
 
 方法：numDxsCheck(params: Object)
 
@@ -28,7 +28,7 @@
 | fu | Boolean | × | false | 是否支持-负数符号。 |
 
 
-### 2.只能输入数字
+### 只能输入数字
 
 方法：numCheck(params: Object)
 ##### 示例
@@ -43,10 +43,10 @@
 | form | Object | √ | | 对象。 |
 | key | String | × | num | 键名不叫num时需要传入新的键名。 |
 | type | Number | × | Number | 默认数字类型的字符串，不支持首位多个0；传入String，支持以下格式。00.1；0001221。一般用于编码类需求。 |
-| numberFristIs0 | Boolean | × | true | type = 'Number'的情况下，能否输入数字0，默认是可以输入。 |
+| fu | Boolean | × | true | type = 'Number'的情况下，能否输入负数，默认否。 |
 
 
-### 3.只能输入：数字、字母
+### 只能输入：数字、字母
 
 方法：numEnCheck(form: Object, key: String)
 ##### 示例
@@ -62,7 +62,24 @@
 | key | String | × | username | 键名不叫username时需要传入新的键名。 |
 
 
-### 4.Blob数据流下载
+### 数字合法性
+光标离开输入框时检查数字合法性，并处理不合法的数据
+
+方法：numBlurCheck(params: Object)
+##### 示例
+```vue
+<el-input v-model="form.data.orderNum" @blur="$LJSfc.numBlurCheck({form: form.data, key: 'orderNum'})" placeholder="请输入排序"></el-input>
+```
+
+#### params参数
+
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
+| ----- | :----: | :-----: | ----- | --- |
+| form | Object | √ | | 对象。 |
+| key | String | × | num | 键名不叫num时需要传入新的键名。 |
+
+
+### Blob数据流下载
 来源于后端接口返回。
 
 方法：downloadBlobData(data: Blob, title: String)
@@ -80,7 +97,7 @@ this.$LJSfc.downloadBlobData(res.data, "房屋价格")
 | title | String | × | 2 | 下载后的文件名称。 |
 
 
-### 5.日期控件禁用项
+### 日期控件禁用项
 基于Element-plus，常用于禁用未来日期的场景。
 
 方法：pickerOptions(opts: Object)
@@ -117,7 +134,7 @@ this.$LJSfc.downloadBlobData(res.data, "房屋价格")
 | dateTypeKeyValue | Array | × | ['1', '2', '3', '4'] | 支持不同日期类型，根据字典value的数组处理。对应关系如下：['1', '2', '3', '4']对应['年', '月', '日', '秒']。 |
 
 
-### 6.日期区间控件动态设置最大跨度
+### 日期区间控件动态设置最大跨度
 解决element-plus日期区间，第一次点击日期，动态处理disabledDate禁用日期的跨度。
 
 方法：pickerOptionsDynamic(day: Number, times: Number)
