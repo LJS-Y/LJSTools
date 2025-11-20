@@ -55,6 +55,7 @@ export function delMessageBox({
   appendTo,
   customStyle = {},
   doSomething = () => {},
+  cancelDoSomething = () => {},
 }) {
   ElMessageBox({
     icon: icon === '' ? markRaw(Warning) : icon,
@@ -72,6 +73,8 @@ export function delMessageBox({
     beforeClose: (action, instance, done) => {
       if (action === 'confirm') {
         doSomething();
+      } else {
+        cancelDoSomething();
       }
       done()
     },

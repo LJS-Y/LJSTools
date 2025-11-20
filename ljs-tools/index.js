@@ -9223,6 +9223,8 @@ function Yf({
   appendTo: u,
   customStyle: m = {},
   doSomething: f = () => {
+  },
+  cancelDoSomething: h = () => {
   }
 }) {
   Wf({
@@ -9238,8 +9240,8 @@ function Yf({
     draggable: l,
     appendTo: u,
     customStyle: m,
-    beforeClose: (h, d, x) => {
-      h === "confirm" && f(), x();
+    beforeClose: (d, x, v) => {
+      d === "confirm" ? f() : h(), v();
     }
   }).catch(() => {
   });

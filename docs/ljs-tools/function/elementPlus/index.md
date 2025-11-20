@@ -52,6 +52,7 @@ this.$LJSEl.delMessageBox({
 | o.appendTo <span :class="$style.version">0.7.2</span><span :class="$style.elVersion">el 2.2.19</span> | string / HTMLElement | × | | 设置组件的根元素。 |
 | o.customStyle | Object | × | | ElMessageBox属性custom-style。 |
 | o.doSomething | Function | × | | 确定后做什么事情。 |
+| o.cancelDoSomething | Function | × | | 取消后做什么事情。 |
 
 <style module>
 .version {
