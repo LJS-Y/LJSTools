@@ -96,7 +96,7 @@ export function menuControl({store, run, menuObj, query}) {
   if (LJSbase.fieldCheck(menuObj.children)) {
     menuObj.children = [];
   }
-  // 如果有子集，则展开，负责为点击
+  // 如果有子集，则展开，否则为点击
   if (menuObj.children.length > 0) {
     // 原本：展开
     if (menuObj.open) {
@@ -152,7 +152,20 @@ export function menuControl({store, run, menuObj, query}) {
   }
 }
 
-// 更新菜单展开选项
+/**
+ * 更新菜单展开选项
+ * @param {Array} menuList 菜单数据
+ * @param {Array} parents 被展开菜单的父亲数据集合
+ * @param {String} key 根据key进行判断
+ * @returns {Array} 返回正确open展开状态的集合
+ * @example 
+const parents = this.$LJSbase.getTreeParents({
+  data: this.menu.list,
+  value: menuNowOpen.menuId,
+  key: 'menuId'
+});
+this.$LJSmenu.updateTreeOpen({menuList: this.menu.list, parents});
+ */
 export function updateTreeOpen({menuList, parents, key = 'menuId'}) {
   menuList.forEach((item) => {
     if (item[key] === parents[0][key]) {
