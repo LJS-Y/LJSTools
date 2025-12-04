@@ -119,3 +119,21 @@ this.$LJSurl.isIPValid(document.domain);
 | 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
 | ip | String | √ | | document.domain，当前网站的地址。 |
+
+
+### URL参数处理 - 对象参数处理成拼接参数
+
+方法：formatParamsByAscii(params: Object, excludeKeys: Array)
+
+返回值（Boolean）：是否为IP地址。
+##### 示例
+```js
+this.$LJSurl.isIPValid(document.domain);
+```
+
+#### 参数
+
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
+| ----- | :----: | :-----: | ----- | --- |
+| params | Object | √ | | 待处理的参数对象（如 \{appid: \'xxx\', nonce_str: \'xxx\'\}）。 |
+| excludeKeys | Array | × | \[\'sign\'\] | 无需参与处理的字段（默认排除 sign，可自定义）。 |

@@ -4,6 +4,7 @@
  *  */
 
 import copyright from '@/tools/copyright';
+import { getUrlAllParameter, formatParamsByAscii } from '@/tools/url';
 
 /**
  * 字段判断：判断某个字段，是否为undefined、null、''。
@@ -239,7 +240,17 @@ export function downloadImage({_this, url, name = new Date().valueOf()}) {
   let image = new Image();
   // 解决跨域 canvas污染问题
   image.setAttribute('crossOrigin', 'anonymous');
-  image.src = url + '?time=' + new Date().valueOf(); // 加时间戳
+  const allParameter = getUrlAllParameter(url);
+  console.log(allParameter);
+  url = allParameter[0]
+  let query = {}
+  if (allParameter.length === 2) {
+    query = {
+      ...allParameter[1],
+    }
+  }
+  query._time = new Date().valueOf();
+  image.src = url + '?time=' + formatParamsByAscii(query); // 加时间戳
   _this.$nextTick(() => {
     image.onload = () => {
       const canvas = document.createElement('canvas');

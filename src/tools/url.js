@@ -130,6 +130,35 @@ export function isIPValid(ip) {
   return isIPV6ValidIP(ip) || isIPV4ValidIP(ip)
 }
 
+/**
+ * URL参数处理
+ * 对象参数处理成拼接参数
+ * UniApp 参数处理：按 ASCII 字典序排序并拼接为 key=value&key=value 格式
+ * @param {Object} params - 待处理的参数对象（如 {appid: 'xxx', nonce_str: 'xxx'}）
+ * @param {Array} excludeKeys - 无需参与处理的字段（默认排除 sign，可自定义）
+ * @returns {string} 排序后拼接的参数字符串
+ */
+export function formatParamsByAscii(params, excludeKeys = ['sign']) {
+  // 步骤1：过滤无效参数（排除空值、undefined、null 和需忽略的字段）
+  const validParams = Object.entries(params).filter(([key, value]) => {
+    return (
+      value !== undefined && // 排除未定义的值
+      value !== null && // 排除 null
+      value !== '' && // 排除空字符串
+      !excludeKeys.includes(key) // 排除无需参与的字段（如 sign）
+    )
+  })
+
+  // 步骤2：按参数名 ASCII 字典序排序（数字 < 大写字母 < 小写字母）
+  const sortedParams = validParams.sort(([keyA], [keyB]) => {
+    // localeCompare 确保按 ASCII 码严格排序，不忽略大小写
+    return keyA.localeCompare(keyB, 'en-US')
+  })
+
+  // 步骤3：拼接为 key=value&key=value 格式
+  return sortedParams.map(([key, value]) => `${key}=${value}`).join('&')
+}
+
 export default {
   getUrlAllParameter,
   getUrlParameter,
@@ -138,4 +167,5 @@ export default {
   isIPV4ValidIP,
   isIPV6ValidIP,
   isIPValid,
+  formatParamsByAscii,
 };
