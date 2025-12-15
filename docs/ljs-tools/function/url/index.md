@@ -128,7 +128,7 @@ this.$LJSurl.isIPValid(document.domain);
 返回值（Boolean）：是否为IP地址。
 ##### 示例
 ```js
-this.$LJSurl.isIPValid(document.domain);
+this.$LJSurl.formatParamsByAscii(window.location.href);
 ```
 
 #### 参数
