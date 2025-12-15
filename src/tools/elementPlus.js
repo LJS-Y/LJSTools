@@ -73,9 +73,10 @@ export function delMessageBox({
     beforeClose: (action, instance, done) => {
       if (action === 'confirm') {
         doSomething();
-      } else {
-        cancelDoSomething();
+        done()
+        return
       }
+      cancelDoSomething();
       done()
     },
   }).catch(()=>{});

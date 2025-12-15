@@ -9253,7 +9253,11 @@ function Uf({
     appendTo: u,
     customStyle: m,
     beforeClose: (d, x, v) => {
-      d === "confirm" ? f() : h(), v();
+      if (d === "confirm") {
+        f(), v();
+        return;
+      }
+      h(), v();
     }
   }).catch(() => {
   });
