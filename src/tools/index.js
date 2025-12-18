@@ -12,6 +12,7 @@ import LJSurl from '@/tools/url';
 import LJSlicense from '@/tools/license';
 import LJSEl from '@/tools/elementPlus';
 import LJSWatermark from '@/tools/watermark';
+import LJSprivacy from '@/tools/privacy';
 
 // 功能库 - 模板
 // import LJSec from '@/tools/echartsTool.js';
@@ -60,6 +61,7 @@ const tools = [
   {type: 'function', name: 'license', entity: LJSlicense},
   {type: 'function', name: 'El', entity: LJSEl},
   {type: 'function', name: 'Watermark', entity: LJSWatermark},
+  {type: 'function', name: 'privacy', entity: LJSprivacy},
   
   // {type: 'directive', name: 'directives', entity: directives},
 
@@ -100,7 +102,7 @@ const globals = {
   },
   // 局部引入时使用
   // 插件
-  LJSLoading, Pagination, RightMenu, DatetypeChooseDate, DatetypeChooseDateRange, DateRange, DictTag, Particles, TextAbbreviation,
+  LJSLoading, Pagination, RightMenu, DatetypeChooseDate, DatetypeChooseDateRange, DateRange, DictTag, Particles, TextAbbreviation, LJSprivacy,
   // 方法
   LJSmenu, LJSbase, LJSnum, LJSdate, LJSfc, LJSecDC, LJSsession, LJScryptoJs, LJSrgbC, LJSurl, LJSlicense, LJSEl, LJSWatermark, DateRange_spanLimit,
   // 全局变量

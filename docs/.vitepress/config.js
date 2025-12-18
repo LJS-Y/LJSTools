@@ -108,7 +108,8 @@ export default {
               { text: '颜色处理（LJSrgbC）', link: '/ljs-tools/function/rgbColor/' },
               { text: 'URL检测与应用（LJSurl）', link: '/ljs-tools/function/url/' },
               { text: 'elementPlus相关（LJSEl）', link: '/ljs-tools/function/elementPlus/' },
-              { text: '水印（LJSWatermark）', link: '/ljs-tools/function/watermark/' }
+              { text: '水印（LJSWatermark）', link: '/ljs-tools/function/watermark/' },
+              { text: '脱敏（LJSprivacy）', link: '/ljs-tools/function/privacy/' }
             ]
           },
           {
