@@ -9335,16 +9335,22 @@ function Xf(e, n = 4) {
     return t + i + a;
   }
 }
-function Jf(e, n = 3, r = 4, t = "*") {
+function Jf({
+  str: e,
+  keepStart: n = 3,
+  keepEnd: r = 4,
+  maskChar: t = "*",
+  maskLength: a = 4
+}) {
   if (!e || e.length < n + r)
-    return e;
-  const a = e.substr(0, n), i = e.substr(-r), o = e.length - n - r;
-  return a + t.repeat(o) + i;
+    return e + t.repeat(a);
+  const i = e.slice(0, n), o = r !== 0 ? e.slice(-r) : "";
+  return i + t.repeat(a) + o;
 }
 const Li = {
   desensitizationName: Gf,
   desensitizationPhone: Xf,
-  desensitizationIdCard: Jf
+  desensitizationStr: Jf
 }, Zf = {
   // emits: ['input', 'update:value'],
   props: {

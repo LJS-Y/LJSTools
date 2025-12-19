@@ -37,19 +37,23 @@ this.$LJSprivacy.desensitizationPhone('13200001234');
 
 
 ### 脱敏 - 身份证号
-方法：desensitizationPhone(idCard: String, keepStart: Number, keepEnd: Number, maskChar: String)
+
+也可用于其他文本的脱敏处理
+
+方法：desensitizationPhone({str: String, keepStart: Number, keepEnd: Number, maskChar: String, maskLength: Number})
 
 返回值（String）：返回脱敏后的数据。
 ##### 示例
 ```js
-this.$LJSprivacy.desensitizationIdCard('13200001234');
+this.$LJSprivacy.desensitizationStr({ str: '640323198900006666' })
 ```
 
 #### 参数
 
 | 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
-| idCard | String | √ | | 身份证号。 |
+| str | String | √ | | 身份证号。 |
 | keepStart | Number | × | | 前保留。 |
 | keepEnd | Number | × | | 后保留。 |
-| maskChar | Number | × | | 脱敏符号。 |
+| maskChar | String | × | | 脱敏符号。 |
+| maskLength | Number | × | | 脱敏符号显示的数量。 |
