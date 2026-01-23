@@ -124,6 +124,6 @@ this.$LJSdate.initSearchDateQj() // 返回["2020-10-01", "2020-10-20"]
 
 | 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
-| useDate | Date | × | Date.now() | 根据该时间进行处理。 |
+| date | Date | × | new Date() | 根据该时间进行处理。 |
 | type | String | × | date | 类型：datetime,date,month,year。 |
 | n | Number | × | 0 | 年类型的跨度。type为 year。 |
