@@ -261,31 +261,52 @@ export function initSearchDate(day = 10, time = false) {
 }
 
 /**
- * 获取当月，当年，近n年的区间
+ * 获取传入日期的当月，当年，近n年的区间
+ * @param {Date} date 根据该时间进行处理
  * @param {String} type 类型：datetime,date,month,year
- * @param {Number} n 年类型的跨度
+ * @param {Number} span 步幅调整。适用于type为 date,month,year
+ * @param {Number} n 年类型的跨度。type为 year
  * @returns {Array} 返回默认起止日期
  * @example this.$LJSdate.initSearchDateQj()，返回["2020-10-01", "2020-10-10"]
  * */
-export function initSearchDateQj(type = 'date', n = 0) {
-  const date = new Date();
+export function initSearchDateQj(date = new Date(), type = 'date', span = 0 , n = 5) {
+  date = new Date(date)
   let start = '';
   let end = '';
+  const oneDay = 3600 * 1000 * 24;
   switch(type) {
     case 'datetime':
       start = formatTime(date, '{y}-{m}-{d} 00:00:00');
       end = formatTime(date, '{y}-{m}-{d} {h}:{i}:{s}');
       break;
     case 'date':
+      let endDate = `${formatTime(date, '{y}')}-${formatTime(date, '{y}')}`
+      if (date.getMonth() === 11) {
+        endDate = `${Number(formatTime(date, '{y}')) + 1}-01-01`
+      } else {
+        endDate = `${Number(formatTime(date, '{y}'))}-${Number(formatTime(date, '{m}')) + 1}-01`
+      }
+      const maybeEnd = new Date(endDate).getTime() - oneDay;
+      // date = date.getTime() + oneDay * span;
       start = formatTime(date, '{y}-{m}-01');
-      end = formatTime(date, '{y}-{m}-{d}');
+      if (maybeEnd < Date.now()) {
+        end = formatTime(maybeEnd, '{y}-{m}-{d}');
+      } else {
+        end = formatTime(date, '{y}-{m}-{d}');
+      }
       break;
     case 'month':
+      let endMonth = `${formatTime(date, '{y}')}-12`
       start = formatTime(date, '{y}-01');
-      end = formatTime(date, '{y}-{m}');
+      // end = formatTime(date, '{y}-{m}');
+      if (new Date(endMonth).getTime() < Date.now()) {
+        end = formatTime(endMonth, '{y}-{m}');
+      } else {
+        end = formatTime(date, '{y}-{m}');
+      }
       break;
     case 'year':
-      start = date.getFullYear() - (n + 1) * 5;
+      start = date.getFullYear() - n;
       end = date.getFullYear();
       break;
   }

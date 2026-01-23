@@ -112,7 +112,7 @@ this.$LJSdate.initSearchDate() // 返回["2020-10-11", "2020-10-20"]
 ### 6.区间日期2
 获取当月，当年，近n年的区间。
 
-方法：initSearchDateQj(type: String, n: Number)
+方法：initSearchDateQj(params: Object)
 
 返回值（String）：返回默认起止日期。
 ##### 示例
@@ -124,5 +124,6 @@ this.$LJSdate.initSearchDateQj() // 返回["2020-10-01", "2020-10-20"]
 
 | 参数  | 类型 | 必填 | 默认值 | 说明 |
 | ----- | :----: | :-----: | ----- | --- |
+| useDate | Date | × | Date.now() | 根据该时间进行处理。 |
 | type | String | × | date | 类型：datetime,date,month,year。 |
-| n | Number | × | 0 | type为year时，年的跨度。 |
+| n | Number | × | 0 | 年类型的跨度。type为 year。 |
