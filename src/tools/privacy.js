@@ -3,6 +3,8 @@
  * @description 基础常用处理方法
  *  */
 
+import BASE from './base';
+
 /**
  * 脱敏 - 姓名
  * @param {String} name 姓名
@@ -10,6 +12,7 @@
  * @example this.$LJSprivacy.desensitizationName('张三');
  */
 export function desensitizationName(name) {
+	if (BASE.fieldCheck(name)) return name;
 	const nums = name.length
 	if (nums === 2) {
 		const start = name.slice(0, 1)
@@ -30,6 +33,7 @@ export function desensitizationName(name) {
  * @example this.$LJSprivacy.desensitizationPhone('13200001234');
  */
 export function desensitizationPhone(phone, handleNum = 4) {
+	if (BASE.fieldCheck(phone)) return phone;
 	phone = phone + ''
 	const nums = phone.length
 	if (nums === 11) {
@@ -77,6 +81,7 @@ export function desensitizationStr({
 	maskChar = '*',
 	maskLength = 4
 }) {
+	if (BASE.fieldCheck(str)) return str;
 	if (!str || str.length < keepStart + keepEnd) return str + maskChar.repeat(maskLength)
 	const start = str.slice(0, keepStart)
 	const end = keepEnd !== 0 ? str.slice(-keepEnd) : ''

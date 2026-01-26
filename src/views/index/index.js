@@ -22,8 +22,7 @@ export default {
   methods: {
     // 初始化数据
     async initData() {
-      console.log(this.$LJSdate.initSearchDateQj());
-      console.log(this.$LJSdate.initSearchDateQj('2025-12-12'));
+      console.log(this.$LJSprivacy.desensitizationStr({str: '张三'}));
       // console.log(this.$LJSdate.initSearchDateQj({
       //   date: '2025-12-03',
       // }));

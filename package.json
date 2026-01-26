@@ -1,6 +1,6 @@
 {
   "name": "ljs-tools",
-  "version": "0.8.12",
+  "version": "0.8.13",
   "private": false,
   "description": "ljs-tools和常用插件",
   "main": "./index.umd.cjs",
