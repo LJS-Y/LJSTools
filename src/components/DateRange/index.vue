@@ -8,7 +8,7 @@
 </DateRange>
 -->
 <template>
-  <el-form-item :label="formItemLabel" prop="date">
+  <el-form-item :label="formItemLabel" :prop="formItemProp" :rules="formItemRules">
     <el-date-picker
       v-model="opts.startDate"
       :style="{

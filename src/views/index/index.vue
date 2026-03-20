@@ -1,6 +1,13 @@
 <template>
-  <div>
-  </div>
+  <DateRange
+    v-model="tableSearch.query.date"
+    dateType="date"
+    formItemProp="aaaa"
+    :formItemRules="[{ required: true, message: '请选择报名时间', trigger: 'change' }]"
+    :clearable="false"
+    :disabledDate_start="$LJSfc.pickerOptions()"
+    :disabledDate_end="$LJSfc.pickerOptions()">
+  </DateRange>
 </template>
 
 <script>

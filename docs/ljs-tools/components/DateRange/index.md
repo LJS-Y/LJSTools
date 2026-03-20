@@ -64,7 +64,9 @@ export default {
 | ----- | ---- | ----- | ----- | ------ | --- |
 | v-model | Array | √ | | | 日期区间数据。 |
 | dateType | String | × | date | | 日期类型（datetime/date/month/year）。 |
-| formItemLabel | String | × | 日期 | | 默认类型，默认值：日。字典value。 |
+| formItemLabel | String | × | 日期 | | el-form-item 的 label 值。 |
+| formItemProp | String | × | date | | el-form-item 的 prop 值。 |
+| formItemRules | Array | × | [] | | el-form-item 的 rules 值。 |
 | clearable | Boolean | × | true | | 清除按钮。 |
 | disabledDate_start | Function | × | | | 开始日期禁用日期。示例（:disabledDate_start="$LJSfc.pickerOptions()"）。 |
 | disabledDate_end | Function | × | | | 结束日期禁用日期。示例（:disabledDate_end="$LJSfc.pickerOptions()"）。 |

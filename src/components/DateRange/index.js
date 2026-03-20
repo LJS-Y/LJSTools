@@ -9,10 +9,22 @@ export default {
       type: String,
       default: 'date'
     },
-		// 默认类型，默认值：日。字典value
+		// el-form-item 的 label 值
 		formItemLabel: {
       type: String,
       default: '日期'
+    },
+		// el-form-item 的 prop 值
+		formItemProp: {
+      type: String,
+      default: 'date'
+    },
+		// el-form-item 的 rules 值
+		formItemRules: {
+      type: Array,
+      default: () => {
+        return []
+      }
     },
 		// 清除按钮
 		clearable: {

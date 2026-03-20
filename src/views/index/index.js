@@ -9,10 +9,12 @@ export default {
   },
   data() {
     return {
-      form: {
-        goodsPrice: '',
-        goodsPrice2: '',
-        goodsPrice3: ''
+      // 表格搜索条件
+      tableSearch: {
+        query: {
+          date: this.$LJSdate.initSearchDate(7),
+        },
+        queryReal: {}
       },
     };
   },
