@@ -76,3 +76,20 @@ this.$LJSmenu.updateTreeOpen({menuList: this.menuList, parents});
 | menuList | Array | √ | | 菜单数据集 |
 | parents | Array | √ | | 被展开的菜单及所有父菜单的集合 |
 | key | String | × | menuId | 通过该字段匹配。 |
+
+
+### 跳外部地址
+
+方法：goExternalUrl(url: String, method: String)
+
+##### 示例
+```js
+this.$LJSmenu.goExternalUrl(url)
+```
+
+#### params参数
+
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
+| ----- | :----: | :-----: | ----- | --- |
+| url | String | √ | | 外部地址 |
+| method | String | × | _blank | 跳转方法，_self当前页，_blank新页签 |

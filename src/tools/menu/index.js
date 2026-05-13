@@ -113,6 +113,13 @@ export function menuControl({store, run, menuObj, query}) {
     }
     store.commit('SET_menuList', menuList);
   } else {
+    // 是否外部链接
+    if (!LJSbase.fieldCheck(menuObj.isFrame) && menuObj.isFrame === true) {
+      goExternalUrl(menuObj.url)
+      return;
+    }
+
+    // 处理正常的菜单业务
     const oldPpenMenu = store.getters.menuNowOpen;
     let menuTabList = store.getters.menuOpenList;
     // 当前展示的菜单，不重复打开
@@ -183,10 +190,21 @@ export function updateTreeOpen({menuList, parents, key = 'menuId'}) {
   return menuList;
 }
 
+/**
+ * 跳外部地址
+ * @param {string} url 外部地址
+ * @param {string} method 跳转方法，_self当前页，_blank新页签
+ * @example this.$LJSmenu.goExternalUrl(url)
+ *  */
+export function goExternalUrl(url, method = '_blank') {
+  window.open(url, method);
+}
+
 
 export default {
   fristOpenMenu,
   handPush,
   menuControl,
   updateTreeOpen,
+  goExternalUrl,
 };
