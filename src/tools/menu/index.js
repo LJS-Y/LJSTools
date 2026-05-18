@@ -134,21 +134,24 @@ export function menuControl({store, run, menuObj, query}) {
     menuObj.choose = !menuObj.choose;
     // this.$emit('update:modelValue', this.menuList);
     store.commit('SET_menuNowOpen', menuChoose);
-    // this.$emit('updateData');
-    // 在卡片里的菜单，不重复添加卡片 - 开始
-    const nums = menuTabList.length;
-    let tabItemTag = false;
-    for (let i = 0; i < nums; i++) {
-      if (menuTabList[i].url === menuObj.url) {
-        tabItemTag = true;
-        break;
-      }
-    }
-    if (!tabItemTag) {
-      menuTabList = store.getters.menuOpenList;
-      menuTabList.push(menuChoose);
-      store.commit('SET_menuOpenList', menuTabList);
+    // openType = '2' 为全屏，不需要作为tabs卡片
+    if (LJSbase.fieldCheck(menuObj.openType) || (!LJSbase.fieldCheck(menuObj.openType) && menuObj.openType === '1')) {
       // this.$emit('updateData');
+      // 在卡片里的菜单，不重复添加卡片 - 开始
+      const nums = menuTabList.length;
+      let tabItemTag = false;
+      for (let i = 0; i < nums; i++) {
+        if (menuTabList[i].url === menuObj.url) {
+          tabItemTag = true;
+          break;
+        }
+      }
+      if (!tabItemTag) {
+        menuTabList = store.getters.menuOpenList;
+        menuTabList.push(menuChoose);
+        store.commit('SET_menuOpenList', menuTabList);
+        // this.$emit('updateData');
+      }
     }
     // 在卡片里的菜单，不重复添加卡片 - 结束
     // this.$emit('pageAnimation');
