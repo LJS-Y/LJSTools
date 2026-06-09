@@ -24,7 +24,7 @@ export default {
   methods: {
     // 初始化数据
     async initData() {
-      console.log(this.$LJSprivacy.desensitizationStr({str: '张三'}));
+      console.log(this.$LJSsm.SM4Util.generateKey());
       // console.log(this.$LJSdate.initSearchDateQj({
       //   date: '2025-12-03',
       // }));

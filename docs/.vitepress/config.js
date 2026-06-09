@@ -37,7 +37,7 @@ export default {
       {
         text: '框架',
         collapsible: true, // 收起图标
-        collapsed: false, // 是否默认收起
+        collapsed: true, // 是否默认收起
         items: [
           { 
             text: '框架描述',
@@ -105,6 +105,7 @@ export default {
               { text: '报表数据处理（LJSecDC）', link: '/ljs-tools/function/echartsDataChange/' },
               { text: '缓存（LJSsession）', link: '/ljs-tools/function/session/' },
               { text: '加解密（LJScryptoJs）', link: '/ljs-tools/function/cryptoJs/' },
+              { text: '国密（LJSsm）', link: '/ljs-tools/function/smCrypto/' },
               { text: '颜色处理（LJSrgbC）', link: '/ljs-tools/function/rgbColor/' },
               { text: 'URL检测与应用（LJSurl）', link: '/ljs-tools/function/url/' },
               { text: 'elementPlus相关（LJSEl）', link: '/ljs-tools/function/elementPlus/' },
