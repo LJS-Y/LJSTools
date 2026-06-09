@@ -18,7 +18,7 @@ this.$LJSsm.SM2Util.generateKeyPair()
 
 #### 公钥加密
 
-方法: encrypt(data: Any, publicKey: String)
+方法: encrypt(data: JSONString, publicKey: String)
 
 返回值（String）：加密结果。
 ##### 示例
@@ -36,7 +36,7 @@ this.$LJSsm.SM2Util.encrypt(data, publicKey)
 
 #### 私钥解密
 
-方法: decrypt(encryptedData: Any, privateKey: String)
+方法: decrypt(encryptedData: String, privateKey: String)
 
 返回值（String）：解密结果。
 ##### 示例
@@ -55,7 +55,7 @@ this.$LJSsm.SM2Util.decrypt(encryptedData, privateKey)
 #### 私钥签名
 常用：交易签名、身份认证
 
-方法: sign(data: Any, privateKey: String)
+方法: sign(data: JSONString, privateKey: String)
 
 返回值（String）: 签名。
 ##### 示例
@@ -127,7 +127,7 @@ this.$LJSsm.SM4Util.generateKey()
 
 #### 加密（传输/存储用）
 
-方法: encrypt(data: Any, key: String)
+方法: encrypt(data: JSONString, key: String)
 
 返回值（String）：加密结果。
 ##### 示例
@@ -145,7 +145,7 @@ this.$LJSsm.SM4Util.encrypt(data, key)
 
 #### 解密
 
-方法: decrypt(encryptedData: Any, key: String)
+方法: decrypt(encryptedData: String, key: String)
 
 返回值（String）：解密结果。
 ##### 示例
