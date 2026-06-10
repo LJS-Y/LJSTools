@@ -8,13 +8,13 @@ export const SM2Util = {
   },
 
   // 公钥加密； 1 - C1C3C2，0 - C1C2C3，默认为1
-  encrypt(data, publicKey) {
-    return sm2.doEncrypt(data, publicKey, 1)
+  encrypt(data, publicKey, cipherMode = 1) {
+    return sm2.doEncrypt(data, publicKey, cipherMode)
   },
 
   // 私钥解密
-  decrypt(encryptedData, privateKey) {
-    return sm2.doDecrypt(encryptedData, privateKey, 1)
+  decrypt(encryptedData, privateKey, cipherMode = 1) {
+    return sm2.doDecrypt(encryptedData, privateKey, cipherMode)
   },
 
   // 私钥签名（常用：交易签名、身份认证）

@@ -1,5 +1,8 @@
 # 国密（LJSsm）
 
+前端库：sm-crypto 0.4.0
+
+后端库：hutool-all-5.8.25
 
 ## SM2
 
@@ -16,9 +19,9 @@ this.$LJSsm.SM2Util.generateKeyPair()
 ```
 
 
-#### 公钥加密
+#### 公钥加密（常用）
 
-方法: encrypt(data: JSONString, publicKey: String)
+方法: encrypt(data: JSONString, publicKey: String, cipherMode: Number)
 
 返回值（String）：加密结果。
 ##### 示例
@@ -32,11 +35,12 @@ this.$LJSsm.SM2Util.encrypt(data, publicKey)
 | ----- | :----: | :-----: | ----- | --- |
 | data | JSONString | √ | | 需要加密的内容。 |
 | publicKey | String | √ | | 公钥。 |
+| cipherMode | Number | × | 1 | 1 - C1C3C2，0 - C1C2C3，默认为1。 |
 
 
-#### 私钥解密
+#### 私钥解密（常用）
 
-方法: decrypt(encryptedData: String, privateKey: String)
+方法: decrypt(encryptedData: String, privateKey: String, cipherMode: Number)
 
 返回值（String）：解密结果。
 ##### 示例
@@ -50,6 +54,7 @@ this.$LJSsm.SM2Util.decrypt(encryptedData, privateKey)
 | ----- | :----: | :-----: | ----- | --- |
 | encryptedData | String | √ | | 需要解密的内容。 |
 | privateKey | String | √ | | 私钥。 |
+| cipherMode | Number | × | 1 | 1 - C1C3C2，0 - C1C2C3，默认为1。 |
 
 
 #### 私钥签名
@@ -125,7 +130,8 @@ this.$LJSsm.SM4Util.generateKey()
 ```
 
 
-#### 加密（传输/存储用）
+#### 加密（常用）
+（传输/存储用）
 
 方法: encrypt(data: JSONString, key: String)
 
@@ -143,7 +149,7 @@ this.$LJSsm.SM4Util.encrypt(data, key)
 | key | String | √ | | 公钥。 |
 
 
-#### 解密
+#### 解密（常用）
 
 方法: decrypt(encryptedData: String, key: String)
 
@@ -162,7 +168,7 @@ this.$LJSsm.SM4Util.decrypt(encryptedData, key)
 
 
 
-### 目标实现流程
+## 案例1
 
 1 后端提供2对 SM2 公私钥，在登录接口交给前端；公钥：→后端（加密）；私钥：→前端（解密）；
 
