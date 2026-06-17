@@ -198,6 +198,7 @@ this.$LJSbase.downloadImage({_this: this, url: scope.row.quickResponseCode, name
 | _this | Object | √ | | this。 |
 | url | String | √ | | 图片的绝对路径。 |
 | name | String | × | 当前时间戳 | 图片名称。 |
+| loadcallback | Function | × | | 图片onload完成的回调。 |
 
 
 ### 图片流转换为base64

@@ -234,9 +234,10 @@ export function colorLog({content = ['暂无内容'], type = 'info', color = [
  * @param {Object} _this this
  * @param {String} url 图片的绝对路径
  * @param {String} name 图片名称
+ * @param {Function} loadcallback 图片onload完成的回调
  * @example this.$LJSbase.downloadImage({_this: this, url: scope.row.quickResponseCode, name: `${scope.row.itemName}-${scope.row.typeName}-${scope.row.itemNo}`});
  */
-export function downloadImage({_this, url, name = new Date().valueOf()}) {
+export function downloadImage({_this, url, name = new Date().valueOf(), loadcallback = () => {}}) {
   let image = new Image();
   // 解决跨域 canvas污染问题
   image.setAttribute('crossOrigin', 'anonymous');
@@ -267,6 +268,7 @@ export function downloadImage({_this, url, name = new Date().valueOf()}) {
         a.remove();
         URL.revokeObjectURL(url);
       })
+      loadcallback()
     }
   });
 }
