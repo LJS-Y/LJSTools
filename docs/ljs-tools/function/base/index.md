@@ -159,6 +159,28 @@ this.$LJSbase.selectDictLabel({data, value: '1'})
 | isTrue | Boolean | × | false | false时为字符串，true时为布尔型。 |
 
 
+### 字典数据处理
+
+也可用于接口数据。
+
+方法：dictDataChange(params: Object)
+
+返回值（Array）：返回值所对应的文本。
+##### 示例
+```js
+this.$LJSbase.dictDataChange({data})
+```
+
+#### params参数
+
+| 参数  | 类型 | 必填 | 默认值 | 说明 |
+| ----- | :----: | :-----: | ----- | --- |
+| data | Array | √ | | 基础数据。 |
+| valueKey | String | × | dictValue | 对照值。 |
+| del | Array | × | | 根据 dictValue 去除数据。del和retain同时传一个即可。 |
+| retain | Array | × | | 根据 dictValue 保留数据。del和retain同时传一个即可。 |
+
+
 ### 高级日志
 
 可输出带颜色的日志。

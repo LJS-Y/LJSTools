@@ -211,6 +211,45 @@ export function selectDictLabel({data, value, labelKey = 'dictLabel', valueKey =
 }
 
 /**
+ * 字典数据处理
+ * @param {Array} data 字典数据
+ * @param {String} valueKey 对照值。默认 dictValue
+ * @param {Array} del 根据 dictValue 去除数据。del和retain同时传一个即可
+ * @param {Array} retain 根据 dictValue 保留数据
+ * @return 新的模块数据
+ * @example this.$LJSbase.dictDataChange({data})
+ */
+export function dictDataChange({
+  data = [],
+  valueKey = 'dictValue',
+  del = null,
+  retain = null
+}) {
+  if (del !== null) {
+    const dictList = deepCopy(data);
+    const indexs = []
+    del.forEach((value) => {
+      const index = selectDictLabel({data: dictList, value, labelKey: '$index', valueKey})
+      indexs.push(index)
+    })
+    indexs.sort(function(a, b){ return b - a })
+    indexs.forEach((index) => {
+      dictList.splice(index, 1)
+    })
+    return dictList
+  } else if (retain !== null) {
+    const dictList = []
+    data.forEach((item) => {
+      if (retain.indexOf(item[valueKey]) > -1) {
+        dictList.push(item)
+      }
+    })
+    return dictList
+  }
+  return data
+}
+
+/**
  * 输出带颜色的日志
  * @param {Array} content log内容
  * @param {String} type 日志类型，与console同步
@@ -374,6 +413,7 @@ export default {
   handleListTree,
   setRemUnit,
   selectDictLabel,
+  dictDataChange,
   colorLog,
   downloadImage,
   imageFileToBase64,
