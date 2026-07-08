@@ -125,7 +125,7 @@ this.$LJSurl.isIPValid(document.domain);
 
 方法：formatParamsByAscii(params: Object, excludeKeys: Array)
 
-返回值（Boolean）：是否为IP地址。
+返回值（Boolean）：排序后拼接的参数字符串。
 ##### 示例
 ```js
 this.$LJSurl.formatParamsByAscii(window.location.href);
