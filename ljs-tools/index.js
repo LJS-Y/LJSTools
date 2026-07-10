@@ -12089,7 +12089,7 @@ const Tp = {
   },
   computed: {
     values() {
-      return this.value !== null && typeof this.value < "u" ? Array.isArray(this.value) ? this.value : [String(this.value)] : [];
+      return this.value !== null && typeof this.value < "u" ? (this.value, Array.isArray(this.value) ? this.value : this.value, Array.isArray(this.value) ? this.value : [this.value]) : [];
     }
   }
 }, Sp = ["index"];
@@ -12120,7 +12120,7 @@ function kp(e, n, r, t, i, a) {
     ], 64))), 128))
   ]);
 }
-const Ms = /* @__PURE__ */ _t(Tp, [["render", kp], ["__scopeId", "data-v-339f3229"]]);
+const Ms = /* @__PURE__ */ _t(Tp, [["render", kp], ["__scopeId", "data-v-dc7ecde3"]]);
 var Ip = function(e, n) {
   var r = document.querySelector("#" + e + " > .particles-js-canvas-el");
   this.pJS = {
