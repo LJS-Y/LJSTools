@@ -84,22 +84,22 @@ function oo({ data: e, value: n, key: r = "id", children: t = "children", parent
       return i.unshift(e[o]), i;
   return i;
 }
-function Lr({ data: e, opts: n = [], disabled: r = !1 }) {
+function Lr({ data: e, opts: n = [], disabled: r = !1, fatherInfluenceSon: t = !0 }) {
   if (!e)
     return;
-  const t = e.length;
-  for (let i = 0; i < t; i++) {
-    e[i].disabled = r;
-    let a = !1;
-    const o = n.length;
-    for (let s = 0; s < o; s++) {
-      const c = n[s];
-      if (e[i][c.key] === c.value) {
-        a = !0;
+  const i = e.length;
+  for (let a = 0; a < i; a++) {
+    e[a].disabled = r;
+    let o = !1;
+    const s = n.length;
+    for (let c = 0; c < s; c++) {
+      const l = n[c];
+      if (e[a][l.key] === l.value) {
+        o = !0;
         break;
       }
     }
-    a ? (e[i].disabled = !0, e[i].children = Lr({ data: e[i].children, opts: n, disabled: !0 })) : e[i].children !== void 0 && (e[i].children = Lr({ data: e[i].children, opts: n, disabled: r }));
+    e[a].deptName, o ? (e[a].disabled = !0, e[a].children = Lr({ data: e[a].children, opts: n, disabled: t, fatherInfluenceSon: t })) : e[a].children !== void 0 && (e[a].children = Lr({ data: e[a].children, opts: n, disabled: r, fatherInfluenceSon: t }));
   }
   return e;
 }
@@ -12089,7 +12089,7 @@ const Tp = {
   },
   computed: {
     values() {
-      return this.value !== null && typeof this.value < "u" ? (this.value, Array.isArray(this.value) ? this.value : this.value, Array.isArray(this.value) ? this.value : [this.value]) : [];
+      return this.value !== null && typeof this.value < "u" ? Array.isArray(this.value) ? this.value : [this.value] : [];
     }
   }
 }, Sp = ["index"];
@@ -12120,7 +12120,7 @@ function kp(e, n, r, t, i, a) {
     ], 64))), 128))
   ]);
 }
-const Ms = /* @__PURE__ */ _t(Tp, [["render", kp], ["__scopeId", "data-v-dc7ecde3"]]);
+const Ms = /* @__PURE__ */ _t(Tp, [["render", kp], ["__scopeId", "data-v-1155b7d5"]]);
 var Ip = function(e, n) {
   var r = document.querySelector("#" + e + " > .particles-js-canvas-el");
   this.pJS = {

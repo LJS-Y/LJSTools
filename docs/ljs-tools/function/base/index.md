@@ -82,6 +82,7 @@ this.$LJSbase.editTreeParentIdCheck({data});
 | ----- | :----: | :-----: | ----- | --- |
 | data | Array | √ | | 原始数据。 |
 | opts | Array | × | [] | 条件数组。 |
+| fatherInfluenceSon | Boolean | × | true | 父是否影响子。 |
 
 #### opts参数
 

@@ -58,11 +58,12 @@ export function getTreeParents({data, value, key = 'id', children = 'children', 
  * @param {String} opts.value 需要禁用项的对比值
  * @param {String} opts.key 需要禁用项的对比值对应的键名
  * @param {Boolean} disabled 是否可以选择，自用参数，不对外开放。
+ * @param {Boolean} fatherInfluenceSon 父是否影响子。
  * @returns {Array} 根据条件返回一个部分禁用选择的树数据。
  * @example this.$LJSbase.editTreeParentIdCheck({data, opts: [{value: 32, key: 'id'}, {value: 3, key: 'level'}]});
  * @example this.$LJSbase.editTreeParentIdCheck({data});
  */
-export function editTreeParentIdCheck({data, opts = [], disabled = false}) {
+export function editTreeParentIdCheck({data, opts = [], disabled = false, fatherInfluenceSon = true}) {
   if (!data) {
     return;
   }
@@ -78,12 +79,14 @@ export function editTreeParentIdCheck({data, opts = [], disabled = false}) {
         break;
       }
     }
+    console.log(bool, data[i].deptName);
+    
     if (bool) {
       data[i].disabled = true;
-      data[i].children = editTreeParentIdCheck({data: data[i].children, opts, disabled: true});
+      data[i].children = editTreeParentIdCheck({data: data[i].children, opts, disabled: fatherInfluenceSon, fatherInfluenceSon });
     } else {
       if(data[i].children !== undefined){
-        data[i].children = editTreeParentIdCheck({data: data[i].children, opts, disabled});
+        data[i].children = editTreeParentIdCheck({data: data[i].children, opts, disabled, fatherInfluenceSon});
       }
     }
   }
