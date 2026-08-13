@@ -1,5 +1,67 @@
 <template>
-  <dict-tag :options="registration_status" :value="exhibitionInfoStatus"/>
+  <div @click="downloadPdf">下载</div>
+  <div id="pdfRef">
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+    fdsafkdsjaklfjdskaljljsdafkljdsakl<br>
+  </div>
 </template>
 
 <script>

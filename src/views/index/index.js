@@ -1,4 +1,7 @@
 
+
+import html2Canvas from 'html2canvas';
+import JsPDF from 'jspdf';
 import {
   ElInput
 } from 'element-plus';
@@ -9,29 +12,6 @@ export default {
   },
   data() {
     return {
-      exhibitionInfoStatus: null,
-      registration_status: [
-        {
-          dictLabel: '未开始',
-          dictValue: 0,
-        },
-        {
-          dictLabel: '进行中',
-          dictValue: 1,
-        },
-        {
-          dictLabel: '已结束',
-          dictValue: 2,
-        },
-        {
-          dictLabel: '不可报名',
-          dictValue: 3,
-        },
-        {
-          dictLabel: '异常数据',
-          dictValue: 4,
-        }
-      ],
     };
   },
   created() {
@@ -40,9 +20,23 @@ export default {
   methods: {
     // 初始化数据
     async initData() {
-      setTimeout(() => {
-        this.exhibitionInfoStatus = 2
-      }, 2000)
     },
+    downloadPdf() {
+      const fileName = `测评结果`;
+      const fileList = document.getElementsByClassName('pdfRef');
+      this.htmlPdf({
+        html2Canvas: html2Canvas, // import html2Canvas from 'html2canvas';
+        JsPDF: JsPDF, // import JsPDF from 'jspdf';
+      }, fileName, document.querySelector('#pdfRef'), fileList, false, (e) => {
+        // 成功
+        if (e === 'htmlPdfFinish') {
+
+        }
+        // 失败
+        else {
+          console.error(e);
+        }
+      });
+    }
   }
 };

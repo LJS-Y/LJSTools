@@ -25,6 +25,24 @@ export default {
         JsPDF: JsPDF, // import JsPDF from 'jspdf';
       }, fileName, document.querySelector('#pdfRef'), fileList);
     },
+    // 下载pdf2
+    downloadPdf2() {
+      const fileName = `测评结果`;
+      const fileList = document.getElementsByClassName('pdfRef');
+      this.htmlPdf({
+        html2Canvas: html2Canvas, // import html2Canvas from 'html2canvas';
+        JsPDF: JsPDF, // import JsPDF from 'jspdf';
+      }, fileName, document.querySelector('#pdfRef'), fileList, false, (e) => {
+        // 成功
+        if (e === 'htmlPdfFinish') {
+
+        }
+        // 失败
+        else {
+          console.error(e);
+        }
+      })
+    },
   },
 };
 ```
@@ -39,3 +57,4 @@ export default {
 | html | Dom | √ | | Dom，例如：document.querySelector('#pdfRef')。 |
 | fileList | Dom | × | | 多节点，例如：document.getElementsByClassName('pdfRef')。 |
 | type | Boolean | × | | 默认纵版，true时为横版。 |
+| complete | function | × | | 完成回调。 |
