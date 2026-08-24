@@ -2,6 +2,7 @@
  * @module num
  * @description 数字处理类
  *  */
+import LJSbase from '@/tools/base';
 
 const limit_min_num = 1e-14; // 精度极小值
 
@@ -70,59 +71,62 @@ export function numberCeil(value) {
  * 数字单位升级：数字进行万、亿、万亿处理
  * @param {string} value 原型数据
  * @param {Number} ws 保留几位小数
- * @param {Array} units 单位文字的数组
+ * @param {Array} dws 单位文字的数组
  * @param {Boolean} isMerge 是否合并单位和数字。
+ * @param {Number} numeralSystem 进制。默认万进制。
  * @returns {String} 返回升级后的数据。isMerge为true时返回合并后的字符串；false时返回一个对象，num为数字，unit为单位值
  * @example this.$LJSnum.longNumText({ value: 12345, ws: 1})，返回1.2万
  * */
 export function longNumText({
-	value,
-	ws = 0,
-	units = ['', '万', '亿万', '万亿'],
-	isMerge = true,
+  value,
+  ws = 0,
+  dws = ['', '万', '亿', '万亿'],
+  isMerge = true,
+  numeralSystem = 10000,
 }) {
   if (checkNum(value)) {
-    let result = '';
-    const sign = Number(value) < 0 ? -1 : 1; // 正负符号
-    const num = Math.abs(Number(value));
-	  let dwIndex = 0
-    if (num < 10000) {
-      result = sign * num;
-	    dwIndex = 0;
-    } else if (num >= 10000 && num < 10000 * 10000) {
-      let tempResult = num / 10000 + limit_min_num
-      tempResult = Number((tempResult).toFixed(ws));
-      if (tempResult < 10000) {
+    let result = ''
+    const sign = Number(value) < 0 ? -1 : 1 // 正负符号
+    const num = Math.abs(Number(value))
+    let dwIndex = 0
+    if (num < numeralSystem) {
+      result = sign * Number(num.toFixed(ws))
+      dwIndex = 0
+    } else if (num >= numeralSystem && num < numeralSystem * numeralSystem) {
+      let tempResult = num / numeralSystem + limit_min_num
+      tempResult = Number(tempResult.toFixed(ws))
+      if (tempResult < numeralSystem) {
         result = sign * tempResult
         dwIndex = 1
       } else {
-        result = sign * tempResult / 10000
+        result = (sign * tempResult) / numeralSystem
         dwIndex = 2
       }
-    } else if (num >= 10000 * 10000 && num < 10000 * 10000 * 10000) {
-      let tempResult = num / (10000 * 10000) + limit_min_num
-      tempResult = Number((tempResult).toFixed(ws));
-      if (tempResult < 10000) {
+    } else if (num >= numeralSystem * numeralSystem && num < numeralSystem * numeralSystem * numeralSystem) {
+      let tempResult = num / (numeralSystem * numeralSystem) + limit_min_num
+      tempResult = Number(tempResult.toFixed(ws))
+      if (tempResult < numeralSystem) {
         result = sign * tempResult
         dwIndex = 2
       } else {
-        result = sign * tempResult / 10000
+        result = (sign * tempResult) / numeralSystem
         dwIndex = 3
       }
-    } else if (num >= 10000 * 10000 * 10000) {
-      result = sign * (num / (10000 * 10000 * 10000) + limit_min_num).toFixed(ws);
-	    dwIndex = 3;
+    } else if (num >= numeralSystem * numeralSystem * numeralSystem) {
+      result = sign * (num / (numeralSystem * numeralSystem * numeralSystem) + limit_min_num).toFixed(ws)
+      dwIndex = 3
     }
+
     if (isMerge) {
-      return result + units[dwIndex]
+      return result + (!LJSbase.fieldCheck(dws[dwIndex]) ? dws[dwIndex] : dws[dws.length - 1])
     } else {
       return {
         num: result,
-        unit: units[dwIndex]
+        unit: !LJSbase.fieldCheck(dws[dwIndex]) ? dws[dwIndex] : dws[dws.length - 1],
       }
     }
   }
-  return value;
+  return value
 }
 
 /**

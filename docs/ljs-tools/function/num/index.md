@@ -78,7 +78,8 @@ this.$LJSnum.longNumText({ value: 12345, ws: 1}); // 返回1.2万
 | value | Number, String | √ | | 原型数据。 |
 | ws | Number | × | 0 | 保留几位小数。 |
 | units | Number | × | ['', '万', '亿万', '万亿'] | 单位文字的数组。保证数组为4个项。 |
-| isMerge | Boolean | × | true | 是否合并单位和数字。。 |
+| isMerge | Boolean | × | true | 是否合并单位和数字。 |
+| numeralSystem | Number | × | 10000 | 进制。默认万进制。 |
 
 
 ### 5.数字保留小数位

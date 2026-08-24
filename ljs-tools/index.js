@@ -3,13 +3,13 @@ var pl = (e, n, r) => n in e ? hl(e, n, { enumerable: !0, configurable: !0, writ
 var g0 = (e, n, r) => (pl(e, typeof n != "symbol" ? n + "" : n, r), r);
 import { getCurrentInstance as ht, inject as Ve, ref as he, computed as j, unref as N, shallowRef as B0, watchEffect as ja, readonly as vl, getCurrentScope as ml, onScopeDispose as Ga, onMounted as Et, nextTick as Ne, watch as qe, isRef as Xa, warn as gl, provide as Kr, defineComponent as me, openBlock as q, createElementBlock as J, mergeProps as F0, renderSlot as Le, createElementVNode as ee, toRef as dn, onUnmounted as yl, useAttrs as bl, useSlots as Za, normalizeClass as ne, normalizeStyle as Pe, createCommentVNode as ue, Fragment as ft, createBlock as xe, withCtx as ve, resolveDynamicComponent as Je, withModifiers as E0, createVNode as Ie, toDisplayString as be, onBeforeUnmount as P0, Text as Cl, reactive as Ja, h as El, markRaw as xn, toRefs as _l, resolveComponent as je, Transition as Wr, withDirectives as Un, withKeys as j0, createTextVNode as on, vShow as Yn, isVNode as Qa, render as eo, Teleport as to, renderList as En, pushScopeId as jr, popScopeId as Gr } from "vue";
 const Bl = () => {
-  oe.colorLog({ content: ["", "******************************************"] }), oe.colorLog({ content: ["Core Dependencies：", "ljs-tools"] }), oe.colorLog({ content: ["Author：", "LJS"] }), oe.colorLog({ content: ["API", "https://ljs-y.github.io/ljs-vue3"], color: [
+  ae.colorLog({ content: ["", "******************************************"] }), ae.colorLog({ content: ["Core Dependencies：", "ljs-tools"] }), ae.colorLog({ content: ["Author：", "LJS"] }), ae.colorLog({ content: ["API", "https://ljs-y.github.io/ljs-vue3"], color: [
     "background: #666666; color: #fff; border-radius: 4px 0 0 4px; padding: 3px 6px;",
     "background: #FFF; border: 1px solid #666666; color: #fff; border-radius: 0 4px 4px 0; padding: 2px 6px;"
-  ] }), oe.colorLog({ content: ["", "******************************************"] });
+  ] }), ae.colorLog({ content: ["", "******************************************"] });
 };
 function Xr(e) {
-  if (oe.fieldCheck(e))
+  if (ae.fieldCheck(e))
     return null;
   const n = {};
   let r = e.split("?");
@@ -30,13 +30,13 @@ function wl(e, n = location.search) {
   return e in t ? t[e] : null;
 }
 function Dl(e, n = !0) {
-  if (oe.fieldCheck(e))
+  if (ae.fieldCheck(e))
     return null;
   let r = e.lastIndexOf(".");
   return r === -1 ? null : (r = n ? r : r + 1, e.slice(r, e.length));
 }
 function Fl(e, n = !1) {
-  if (oe.fieldCheck(e))
+  if (ae.fieldCheck(e))
     return null;
   const r = e.lastIndexOf("/"), t = e.lastIndexOf("\\");
   let i = r > t ? r : t;
@@ -229,7 +229,7 @@ function Ll(e, n) {
     t[i] = r[i];
   return t;
 }
-const oe = {
+const ae = {
   fieldCheck: Tl,
   deepCopy: A0,
   getTreeParents: oo,
@@ -251,7 +251,7 @@ function Hl(e) {
   r.address = t, e.commit("SET_menuNowOpen", r), e.commit("SET_menuOpenList", [r]);
 }
 function lo({ data: e, value: n, key: r = "url" }) {
-  const t = oe.getTreeParents({ data: e, value: n, key: r }), i = [];
+  const t = ae.getTreeParents({ data: e, value: n, key: r }), i = [];
   return t.forEach((a) => {
     const o = {
       title: a.title,
@@ -267,11 +267,11 @@ function co({ menuList: e }) {
     return {};
   let n = {};
   return e.forEach((r, t) => {
-    t === 0 && (!oe.fieldCheck(r.children) && r.children.length > 0 ? (r.open = !0, n = co({ menuList: r.children })) : n = r);
+    t === 0 && (!ae.fieldCheck(r.children) && r.children.length > 0 ? (r.open = !0, n = co({ menuList: r.children })) : n = r);
   }), n;
 }
 function $l({ store: e, path: n }) {
-  const r = e.getters.menuList, t = oe.handleTreeList(r), i = t.length;
+  const r = e.getters.menuList, t = ae.handleTreeList(r), i = t.length;
   for (let a = 0; a < i; a++) {
     const o = t[a];
     if (o.url === n)
@@ -284,11 +284,11 @@ function Nl({ store: e, run: n, path: r, query: t = {} }) {
 }
 function uo({ store: e, run: n, menuObj: r, query: t }) {
   let i = e.getters.menuList;
-  if (oe.fieldCheck(r.children) && (r.children = []), r.children.length > 0) {
+  if (ae.fieldCheck(r.children) && (r.children = []), r.children.length > 0) {
     if (r.open)
       r.open = !r.open;
     else {
-      const a = oe.getTreeParents({
+      const a = ae.getTreeParents({
         data: i,
         value: r.menuId,
         key: "menuId"
@@ -297,7 +297,7 @@ function uo({ store: e, run: n, menuObj: r, query: t }) {
     }
     e.commit("SET_menuList", i);
   } else {
-    if (!oe.fieldCheck(r.isFrame) && r.isFrame === !0) {
+    if (!ae.fieldCheck(r.isFrame) && r.isFrame === !0) {
       fo(r.url);
       return;
     }
@@ -307,7 +307,7 @@ function uo({ store: e, run: n, menuObj: r, query: t }) {
       return;
     r.address = lo({ data: e.getters.menuList, value: r.url });
     let l = r;
-    if (r.choose = !r.choose, e.commit("SET_menuNowOpen", l), oe.fieldCheck(r.openType) || !oe.fieldCheck(r.openType) && r.openType === "1") {
+    if (r.choose = !r.choose, e.commit("SET_menuNowOpen", l), ae.fieldCheck(r.openType) || !ae.fieldCheck(r.openType) && r.openType === "1") {
       const c = o.length;
       let s = !1;
       for (let f = 0; f < c; f++)
@@ -371,26 +371,27 @@ function Ul(e) {
 function Yl({
   value: e,
   ws: n = 0,
-  units: r = ["", "万", "亿万", "万亿"],
-  isMerge: t = !0
+  dws: r = ["", "万", "亿", "万亿"],
+  isMerge: t = !0,
+  numeralSystem: i = 1e4
 }) {
   if (f0(e)) {
-    let i = "";
-    const a = Number(e) < 0 ? -1 : 1, o = Math.abs(Number(e));
-    let l = 0;
-    if (o < 1e4)
-      i = a * o, l = 0;
-    else if (o >= 1e4 && o < 1e4 * 1e4) {
-      let c = o / 1e4 + sn;
-      c = Number(c.toFixed(n)), c < 1e4 ? (i = a * c, l = 1) : (i = a * c / 1e4, l = 2);
-    } else if (o >= 1e4 * 1e4 && o < 1e4 * 1e4 * 1e4) {
-      let c = o / 1e8 + sn;
-      c = Number(c.toFixed(n)), c < 1e4 ? (i = a * c, l = 2) : (i = a * c / 1e4, l = 3);
+    let a = "";
+    const o = Number(e) < 0 ? -1 : 1, l = Math.abs(Number(e));
+    let c = 0;
+    if (l < i)
+      a = o * Number(l.toFixed(n)), c = 0;
+    else if (l >= i && l < i * i) {
+      let s = l / i + sn;
+      s = Number(s.toFixed(n)), s < i ? (a = o * s, c = 1) : (a = o * s / i, c = 2);
+    } else if (l >= i * i && l < i * i * i) {
+      let s = l / (i * i) + sn;
+      s = Number(s.toFixed(n)), s < i ? (a = o * s, c = 2) : (a = o * s / i, c = 3);
     } else
-      o >= 1e4 * 1e4 * 1e4 && (i = a * (o / (1e4 * 1e4 * 1e4) + sn).toFixed(n), l = 3);
-    return t ? i + r[l] : {
-      num: i,
-      unit: r[l]
+      l >= i * i * i && (a = o * (l / (i * i * i) + sn).toFixed(n), c = 3);
+    return t ? a + (ae.fieldCheck(r[c]) ? r[r.length - 1] : r[c]) : {
+      num: a,
+      unit: ae.fieldCheck(r[c]) ? r[r.length - 1] : r[c]
     };
   }
   return e;
@@ -418,7 +419,7 @@ const de = {
   averageNum: Kl
 };
 function ye(e, n) {
-  if (oe.fieldCheck(e))
+  if (ae.fieldCheck(e))
     return e;
   const r = new Date(e), t = n || "{y}-{m}-{d} {h}:{i}:{s}", i = {
     y: r.getFullYear(),
@@ -432,7 +433,7 @@ function ye(e, n) {
   return t.replace(/{(y|m|d|h|i|s|MS)+}/g, (a, o) => i[o]);
 }
 function Wl(e, n, r = 0) {
-  if (oe.fieldCheck(e))
+  if (ae.fieldCheck(e))
     return e;
   if (r === 0) {
     let t = new Date(e).getTime();
@@ -1746,8 +1747,8 @@ function Jt() {
               var b = y + _, C = p[b];
               p[b] = (C << 8 | C >>> 24) & 16711935 | (C << 24 | C >>> 8) & 4278255360;
             }
-            var E = this._hash.words, T = p[y + 0], A = p[y + 1], S = p[y + 2], k = p[y + 3], L = p[y + 4], F = p[y + 5], B = p[y + 6], I = p[y + 7], P = p[y + 8], W = p[y + 9], G = p[y + 10], Y = p[y + 11], X = p[y + 12], Z = p[y + 13], ae = p[y + 14], ie = p[y + 15], M = E[0], O = E[1], $ = E[2], z = E[3];
-            M = v(M, O, $, z, T, 7, s[0]), z = v(z, M, O, $, A, 12, s[1]), $ = v($, z, M, O, S, 17, s[2]), O = v(O, $, z, M, k, 22, s[3]), M = v(M, O, $, z, L, 7, s[4]), z = v(z, M, O, $, F, 12, s[5]), $ = v($, z, M, O, B, 17, s[6]), O = v(O, $, z, M, I, 22, s[7]), M = v(M, O, $, z, P, 7, s[8]), z = v(z, M, O, $, W, 12, s[9]), $ = v($, z, M, O, G, 17, s[10]), O = v(O, $, z, M, Y, 22, s[11]), M = v(M, O, $, z, X, 7, s[12]), z = v(z, M, O, $, Z, 12, s[13]), $ = v($, z, M, O, ae, 17, s[14]), O = v(O, $, z, M, ie, 22, s[15]), M = h(M, O, $, z, A, 5, s[16]), z = h(z, M, O, $, B, 9, s[17]), $ = h($, z, M, O, Y, 14, s[18]), O = h(O, $, z, M, T, 20, s[19]), M = h(M, O, $, z, F, 5, s[20]), z = h(z, M, O, $, G, 9, s[21]), $ = h($, z, M, O, ie, 14, s[22]), O = h(O, $, z, M, L, 20, s[23]), M = h(M, O, $, z, W, 5, s[24]), z = h(z, M, O, $, ae, 9, s[25]), $ = h($, z, M, O, k, 14, s[26]), O = h(O, $, z, M, P, 20, s[27]), M = h(M, O, $, z, Z, 5, s[28]), z = h(z, M, O, $, S, 9, s[29]), $ = h($, z, M, O, I, 14, s[30]), O = h(O, $, z, M, X, 20, s[31]), M = g(M, O, $, z, F, 4, s[32]), z = g(z, M, O, $, P, 11, s[33]), $ = g($, z, M, O, Y, 16, s[34]), O = g(O, $, z, M, ae, 23, s[35]), M = g(M, O, $, z, A, 4, s[36]), z = g(z, M, O, $, L, 11, s[37]), $ = g($, z, M, O, I, 16, s[38]), O = g(O, $, z, M, G, 23, s[39]), M = g(M, O, $, z, Z, 4, s[40]), z = g(z, M, O, $, T, 11, s[41]), $ = g($, z, M, O, k, 16, s[42]), O = g(O, $, z, M, B, 23, s[43]), M = g(M, O, $, z, W, 4, s[44]), z = g(z, M, O, $, X, 11, s[45]), $ = g($, z, M, O, ie, 16, s[46]), O = g(O, $, z, M, S, 23, s[47]), M = d(M, O, $, z, T, 6, s[48]), z = d(z, M, O, $, I, 10, s[49]), $ = d($, z, M, O, ae, 15, s[50]), O = d(O, $, z, M, F, 21, s[51]), M = d(M, O, $, z, X, 6, s[52]), z = d(z, M, O, $, k, 10, s[53]), $ = d($, z, M, O, G, 15, s[54]), O = d(O, $, z, M, A, 21, s[55]), M = d(M, O, $, z, P, 6, s[56]), z = d(z, M, O, $, ie, 10, s[57]), $ = d($, z, M, O, B, 15, s[58]), O = d(O, $, z, M, Z, 21, s[59]), M = d(M, O, $, z, L, 6, s[60]), z = d(z, M, O, $, Y, 10, s[61]), $ = d($, z, M, O, S, 15, s[62]), O = d(O, $, z, M, W, 21, s[63]), E[0] = E[0] + M | 0, E[1] = E[1] + O | 0, E[2] = E[2] + $ | 0, E[3] = E[3] + z | 0;
+            var E = this._hash.words, T = p[y + 0], A = p[y + 1], S = p[y + 2], k = p[y + 3], L = p[y + 4], F = p[y + 5], B = p[y + 6], I = p[y + 7], P = p[y + 8], W = p[y + 9], G = p[y + 10], Y = p[y + 11], X = p[y + 12], Z = p[y + 13], oe = p[y + 14], ie = p[y + 15], M = E[0], O = E[1], $ = E[2], z = E[3];
+            M = v(M, O, $, z, T, 7, s[0]), z = v(z, M, O, $, A, 12, s[1]), $ = v($, z, M, O, S, 17, s[2]), O = v(O, $, z, M, k, 22, s[3]), M = v(M, O, $, z, L, 7, s[4]), z = v(z, M, O, $, F, 12, s[5]), $ = v($, z, M, O, B, 17, s[6]), O = v(O, $, z, M, I, 22, s[7]), M = v(M, O, $, z, P, 7, s[8]), z = v(z, M, O, $, W, 12, s[9]), $ = v($, z, M, O, G, 17, s[10]), O = v(O, $, z, M, Y, 22, s[11]), M = v(M, O, $, z, X, 7, s[12]), z = v(z, M, O, $, Z, 12, s[13]), $ = v($, z, M, O, oe, 17, s[14]), O = v(O, $, z, M, ie, 22, s[15]), M = h(M, O, $, z, A, 5, s[16]), z = h(z, M, O, $, B, 9, s[17]), $ = h($, z, M, O, Y, 14, s[18]), O = h(O, $, z, M, T, 20, s[19]), M = h(M, O, $, z, F, 5, s[20]), z = h(z, M, O, $, G, 9, s[21]), $ = h($, z, M, O, ie, 14, s[22]), O = h(O, $, z, M, L, 20, s[23]), M = h(M, O, $, z, W, 5, s[24]), z = h(z, M, O, $, oe, 9, s[25]), $ = h($, z, M, O, k, 14, s[26]), O = h(O, $, z, M, P, 20, s[27]), M = h(M, O, $, z, Z, 5, s[28]), z = h(z, M, O, $, S, 9, s[29]), $ = h($, z, M, O, I, 14, s[30]), O = h(O, $, z, M, X, 20, s[31]), M = g(M, O, $, z, F, 4, s[32]), z = g(z, M, O, $, P, 11, s[33]), $ = g($, z, M, O, Y, 16, s[34]), O = g(O, $, z, M, oe, 23, s[35]), M = g(M, O, $, z, A, 4, s[36]), z = g(z, M, O, $, L, 11, s[37]), $ = g($, z, M, O, I, 16, s[38]), O = g(O, $, z, M, G, 23, s[39]), M = g(M, O, $, z, Z, 4, s[40]), z = g(z, M, O, $, T, 11, s[41]), $ = g($, z, M, O, k, 16, s[42]), O = g(O, $, z, M, B, 23, s[43]), M = g(M, O, $, z, W, 4, s[44]), z = g(z, M, O, $, X, 11, s[45]), $ = g($, z, M, O, ie, 16, s[46]), O = g(O, $, z, M, S, 23, s[47]), M = d(M, O, $, z, T, 6, s[48]), z = d(z, M, O, $, I, 10, s[49]), $ = d($, z, M, O, oe, 15, s[50]), O = d(O, $, z, M, F, 21, s[51]), M = d(M, O, $, z, X, 6, s[52]), z = d(z, M, O, $, k, 10, s[53]), $ = d($, z, M, O, G, 15, s[54]), O = d(O, $, z, M, A, 21, s[55]), M = d(M, O, $, z, P, 6, s[56]), z = d(z, M, O, $, ie, 10, s[57]), $ = d($, z, M, O, B, 15, s[58]), O = d(O, $, z, M, Z, 21, s[59]), M = d(M, O, $, z, L, 6, s[60]), z = d(z, M, O, $, Y, 10, s[61]), $ = d($, z, M, O, S, 15, s[62]), O = d(O, $, z, M, W, 21, s[63]), E[0] = E[0] + M | 0, E[1] = E[1] + O | 0, E[2] = E[2] + $ | 0, E[3] = E[3] + z | 0;
           },
           _doFinalize: function() {
             var p = this._data, y = p.words, _ = this._nDataBytes * 8, b = p.sigBytes * 8;
@@ -2023,7 +2024,7 @@ function go() {
             ]);
           },
           _doProcessBlock: function(d, p) {
-            for (var y = this._hash.words, _ = y[0], b = y[1], C = y[2], E = y[3], T = y[4], A = y[5], S = y[6], k = y[7], L = _.high, F = _.low, B = b.high, I = b.low, P = C.high, W = C.low, G = E.high, Y = E.low, X = T.high, Z = T.low, ae = A.high, ie = A.low, M = S.high, O = S.low, $ = k.high, z = k.low, fe = L, le = F, we = B, te = I, ge = P, Ge = W, Bt = G, ot = Y, Ae = X, Ce = Z, pt = ae, vt = ie, wt = M, mt = O, Nt = $, gt = z, Te = 0; Te < 80; Te++) {
+            for (var y = this._hash.words, _ = y[0], b = y[1], C = y[2], E = y[3], T = y[4], A = y[5], S = y[6], k = y[7], L = _.high, F = _.low, B = b.high, I = b.low, P = C.high, W = C.low, G = E.high, Y = E.low, X = T.high, Z = T.low, oe = A.high, ie = A.low, M = S.high, O = S.low, $ = k.high, z = k.low, fe = L, le = F, we = B, te = I, ge = P, Ge = W, Bt = G, ot = Y, Ae = X, Ce = Z, pt = oe, vt = ie, wt = M, mt = O, Nt = $, gt = z, Te = 0; Te < 80; Te++) {
               var Se, Ue, V = h[Te];
               if (Te < 16)
                 Ue = V.high = d[p + Te * 2] | 0, Se = V.low = d[p + Te * 2 + 1] | 0;
@@ -2034,7 +2035,7 @@ function go() {
               var Pn = Ae & pt ^ ~Ae & wt, $0 = Ce & vt ^ ~Ce & mt, Mn = fe & we ^ fe & ge ^ we & ge, Rn = le & te ^ le & Ge ^ te & Ge, On = (fe >>> 28 | le << 4) ^ (fe << 30 | le >>> 2) ^ (fe << 25 | le >>> 7), N0 = (le >>> 28 | fe << 4) ^ (le << 30 | fe >>> 2) ^ (le << 25 | fe >>> 7), zn = (Ae >>> 14 | Ce << 18) ^ (Ae >>> 18 | Ce << 14) ^ (Ae << 23 | Ce >>> 9), Ln = (Ce >>> 14 | Ae << 18) ^ (Ce >>> 18 | Ae << 14) ^ (Ce << 23 | Ae >>> 9), V0 = v[Te], Hn = V0.high, q0 = V0.low, Re = gt + Ln, lt = Nt + zn + (Re >>> 0 < gt >>> 0 ? 1 : 0), Re = Re + $0, lt = lt + Pn + (Re >>> 0 < $0 >>> 0 ? 1 : 0), Re = Re + q0, lt = lt + Hn + (Re >>> 0 < q0 >>> 0 ? 1 : 0), Re = Re + Se, lt = lt + Ue + (Re >>> 0 < Se >>> 0 ? 1 : 0), U0 = N0 + Rn, $n = On + Mn + (U0 >>> 0 < N0 >>> 0 ? 1 : 0);
               Nt = wt, gt = mt, wt = pt, mt = vt, pt = Ae, vt = Ce, Ce = ot + Re | 0, Ae = Bt + lt + (Ce >>> 0 < ot >>> 0 ? 1 : 0) | 0, Bt = ge, ot = Ge, ge = we, Ge = te, we = fe, te = le, le = Re + U0 | 0, fe = lt + $n + (le >>> 0 < Re >>> 0 ? 1 : 0) | 0;
             }
-            F = _.low = F + le, _.high = L + fe + (F >>> 0 < le >>> 0 ? 1 : 0), I = b.low = I + te, b.high = B + we + (I >>> 0 < te >>> 0 ? 1 : 0), W = C.low = W + Ge, C.high = P + ge + (W >>> 0 < Ge >>> 0 ? 1 : 0), Y = E.low = Y + ot, E.high = G + Bt + (Y >>> 0 < ot >>> 0 ? 1 : 0), Z = T.low = Z + Ce, T.high = X + Ae + (Z >>> 0 < Ce >>> 0 ? 1 : 0), ie = A.low = ie + vt, A.high = ae + pt + (ie >>> 0 < vt >>> 0 ? 1 : 0), O = S.low = O + mt, S.high = M + wt + (O >>> 0 < mt >>> 0 ? 1 : 0), z = k.low = z + gt, k.high = $ + Nt + (z >>> 0 < gt >>> 0 ? 1 : 0);
+            F = _.low = F + le, _.high = L + fe + (F >>> 0 < le >>> 0 ? 1 : 0), I = b.low = I + te, b.high = B + we + (I >>> 0 < te >>> 0 ? 1 : 0), W = C.low = W + Ge, C.high = P + ge + (W >>> 0 < Ge >>> 0 ? 1 : 0), Y = E.low = Y + ot, E.high = G + Bt + (Y >>> 0 < ot >>> 0 ? 1 : 0), Z = T.low = Z + Ce, T.high = X + Ae + (Z >>> 0 < Ce >>> 0 ? 1 : 0), ie = A.low = ie + vt, A.high = oe + pt + (ie >>> 0 < vt >>> 0 ? 1 : 0), O = S.low = O + mt, S.high = M + wt + (O >>> 0 < mt >>> 0 ? 1 : 0), z = k.low = z + gt, k.high = $ + Nt + (z >>> 0 < gt >>> 0 ? 1 : 0);
           },
           _doFinalize: function() {
             var d = this._data, p = d.words, y = this._nDataBytes * 8, _ = d.sigBytes * 8;
@@ -2155,8 +2156,8 @@ function mc() {
                   S.high ^= F, S.low ^= B;
                 }
               for (var Z = 1; Z < 25; Z++) {
-                var F, B, S = b[Z], ae = S.high, ie = S.low, M = v[Z];
-                M < 32 ? (F = ae << M | ie >>> 32 - M, B = ie << M | ae >>> 32 - M) : (F = ie << M - 32 | ae >>> 64 - M, B = ae << M - 32 | ie >>> 64 - M);
+                var F, B, S = b[Z], oe = S.high, ie = S.low, M = v[Z];
+                M < 32 ? (F = oe << M | ie >>> 32 - M, B = ie << M | oe >>> 32 - M) : (F = ie << M - 32 | oe >>> 64 - M, B = oe << M - 32 | ie >>> 64 - M);
                 var O = d[h[Z]];
                 O.high = F, O.low = B;
               }
@@ -2543,11 +2544,11 @@ function gc() {
               var L = S + k, F = A[L];
               A[L] = (F << 8 | F >>> 24) & 16711935 | (F << 24 | F >>> 8) & 4278255360;
             }
-            var B = this._hash.words, I = g.words, P = d.words, W = s.words, G = f.words, Y = v.words, X = h.words, Z, ae, ie, M, O, $, z, fe, le, we;
-            $ = Z = B[0], z = ae = B[1], fe = ie = B[2], le = M = B[3], we = O = B[4];
+            var B = this._hash.words, I = g.words, P = d.words, W = s.words, G = f.words, Y = v.words, X = h.words, Z, oe, ie, M, O, $, z, fe, le, we;
+            $ = Z = B[0], z = oe = B[1], fe = ie = B[2], le = M = B[3], we = O = B[4];
             for (var te, k = 0; k < 80; k += 1)
-              te = Z + A[S + W[k]] | 0, k < 16 ? te += y(ae, ie, M) + I[0] : k < 32 ? te += _(ae, ie, M) + I[1] : k < 48 ? te += b(ae, ie, M) + I[2] : k < 64 ? te += C(ae, ie, M) + I[3] : te += E(ae, ie, M) + I[4], te = te | 0, te = T(te, Y[k]), te = te + O | 0, Z = O, O = M, M = T(ie, 10), ie = ae, ae = te, te = $ + A[S + G[k]] | 0, k < 16 ? te += E(z, fe, le) + P[0] : k < 32 ? te += C(z, fe, le) + P[1] : k < 48 ? te += b(z, fe, le) + P[2] : k < 64 ? te += _(z, fe, le) + P[3] : te += y(z, fe, le) + P[4], te = te | 0, te = T(te, X[k]), te = te + we | 0, $ = we, we = le, le = T(fe, 10), fe = z, z = te;
-            te = B[1] + ie + le | 0, B[1] = B[2] + M + we | 0, B[2] = B[3] + O + $ | 0, B[3] = B[4] + Z + z | 0, B[4] = B[0] + ae + fe | 0, B[0] = te;
+              te = Z + A[S + W[k]] | 0, k < 16 ? te += y(oe, ie, M) + I[0] : k < 32 ? te += _(oe, ie, M) + I[1] : k < 48 ? te += b(oe, ie, M) + I[2] : k < 64 ? te += C(oe, ie, M) + I[3] : te += E(oe, ie, M) + I[4], te = te | 0, te = T(te, Y[k]), te = te + O | 0, Z = O, O = M, M = T(ie, 10), ie = oe, oe = te, te = $ + A[S + G[k]] | 0, k < 16 ? te += E(z, fe, le) + P[0] : k < 32 ? te += C(z, fe, le) + P[1] : k < 48 ? te += b(z, fe, le) + P[2] : k < 64 ? te += _(z, fe, le) + P[3] : te += y(z, fe, le) + P[4], te = te | 0, te = T(te, X[k]), te = te + we | 0, $ = we, we = le, le = T(fe, 10), fe = z, z = te;
+            te = B[1] + ie + le | 0, B[1] = B[2] + M + we | 0, B[2] = B[3] + O + $ | 0, B[3] = B[4] + Z + z | 0, B[4] = B[0] + oe + fe | 0, B[0] = te;
           },
           _doFinalize: function() {
             var A = this._data, S = A.words, k = this._nDataBytes * 8, L = A.sigBytes * 8;
@@ -3650,11 +3651,11 @@ function kc() {
           },
           _doCryptBlock: function(C, E, T, A, S, k, L, F) {
             for (var B = this._nRounds, I = C[E] ^ T[0], P = C[E + 1] ^ T[1], W = C[E + 2] ^ T[2], G = C[E + 3] ^ T[3], Y = 4, X = 1; X < B; X++) {
-              var Z = A[I >>> 24] ^ S[P >>> 16 & 255] ^ k[W >>> 8 & 255] ^ L[G & 255] ^ T[Y++], ae = A[P >>> 24] ^ S[W >>> 16 & 255] ^ k[G >>> 8 & 255] ^ L[I & 255] ^ T[Y++], ie = A[W >>> 24] ^ S[G >>> 16 & 255] ^ k[I >>> 8 & 255] ^ L[P & 255] ^ T[Y++], M = A[G >>> 24] ^ S[I >>> 16 & 255] ^ k[P >>> 8 & 255] ^ L[W & 255] ^ T[Y++];
-              I = Z, P = ae, W = ie, G = M;
+              var Z = A[I >>> 24] ^ S[P >>> 16 & 255] ^ k[W >>> 8 & 255] ^ L[G & 255] ^ T[Y++], oe = A[P >>> 24] ^ S[W >>> 16 & 255] ^ k[G >>> 8 & 255] ^ L[I & 255] ^ T[Y++], ie = A[W >>> 24] ^ S[G >>> 16 & 255] ^ k[I >>> 8 & 255] ^ L[P & 255] ^ T[Y++], M = A[G >>> 24] ^ S[I >>> 16 & 255] ^ k[P >>> 8 & 255] ^ L[W & 255] ^ T[Y++];
+              I = Z, P = oe, W = ie, G = M;
             }
-            var Z = (F[I >>> 24] << 24 | F[P >>> 16 & 255] << 16 | F[W >>> 8 & 255] << 8 | F[G & 255]) ^ T[Y++], ae = (F[P >>> 24] << 24 | F[W >>> 16 & 255] << 16 | F[G >>> 8 & 255] << 8 | F[I & 255]) ^ T[Y++], ie = (F[W >>> 24] << 24 | F[G >>> 16 & 255] << 16 | F[I >>> 8 & 255] << 8 | F[P & 255]) ^ T[Y++], M = (F[G >>> 24] << 24 | F[I >>> 16 & 255] << 16 | F[P >>> 8 & 255] << 8 | F[W & 255]) ^ T[Y++];
-            C[E] = Z, C[E + 1] = ae, C[E + 2] = ie, C[E + 3] = M;
+            var Z = (F[I >>> 24] << 24 | F[P >>> 16 & 255] << 16 | F[W >>> 8 & 255] << 8 | F[G & 255]) ^ T[Y++], oe = (F[P >>> 24] << 24 | F[W >>> 16 & 255] << 16 | F[G >>> 8 & 255] << 8 | F[I & 255]) ^ T[Y++], ie = (F[W >>> 24] << 24 | F[G >>> 16 & 255] << 16 | F[I >>> 8 & 255] << 8 | F[P & 255]) ^ T[Y++], M = (F[G >>> 24] << 24 | F[I >>> 16 & 255] << 16 | F[P >>> 8 & 255] << 8 | F[W & 255]) ^ T[Y++];
+            C[E] = Z, C[E + 1] = oe, C[E + 2] = ie, C[E + 3] = M;
           },
           keySize: 256 / 32
         });
@@ -5974,7 +5975,7 @@ var Co = { exports: {} };
         x[R + m.t] = m.am(0, w[R], x, R, 0, m.t);
       x.s = 0, x.clamp(), this.s != u.s && a.ZERO.subTo(x, x);
     }
-    function ae(u) {
+    function oe(u) {
       for (var x = this.abs(), m = u.t = 2 * x.t; --m >= 0; )
         u[m] = 0;
       for (m = 0; m < x.t - 1; ++m) {
@@ -6089,7 +6090,7 @@ var Co = { exports: {} };
       var m;
       return u < 256 || x.isEven() ? m = new O(x) : m = new ge(x), this.exp(u, m);
     }
-    a.prototype.copyTo = b, a.prototype.fromInt = C, a.prototype.fromString = T, a.prototype.clamp = A, a.prototype.dlShiftTo = P, a.prototype.drShiftTo = W, a.prototype.lShiftTo = G, a.prototype.rShiftTo = Y, a.prototype.subTo = X, a.prototype.multiplyTo = Z, a.prototype.squareTo = ae, a.prototype.divRemTo = ie, a.prototype.invDigit = te, a.prototype.isEven = pt, a.prototype.exp = vt, a.prototype.toString = S, a.prototype.negate = k, a.prototype.abs = L, a.prototype.compareTo = F, a.prototype.bitLength = I, a.prototype.mod = M, a.prototype.modPowInt = wt, a.ZERO = E(0), a.ONE = E(1);
+    a.prototype.copyTo = b, a.prototype.fromInt = C, a.prototype.fromString = T, a.prototype.clamp = A, a.prototype.dlShiftTo = P, a.prototype.drShiftTo = W, a.prototype.lShiftTo = G, a.prototype.rShiftTo = Y, a.prototype.subTo = X, a.prototype.multiplyTo = Z, a.prototype.squareTo = oe, a.prototype.divRemTo = ie, a.prototype.invDigit = te, a.prototype.isEven = pt, a.prototype.exp = vt, a.prototype.toString = S, a.prototype.negate = k, a.prototype.abs = L, a.prototype.compareTo = F, a.prototype.bitLength = I, a.prototype.mod = M, a.prototype.modPowInt = wt, a.ZERO = E(0), a.ONE = E(1);
     function mt() {
       var u = o();
       return this.copyTo(u), u;
@@ -9183,7 +9184,7 @@ const ys = "ElInput", I1 = me({
         [d.b("group")]: o.prepend || o.append,
         [d.m("prefix")]: o.prefix || t.prefixIcon,
         [d.m("suffix")]: o.suffix || t.suffixIcon || t.clearable || t.showPassword,
-        [d.bm("suffix", "password-clear")]: Z.value && ae.value,
+        [d.bm("suffix", "password-clear")]: Z.value && oe.value,
         [d.b("hidden")]: t.type === "hidden"
       },
       i.class
@@ -9209,7 +9210,7 @@ const ys = "ElInput", I1 = me({
       t.inputStyle,
       T.value,
       { resize: t.resize }
-    ]), X = j(() => jo(t.modelValue) ? "" : String(t.modelValue)), Z = j(() => t.clearable && !g.value && !t.readonly && !!X.value && (k.value || b.value)), ae = j(() => t.showPassword && !g.value && !!X.value && (!!X.value || k.value)), ie = j(() => t.showWordLimit && !!t.maxlength && (t.type === "text" || t.type === "textarea") && !g.value && !t.readonly && !t.showPassword), M = j(() => X.value.length), O = j(() => !!ie.value && M.value > Number(t.maxlength)), $ = j(() => !!o.suffix || !!t.suffixIcon || Z.value || t.showPassword || ie.value || !!I.value && B.value), [z, fe] = k1(y);
+    ]), X = j(() => jo(t.modelValue) ? "" : String(t.modelValue)), Z = j(() => t.clearable && !g.value && !t.readonly && !!X.value && (k.value || b.value)), oe = j(() => t.showPassword && !g.value && !!X.value && (!!X.value || k.value)), ie = j(() => t.showWordLimit && !!t.maxlength && (t.type === "text" || t.type === "textarea") && !g.value && !t.readonly && !t.showPassword), M = j(() => X.value.length), O = j(() => !!ie.value && M.value > Number(t.maxlength)), $ = j(() => !!o.suffix || !!t.suffixIcon || Z.value || t.showPassword || ie.value || !!I.value && B.value), [z, fe] = k1(y);
     bx(_, (V) => {
       if (te(), !ie.value || t.resize !== "both")
         return;
@@ -9381,7 +9382,7 @@ const ys = "ElInput", I1 = me({
             ee("span", {
               class: ne(N(d).e("suffix-inner"))
             }, [
-              !N(Z) || !N(ae) || !N(ie) ? (q(), J(ft, { key: 0 }, [
+              !N(Z) || !N(oe) || !N(ie) ? (q(), J(ft, { key: 0 }, [
                 Le(V.$slots, "suffix"),
                 V.suffixIcon ? (q(), xe(N(Pt), {
                   key: 0,
@@ -9404,7 +9405,7 @@ const ys = "ElInput", I1 = me({
                 ]),
                 _: 1
               }, 8, ["class", "onMousedown"])) : ue("v-if", !0),
-              N(ae) ? (q(), xe(N(Pt), {
+              N(oe) ? (q(), xe(N(Pt), {
                 key: 2,
                 class: ne([N(d).e("icon"), N(d).e("password")]),
                 onClick: vt
@@ -10749,8 +10750,8 @@ const Ah = Fh, Th = (e, n, r, t) => {
     }, { immediate: !0 }), qe(() => c.value, (Y) => {
       var X, Z;
       Y && (e.boxType !== "prompt" && (s.autofocus ? _.value = (Z = (X = C.value) == null ? void 0 : X.$el) != null ? Z : p.value : _.value = p.value), s.zIndex = l()), e.boxType === "prompt" && (Y ? Ne().then(() => {
-        var ae;
-        b.value && b.value.$el && (s.autofocus ? _.value = (ae = P()) != null ? ae : p.value : _.value = p.value);
+        var oe;
+        b.value && b.value.$el && (s.autofocus ? _.value = (oe = P()) != null ? oe : p.value : _.value = p.value);
       }) : (s.editorErrorMessage = "", s.validateError = !1));
     });
     const T = j(() => e.draggable), A = j(() => e.overflow);
@@ -11171,7 +11172,7 @@ hi.set = (e, n, r, t = 500) => {
   };
 };
 function Kh(e) {
-  if (oe.fieldCheck(e))
+  if (ae.fieldCheck(e))
     return e;
   const n = e.length;
   if (n === 2)
@@ -11183,7 +11184,7 @@ function Kh(e) {
   return e;
 }
 function Wh(e, n = 4) {
-  if (oe.fieldCheck(e))
+  if (ae.fieldCheck(e))
     return e;
   e = e + "";
   const r = e.length;
@@ -11214,7 +11215,7 @@ function jh({
   maskChar: t = "*",
   maskLength: i = 4
 }) {
-  if (oe.fieldCheck(e))
+  if (ae.fieldCheck(e))
     return e;
   if (!e || e.length < n + r)
     return e + t.repeat(i);
@@ -11758,7 +11759,7 @@ const ks = /* @__PURE__ */ _t(up, [["render", xp], ["__scopeId", "data-v-5475b4d
             break;
           }
         }
-      }), this.date_type = e), !oe.fieldCheck(this.date) && this.date.length === 2 && (this.opts.startDate = this.date[0], this.opts.endDate = this.date[1]), this.dateTypeF(this.dateType);
+      }), this.date_type = e), !ae.fieldCheck(this.date) && this.date.length === 2 && (this.opts.startDate = this.date[0], this.opts.endDate = this.date[1]), this.dateTypeF(this.dateType);
     },
     // 日期类型切换
     dateTypeF(e) {
@@ -11778,7 +11779,7 @@ const ks = /* @__PURE__ */ _t(up, [["render", xp], ["__scopeId", "data-v-5475b4d
           this.opts.dateType = "year", this.opts.valueFormat = "YYYY";
           break;
       }
-      if (!oe.fieldCheck(this.date) && this.date.length === 2) {
+      if (!ae.fieldCheck(this.date) && this.date.length === 2) {
         switch (this.dateSwitchRule === 0 ? r = [this.date[0], this.date[1]] : this.dateSwitchRule === 1 && (r = De.initSearchDateQj(this.opts.dateType)), e) {
           case this.dateTypeKeyValue[3]:
             this.opts.startDate = De.formatTime(r[0], "{y}-{m}-{d} {h}:{i}:{s}"), this.opts.endDate = De.formatTime(r[1], "{y}-{m}-{d} {h}:{i}:{s}");
@@ -11942,7 +11943,7 @@ const Is = /* @__PURE__ */ _t(pp, [["render", yp], ["__scopeId", "data-v-1e7c37e
   watch: {
     modelValue: {
       handler(e) {
-        !oe.fieldCheck(this.modelValue) && this.modelValue.length >= 1 ? (this.opts.startDate = this.modelValue[0], this.opts.endDate = this.modelValue[1]) : (this.opts.startDate = null, this.opts.endDate = null);
+        !ae.fieldCheck(this.modelValue) && this.modelValue.length >= 1 ? (this.opts.startDate = this.modelValue[0], this.opts.endDate = this.modelValue[1]) : (this.opts.startDate = null, this.opts.endDate = null);
       },
       deep: !0,
       immediate: !0
@@ -12060,7 +12061,7 @@ function wp(e, n = 30, r) {
 function Dp(e, n, r, t) {
   if (t)
     n.tempDate = e.date;
-  else if (!oe.fieldCheck(e.date) && e.date.length > 0 && !oe.fieldCheck(e.date[0]) && !oe.fieldCheck(e.date[1])) {
+  else if (!ae.fieldCheck(e.date) && e.date.length > 0 && !ae.fieldCheck(e.date[0]) && !ae.fieldCheck(e.date[1])) {
     let i = new Date(e.date[0]).getTime(), a = new Date(e.date[1]).getTime();
     Math.abs(i - a) / o0 >= r && (n.tempDate[1] === e.date[1] ? e.date[1] = De.formatTime(i + o0 * (r - 1), "{y}-{m}-{d}") : e.date[0] = De.formatTime(a - o0 * (r - 1), "{y}-{m}-{d}"));
   }
@@ -12068,7 +12069,7 @@ function Dp(e, n, r, t) {
 function Fp(e, n, r, t) {
   if (t)
     n.tempDate = e.date;
-  else if (!oe.fieldCheck(e.date) && e.date.length > 0 && !oe.fieldCheck(e.date[0]) && !oe.fieldCheck(e.date[1])) {
+  else if (!ae.fieldCheck(e.date) && e.date.length > 0 && !ae.fieldCheck(e.date[0]) && !ae.fieldCheck(e.date[1])) {
     let i = new Date(e.date[0]).getTime(), a = new Date(e.date[1]).getTime();
     Math.abs(i - a) / o0 >= r && (n.tempDate[0] === e.date[0] ? e.date[0] = De.formatTime(a - o0 * (r - 1), "{y}-{m}-{d}") : e.date[1] = De.formatTime(i + o0 * (r - 1), "{y}-{m}-{d}"));
   }
@@ -12959,14 +12960,14 @@ let C0 = null;
 function Gp(e, n = null, r) {
   if ("WebSocket" in window) {
     e = Xp(e);
-    const t = oe.fieldCheck(n) ? [] : [n];
+    const t = ae.fieldCheck(n) ? [] : [n];
     return C0 = new WebSocket(e, t), C0.onopen = function() {
-      oe.colorLog({ content: ["websocket", "已连接，正在接收数据...."] });
+      ae.colorLog({ content: ["websocket", "已连接，正在接收数据...."] });
     }, C0.onmessage = function(i) {
       let a = i.data;
       r(JSON.parse(a));
     }, C0.onclose = function() {
-      oe.colorLog({ content: ["websocket", "已关闭！"] });
+      ae.colorLog({ content: ["websocket", "已关闭！"] });
     }, C0;
   } else
     console.info("您的浏览器不支持 WebSocket!");
@@ -13122,7 +13123,7 @@ const Qp = {
   // html转pdf
 }, ev = [
   { type: "function", name: "menu", entity: xo },
-  { type: "function", name: "base", entity: oe },
+  { type: "function", name: "base", entity: ae },
   { type: "function", name: "num", entity: de },
   { type: "function", name: "date", entity: De },
   { type: "function", name: "fc", entity: _n },
@@ -13178,7 +13179,7 @@ const Qp = {
   LJSprivacy: Fs,
   // 方法
   LJSmenu: xo,
-  LJSbase: oe,
+  LJSbase: ae,
   LJSnum: de,
   LJSdate: De,
   LJSfc: _n,
