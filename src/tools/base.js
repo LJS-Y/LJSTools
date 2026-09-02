@@ -29,13 +29,16 @@ export function fieldCheck(field) {
  * @example const parents = this.$LJSbase.getTreeParents({data, value, key});
  */
 export function getTreeParents({data, value, key = 'id', children = 'children', parents = []}) {
+  if (fieldCheck(data)) {
+    return parents
+  };
   const nums = data.length;
   for (let i = 0; i < nums; i++) {
     if (data[i][key] === value) {
       parents.unshift(data[i]);
       return parents;
     }
-    if(data[i][children] !== undefined) {
+    if(!fieldCheck(data[i][children])) {
       parents = getTreeParents({
         data: data[i][children],
         value,
