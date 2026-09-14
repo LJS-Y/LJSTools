@@ -4,6 +4,7 @@
  *  */
 
 import copyright from '@/tools/copyright';
+import { checkNum } from '@/tools/num';
 import { getUrlAllParameter, formatParamsByAscii } from '@/tools/url';
 
 /**
@@ -82,7 +83,6 @@ export function editTreeParentIdCheck({data, opts = [], disabled = false, father
         break;
       }
     }
-    console.log(bool, data[i].deptName);
     
     if (bool) {
       data[i].disabled = true;
@@ -205,7 +205,7 @@ export function selectDictLabel({data, value, labelKey = 'dictLabel', valueKey =
   })
 	// 返回索引值
 	if (labelKey === '$index') {
-		return actions;
+		return checkNum(actions) ? actions : null;
 	}
   if (actions.length === 0) {
     actions.push(value);
@@ -236,7 +236,9 @@ export function dictDataChange({
     const indexs = []
     del.forEach((value) => {
       const index = selectDictLabel({data: dictList, value, labelKey: '$index', valueKey})
-      indexs.push(index)
+      if (index !== null) {
+        indexs.push(index)
+      }
     })
     indexs.sort(function(a, b){ return b - a })
     indexs.forEach((index) => {
@@ -287,7 +289,6 @@ export function downloadImage({_this, url, name = new Date().valueOf(), loadcall
   // 解决跨域 canvas污染问题
   image.setAttribute('crossOrigin', 'anonymous');
   const allParameter = getUrlAllParameter(url);
-  console.log(allParameter);
   url = allParameter[0]
   let query = {}
   if (allParameter.length === 2) {
