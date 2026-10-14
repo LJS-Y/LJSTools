@@ -10,7 +10,8 @@
 返回值（String）：返回指定格式的日期。
 ##### 示例
 ```js
-this.$LJSdate.formatTime(new Date().getTime(), '{y}-{m}-{d} {h}:{i}:{s}') // 返回2021-12-22 09:56:58
+// 返回2021-12-22 09:56:58
+this.$LJSdate.formatTime(new Date().getTime(), '{y}-{m}-{d} {h}:{i}:{s}')
 ```
 
 #### 参数
