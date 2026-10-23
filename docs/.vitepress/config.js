@@ -5,6 +5,7 @@ export default {
   title: 'ljs-vue3',
   description: 'ljs-vue3（V3JS，基于若依分离版V3.8.5后端服务的前端框架，支持vite和rsbuild）与 ljs-tools（Vue3 前端工具库与常用组件全家桶，基于 Element Plus）的官方文档：框架手册 + 完整 API',
   outDir: '../docs-dist', // 构建产物输出目录。勿用 ../public：public/ 已是 npm 发布元文件目录，混入会被打进发布包（2026-10-22）
+  srcExclude: ['public/**'], // public/ 是静态资源目录（llms.txt、ai/*.md 在此），只拷贝不渲染成页面（2026-10-23）
   base: '/ljs-vue3/',
   head: [
     ['meta', { name: "keywords", content: "ljs-vue3, 若依, ruoyi, ljs-tools, vue3工具库, 前端工具库, 工具库, element-plus, vue3组件, 国密, sm2, sm4, mqtt, websocket, 水印, html转pdf, 表单验证, 日期工具, vite搭建vue3项目, vue3, rsbuild, rspack, rsbuild搭建vue3项目, ljs-vue3文档, ljs文档, 龙九山, ljs, LJS" }],

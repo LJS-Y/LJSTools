@@ -1,6 +1,6 @@
 /**
  * ljs-tools 类型声明
- * 对应版本：0.10.4 ｜ 生成：2026-10-22（A1 打样）
+ * 版本以 package.json 为准
  * 与 AI.md 配套使用；只描述对外 API，不涉及内部实现。
  *
  * 引入方式：
@@ -144,9 +144,9 @@ export interface SM2UtilType {
   encrypt(data: string, publicKey: string, cipherMode?: 0 | 1): string;
   /** 私钥解密 */
   decrypt(encryptedData: string, privateKey: string, cipherMode?: 0 | 1): string;
-  /** 私钥签名（内部先 sm3.digest，输出 base64） */
+  /** 私钥签名（国密标准 SM2 杂凑 ZA||M，内部 SM3；输出 base64，内容为 r||s 拼接） */
   sign(data: string, privateKey: string): string;
-  /** 公钥验签（base64 签名） */
+  /** 公钥验签（入参为 sign 输出的 base64 签名；同为国密标准杂凑，userId 默认 '1234567812345678'） */
   verify(data: string, signature: string, publicKey: string): boolean;
 }
 /** SM3 工具 */

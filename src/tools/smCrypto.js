@@ -1,5 +1,17 @@
 import { sm2, sm3, sm4 } from 'sm-crypto'
 
+// ====================== 签名载体转换（对外 base64，sm-crypto 原生 hex） ======================
+function hexToBase64(hex) {
+  const bytes = hex.match(/.{2}/g) || []
+  return btoa(bytes.map(b => String.fromCharCode(parseInt(b, 16))).join(''))
+}
+function base64ToHex(b64) {
+  const bin = atob(b64)
+  let hex = ''
+  for (let i = 0; i < bin.length; i++) hex += bin.charCodeAt(i).toString(16).padStart(2, '0')
+  return hex
+}
+
 // ====================== sm2 非对称加密/签名/验签 ======================
 export const SM2Util = {
   // 生成 sm2 密钥对（公钥+私钥）
@@ -17,22 +29,22 @@ export const SM2Util = {
     return sm2.doDecrypt(encryptedData, privateKey, cipherMode)
   },
 
-  // 私钥签名（常用：交易签名、身份认证）
+  // 私钥签名（国密标准 SM2 签名：内部对 ZA||M 做 SM3 杂凑；输出 base64，内容为 r||s 拼接）
   sign(data, privateKey) {
-    return sm2.sign(sm3.digest(data), privateKey, 'base64')
+    return hexToBase64(sm2.doSignature(data, privateKey, { hash: true, der: false }))
   },
 
-  // 公钥验签
+  // 公钥验签（入参为 sign 输出的 base64 签名；同为国密标准杂凑）
   verify(data, signature, publicKey) {
-    return sm2.verify(sm3.digest(data), signature, publicKey, 'base64')
+    return sm2.doVerifySignature(data, base64ToHex(signature), publicKey, { hash: true, der: false })
   }
 }
 
 // ====================== sm3 哈希摘要 ======================
 export const SM3Util = {
-  // 计算数据摘要（指纹）
+  // 计算数据摘要（指纹）；sm-crypto 的 sm3 为函数，直接返回 hex
   digest(data) {
-    return sm3.digest(data, 'utf8', 'hex')
+    return sm3(data)
   }
 }
 

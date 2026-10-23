@@ -149,7 +149,7 @@ this.$LJSfc.downloadBlobData(res.data, '导出结果.xlsx');
 | `this.$LJSnum.checkNum(v)` | 用 `$LJSbase.fieldCheck` 或自行判断 | checkNum 是模块内部函数，不在 `$LJSnum` 对象上 |
 | `this.$LJSfc.numEnCheck({ form, key })` | `this.$LJSfc.numEnCheck(form, 'username')` | 该方法是位置参数签名，不是解构参数 |
 | `LJSWatermark.set(...)` 调用多次 | 全局只调一次 | 多次调用会叠加多个水印定时器 |
-| `SM2Util.sign` 结果当 hex 用 | 当 base64 用（verify 同） | 签名输出/校验输入均为 base64 |
+| `SM2Util.sign` 结果当 hex 用 | 当 base64 用（verify 同） | 签名输出/校验输入均为 base64（内容为 r‖s 拼接） |
 | 导出 PDF 时 `htmlPdf(title, el)` | `htmlPdf({ html2Canvas, JsPDF }, title, el)` | html2canvas/jspdf 必须由调用方注入，首参是 plugin 对象 |
 | 不引 `index.css` 直接用组件 | 先 `import 'ljs-tools/index.css'` | 组件样式在独立 css 产物里 |
 | 发版时 `npm run build` 后直接 publish | build 会清空 `ljs-tools/` 目录（emptyOutDir:true），package.json/README.md/AI.md/index.d.ts 需构建后放入 | Vite 库模式构建配置所致 |
@@ -159,10 +159,10 @@ this.$LJSfc.downloadBlobData(res.data, '导出结果.xlsx');
 - **环境**：Vue ~3.3.4；组件需 Element Plus（@element-plus/icons-vue 仅 $LJSEl 用）；构建产物 ESM + UMD 双格式，`main` 指向 UMD。
 - **`Pagination.pagerCount` 惰性默认**：默认按屏宽取值（<992 → 5，否则 7），1.0.0 起为函数工厂（组件实例化时求值，模块加载不再触碰 document，Node 直导安全）；SSR 下渲染 Pagination 且不传 pagerCount 仍会取 document（本库整体不支持 SSR）。
 - **Node 直导安全（1.0.0 起）**：模块加载不再触碰 window/document——除 pagerCount 惰性默认外，Particles 的浏览器全局垫片（requestAnimFrame/particlesJS 等）已加 typeof window 守卫；Node/构建工具可直接 import 本包。
-- **RightMenu 遗留 console.log**：`initData` 绑定的全局 click 处理每次点击打印 `console.log(1111)`（产物未剔除），生产环境注意。
 - **`mqttCreateds` API 待补录**：源码（src/tools/mqtt.js）本次提取被安全策略拦截，暂以 any 占位；使用前请人工核对类构造参数与方法。
 - **JSDoc 与实现不一致**：`$LJSfc.numDxsCheck` 的 zs/ws 实际默认 10/2（注释写不限位）。
 - **`$LJSlicense.licenseDateCheck`** 依赖全局 `window.g.SRKJ_APP` 与硬编码密钥，非通用鉴权方案。
 - **`Particles`** 会设置 `document.body.style.overflow='hidden'`，页面级副作用。
 - **`$LJSsession.clearVuex`** 约定了一组固定 mutation 名（SET_token 等），非若依 store 结构勿用。
+- **`SM2Util.sign/verify` 互操作约定**：按国密标准 SM2 杂凑（ZA‖M，内部 SM3），非裸摘要签名；userId 默认 `'1234567812345678'`（国密默认值），后端验签必须同 userId；签名载体 base64、内容为 r‖s 拼接（各 32 字节），后端若用 DER 编码验签需转换格式。
 - 密码学模块仅供业务加解密封装，不构成安全审计结论（国密合规场景需自行评估）。
