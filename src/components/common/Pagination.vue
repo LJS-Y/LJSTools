@@ -46,10 +46,10 @@ export default {
         return [10, 20, 30, 50]
       }
     },
-    // 移动端页码按钮的数量端默认值5
+    // 移动端页码按钮的数量端默认值5（惰性默认：组件实例化时按屏宽求值，模块加载不触碰 document）
     pagerCount: {
       type: Number,
-      default: document.body.clientWidth < 992 ? 5 : 7
+      default: () => document.body.clientWidth < 992 ? 5 : 7
     },
     layout: {
       type: String,

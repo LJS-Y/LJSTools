@@ -11319,10 +11319,10 @@ const rp = {
         return [10, 20, 30, 50];
       }
     },
-    // 移动端页码按钮的数量端默认值5
+    // 移动端页码按钮的数量端默认值5（惰性默认：组件实例化时按屏宽求值，模块加载不触碰 document）
     pagerCount: {
       type: Number,
-      default: document.body.clientWidth < 992 ? 5 : 7
+      default: () => document.body.clientWidth < 992 ? 5 : 7
     },
     layout: {
       type: String,
@@ -11391,7 +11391,7 @@ function op(e, n, r, t, i, a) {
     }), null, 16, ["background", "current-page", "page-size", "layout", "page-sizes", "pager-count", "total", "onSizeChange", "onCurrentChange"])
   ]);
 }
-const Ss = /* @__PURE__ */ _t(rp, [["render", op], ["__scopeId", "data-v-83c57e11"]]), sp = {
+const Ss = /* @__PURE__ */ _t(rp, [["render", op], ["__scopeId", "data-v-e2278882"]]), sp = {
   name: "RightMenu",
   props: {
     modelValue: [Boolean],
@@ -12667,14 +12667,13 @@ Object.deepExtend = function e(n, r) {
     r[t] && r[t].constructor && r[t].constructor === Object ? (n[t] = n[t] || {}, e(n[t], r[t])) : n[t] = r[t];
   return n;
 };
-window.requestAnimFrame = function() {
+typeof window < "u" && (window.requestAnimFrame = function() {
   return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(e) {
     window.setTimeout(e, 1e3 / 60);
   };
-}();
-window.cancelRequestAnimFrame = function() {
+}(), window.cancelRequestAnimFrame = function() {
   return window.cancelAnimationFrame || window.webkitCancelRequestAnimationFrame || window.mozCancelRequestAnimationFrame || window.oCancelRequestAnimationFrame || window.msCancelRequestAnimationFrame || clearTimeout;
-}();
+}());
 function zr(e) {
   var n = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   e = e.replace(n, function(t, i, a, o) {
@@ -12693,8 +12692,7 @@ function Pp(e, n, r) {
 function ct(e, n) {
   return n.indexOf(e) > -1;
 }
-window.pJSDom = [];
-window.particlesJS = function(e, n) {
+typeof window < "u" && (window.pJSDom = [], window.particlesJS = function(e, n) {
   typeof e != "string" && (n = e, e = "particles-js"), e || (e = "particles-js");
   var r = document.getElementById(e), t = "particles-js-canvas-el", i = r.getElementsByClassName(t);
   if (i.length)
@@ -12704,8 +12702,7 @@ window.particlesJS = function(e, n) {
   a.className = t, a.style.width = "100%", a.style.height = "100%";
   var o = document.getElementById(e).appendChild(a);
   o != null && pJSDom.push(new Ip(e, n));
-};
-window.particlesJS.load = function(e, n, r) {
+}, window.particlesJS.load = function(e, n, r) {
   var t = new XMLHttpRequest();
   t.open("GET", n), t.onreadystatechange = function(i) {
     if (t.readyState == 4)
@@ -12715,7 +12712,7 @@ window.particlesJS.load = function(e, n, r) {
       } else
         "" + t.status;
   }, t.send();
-};
+});
 const Mp = {
   number: {
     value: 60,

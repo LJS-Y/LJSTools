@@ -1,6 +1,6 @@
 {
   "name": "ljs-tools",
-  "version": "0.10.4",
+  "version": "1.0.0",
   "private": false,
   "description": "ljs-tools和常用插件",
   "main": "./index.umd.cjs",
@@ -23,7 +23,9 @@
     "build": "vite build",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "test:smoke": "node scripts/smoke-test.mjs",
+    "version:bump": "node scripts/bump-version.mjs"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",

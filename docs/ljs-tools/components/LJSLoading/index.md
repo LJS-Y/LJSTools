@@ -7,7 +7,8 @@
 <LJSLoading v-if="loading.show">{{loading.text}}</LJSLoading>
 ```
 ```js
-import { LJSLoading } from 'ljs-tools';
+import LjsTools from 'ljs-tools'; // 产物为 default 导出，请 default 导入后解构
+const { LJSLoading } = LjsTools;
 export default {
   data() {
     return {

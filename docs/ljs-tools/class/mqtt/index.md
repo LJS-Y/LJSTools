@@ -3,13 +3,15 @@
 Mqtt类。需独立引入。
 
 ```js
-import { mqttCreateds } from 'ljs-tools';
+import LjsTools from 'ljs-tools'; // 产物为 default 导出，请 default 导入后解构
+const { mqttCreateds } = LjsTools;
 ```
 
 ### 案例
 ```js
 import mqtt from 'mqtt';
-import { mqttCreateds } from 'ljs-tools';
+import LjsTools from 'ljs-tools'; // 产物为 default 导出，请 default 导入后解构
+const { mqttCreateds } = LjsTools;
 export default {
   data() {
     return {

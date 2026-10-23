@@ -99,7 +99,8 @@ export default {
 />
 ```
 ```js
-import { DateRange_spanLimit } from 'ljs-tools'; // 必备的库
+import LjsTools from 'ljs-tools'; // 必备的库；产物为 default 导出，请 default 导入后解构
+const { DateRange_spanLimit } = LjsTools;
 export default {
   data() {
     return {

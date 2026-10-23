@@ -1,0 +1,29 @@
+{
+  "name": "ljs-tools",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Vue3 前端工具库与常用组件全家桶（基于 Element Plus）：日期/数字/判空/字典/树处理/表单限制/国密 SM2-SM4 加解密/水印/脱敏/HTML 转 PDF/WebSocket/MQTT + 9 个常用组件，适合若依等中后台项目开箱即用",
+  "main": "./index.umd.cjs",
+  "types": "./index.d.ts",
+  "keywords": [
+    "工具库",
+    "vue3 工具库",
+    "js 工具库",
+    "前端工具库",
+    "element-plus",
+    "若依",
+    "vue3 组件",
+    "国密",
+    "sm2",
+    "sm4",
+    "mqtt",
+    "websocket",
+    "水印",
+    "html转pdf",
+    "表单验证",
+    "日期工具"
+  ],
+  "license": "MIT",
+  "author": "龙九山",
+  "type": "module"
+}

@@ -1438,6 +1438,8 @@ Object.deepExtend = function f(destination, source) {
   return destination;
 };
 
+// Node/SSR 安全（1.0.0 根治）：浏览器全局垫片仅在有 window 时挂载，模块加载不再触碰 DOM
+if (typeof window !== 'undefined') {
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
@@ -1457,6 +1459,7 @@ window.cancelRequestAnimFrame = ( function() {
     window.msCancelRequestAnimationFrame     ||
     clearTimeout
 } )();
+}
 
 function hexToRgb(hex){
   // By Tim Down - http://stackoverflow.com/a/5624139/3493650
@@ -1484,6 +1487,7 @@ function isInArray(value, array) {
 
 /* ---------- particles.js functions - start ------------ */
 
+if (typeof window !== 'undefined') {
 window.pJSDom = [];
 
 window.particlesJS = function(tag_id, params){
@@ -1551,5 +1555,6 @@ window.particlesJS.load = function(tag_id, path_config_json, callback){
   xhr.send();
 
 };
+} // typeof window 守卫结束（pJSDom/particlesJS 仅浏览器挂载）
 
-export default window.particlesJS 
+export default typeof window !== 'undefined' ? window.particlesJS : undefined 

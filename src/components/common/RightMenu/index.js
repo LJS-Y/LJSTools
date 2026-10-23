@@ -77,7 +77,6 @@ export default {
     // 初始化数据
     async initData() {
       window.addEventListener("click", () => {
-        console.log(1111);
         const nowTime = new Date().getTime();
         const time = nowTime - this.time;
         if (time >= 100) {

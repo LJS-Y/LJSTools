@@ -110,7 +110,7 @@ const viteConfig = defineConfig((mode) => {
         }
       },
       // 默认情况下，若 outDir 在 root 目录下，则 Vite 会在构建时清空该目录。
-      emptyOutDir: true,
+      emptyOutDir: true, // 发布元文件（package.json/README/index.d.ts/AI.md）由 public/ 构建回填，清空无害（2026-10-22）
       // chunk 大小警告的限制
       chunkSizeWarningLimit: 1500,
       // minify: 'terser',
