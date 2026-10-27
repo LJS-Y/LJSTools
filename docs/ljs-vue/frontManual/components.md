@@ -126,7 +126,7 @@ files: [
 ## ExcelImport(Excel导入)
 
 ```vue
-<el-col :span="1.5" v-hasPermi="['ywpt:***:import']">
+<el-col :span="1.5" v-hasPermi="['system:xxx:import']">
   <el-button
     type="info"
     @click="handleImport"
