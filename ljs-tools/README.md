@@ -4,6 +4,39 @@ Vue3 前端工具库与常用组件全家桶（基于 Element Plus）：日期/�
 
 > English: Vue3 utility toolkit and common-component bundle built around Element Plus — dates/numbers/empty-check/dict/tree/form-input guards/GM crypto (SM2-SM4)/watermark/masking/HTML-to-PDF/WebSocket/MQTT plus 9 ready-made components. One package for admin dashboards (RuoYi-style projects).
 
+## 为什么不直接用 lodash / vueuse
+
+因为中后台项目真正耗时间的不是 `debounce`，而是这些**带业务语义**的活：
+
+```js
+// 判空——每个项目都写一遍，且对 0 和 '' 的判断各不相同
+if (v === null || v === undefined || v === '' || v === 'null') ...
+
+// 金额千分位——小数、负数、空值各有各的坑
+num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+// 字典回显——查字典、匹配 label、处理多值
+options.find(o => o.dictValue === row.status)?.dictLabel
+
+// 国密 SM2 签名——签名要按国标 SW2 杂凑，userId 还得跟后端对齐
+```
+
+**ljs-tools 把这些收拢成一套调用，并把容易出错的细节固定下来**：判空对 `0`/`''` 有明确约定，千分位覆盖小数与负数，国密签名按国标 SM2 杂凑实现（不是裸摘要）。
+
+### 适合 / 不适合
+
+✅ **适合**：Vue3 + Element Plus 的中后台项目、若依分离版前端、需要国密（SM2/SM3/SM4）的项目
+
+❌ **不适合**：非 Vue3 项目、不用 Element Plus 的项目（组件部分不可用）、只需要一两个小函数（直接抄那段代码更划算）
+
+### 项目还没开始？用脚手架一步到位
+
+```bash
+npm create ljs@latest my-app
+```
+
+生成**已集成 ljs-tools 的完整 Vue3 + Rsbuild 工程**（路由、状态、请求封装、权限、国密均已就位），不是空壳模板。
+
 # 功能
 
 **15 个方法库**（`app.use` 后挂载为 `$LJSxxx` 全局属性，也可局部解构）：
