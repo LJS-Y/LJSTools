@@ -12,6 +12,9 @@ node_modules
 dist
 dist-ssr
 docs-dist
+# vitepress 构建缓存（每次构建重新生成，不入库）
+docs/.vitepress/.temp
+docs/.vitepress/cache
 *.local
 
 # Editor directories and files

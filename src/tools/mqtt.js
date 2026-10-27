@@ -24,9 +24,9 @@ class mqttCreateds {
    * @param {String} opts.password 密码
    * @param {String} url 链接地址，前端可用的真实地址。例如：ws://192.168.1.100:8083/mqtt
    * @example 
-   * this.publicMqtt.init({
+   * this.publicMqtt.init(mqtt, {
         username: 'admin',
-        password: '123456'
+        password: '你的密码'
       }, mqttUrl);
    * */
   init(mqtt, opts, url) {
@@ -164,7 +164,7 @@ export default {
       //初始化mqtt
       this.publicMqtt.init({
         username: 'admin',
-        password: 'H0y0zer0'
+        password: '你的密码'
       }, mqttUrl);
       //链接mqtt
       this.publicMqtt.link();

@@ -71,7 +71,7 @@ const { LJSdate, LJSLoading } = LjsTools; // ✅ 最保险写法
 | `LJSws`（全局属性） | WebSocket | init（另有具名导出 getUrl） |
 | `htmlPdf`（全局属性） | 导出 | html 转 PDF（html2canvas/jspdf 需注入） |
 | `DateRange_spanLimit` | 日期区间跨度 | pickerOptionsDynamic、visibleChange_start、visibleChange_end |
-| `mqttCreateds`（class） | MQTT | ⚠️ API 待补录（见「已知坑」） |
+| `mqttCreateds`（class） | MQTT | 构造(subscribe)、init(mqtt, opts, url)、link、unsubscribes、over、getUrl(wsUrl, NODE_ENV, proxy)；收/发走 `client.on('message')` / `client.publish` |
 
 **组件**（全局注册名即组件名，均可局部引入）：
 
@@ -159,10 +159,154 @@ this.$LJSfc.downloadBlobData(res.data, '导出结果.xlsx');
 - **环境**：Vue ~3.3.4；组件需 Element Plus（@element-plus/icons-vue 仅 $LJSEl 用）；构建产物 ESM + UMD 双格式，`main` 指向 UMD。
 - **`Pagination.pagerCount` 惰性默认**：默认按屏宽取值（<992 → 5，否则 7），1.0.0 起为函数工厂（组件实例化时求值，模块加载不再触碰 document，Node 直导安全）；SSR 下渲染 Pagination 且不传 pagerCount 仍会取 document（本库整体不支持 SSR）。
 - **Node 直导安全（1.0.0 起）**：模块加载不再触碰 window/document——除 pagerCount 惰性默认外，Particles 的浏览器全局垫片（requestAnimFrame/particlesJS 等）已加 typeof window 守卫；Node/构建工具可直接 import 本包。
-- **`mqttCreateds` API 待补录**：源码（src/tools/mqtt.js）本次提取被安全策略拦截，暂以 any 占位；使用前请人工核对类构造参数与方法。
+- **`mqttCreateds` 不是即插即用**：它只做「连接 + 订阅 + 地址换算」的薄封装，`mqtt` 包需调用方自行 `import mqtt from 'mqtt'` 并作为 `init` 第一个入参注入（本库零 mqtt 依赖）；收消息/发消息直接透传底层 `client`（见「MQTT 详细 API」）。
 - **JSDoc 与实现不一致**：`$LJSfc.numDxsCheck` 的 zs/ws 实际默认 10/2（注释写不限位）。
 - **`$LJSlicense.licenseDateCheck`** 依赖全局 `window.g.SRKJ_APP` 与硬编码密钥，非通用鉴权方案。
 - **`Particles`** 会设置 `document.body.style.overflow='hidden'`，页面级副作用。
 - **`$LJSsession.clearVuex`** 约定了一组固定 mutation 名（SET_token 等），非若依 store 结构勿用。
 - **`SM2Util.sign/verify` 互操作约定**：按国密标准 SM2 杂凑（ZA‖M，内部 SM3），非裸摘要签名；userId 默认 `'1234567812345678'`（国密默认值），后端验签必须同 userId；签名载体 base64、内容为 r‖s 拼接（各 32 字节），后端若用 DER 编码验签需转换格式。
 - 密码学模块仅供业务加解密封装，不构成安全审计结论（国密合规场景需自行评估）。
+
+## MQTT 详细 API（`mqttCreateds`）
+
+MQTT 消息推送的薄封装类。本库**零 mqtt 依赖**：`mqtt` 包由调用方安装并注入。
+
+```bash
+npm i mqtt
+```
+
+```js
+import mqtt from 'mqtt';
+import LjsTools from 'ljs-tools'; // 产物为 default 导出，请 default 导入后解构
+const { mqttCreateds } = LjsTools;
+```
+
+### 类静态属性
+
+| 属性 | 说明 |
+| --- | --- |
+| `url` | 最近一次 `init` 传入的连接地址 |
+| `subscribe` / `oldSubscribe` | 当前 / 上一次的订阅主题 |
+| `client` | 底层 mqtt client 实例（收消息、发消息都直接用它） |
+
+⚠️ 这些是**静态属性**，多个实例共享——同一页面**只应创建一个 `mqttCreateds` 实例**，多实例会互相覆盖连接。
+
+### 1. 构造函数 `new mqttCreateds(subscribe)`
+
+| 参数 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| subscribe | String | √ | 订阅主题（如 `/furnace/msg`） |
+
+```js
+this.publicMqtt = new mqttCreateds('/furnace/msg');
+```
+
+### 2. 初始化 `init(mqtt, opts, url)`
+
+**位置参数，3 个入参**（注意第一个是 mqtt 包本身，不是 options）。
+
+| 参数 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mqtt | Object | √ | mqtt 包引用，`import mqtt from 'mqtt'` |
+| opts.username | String | √ | 用户名 |
+| opts.password | String | √ | 密码 |
+| url | String | √ | 前端可用的真实地址，如 `ws://192.168.1.100:8083/mqtt` |
+
+内部写死的连接选项（**不可通过入参覆盖**）：
+
+| 选项 | 固定值 | 含义 |
+| --- | --- | --- |
+| clientId | `'mqttjs_' + 8 位随机 hex` | 每次初始化随机生成 |
+| clean | `true` | 不留存会话 |
+| connectTimeout | `4000` | 连接超时（毫秒） |
+| reconnectPeriod | `5000` | 断线重连间隔（毫秒） |
+
+```js
+this.publicMqtt.init(mqtt, { username: 'admin', password: '******' }, mqttUrl);
+```
+
+### 3. 建立连接并订阅 `link()`
+
+在 `connect` 事件里自动订阅构造时传入的主题；订阅成功/失败只 `console.info`，**无回调也无 Promise**——需要感知结果请自己监听 `client.on('connect')`。
+
+```js
+this.publicMqtt.link();
+```
+
+### 4. 取消订阅 `unsubscribes()` → Promise
+
+```js
+await this.publicMqtt.unsubscribes();
+// resolve: { msg: '取消订阅成功', path: 订阅主题 }
+// reject:  底层 error 对象
+```
+
+### 5. 结束连接 `over()`
+
+调用底层 `client.end()`。**页面销毁前必须先 `unsubscribes()` 再 `over()`**，否则重连定时器会残留。
+
+```js
+this.publicMqtt.over();
+```
+
+### 6. 接收消息
+
+透传底层 client，**不是本类方法**：
+
+```js
+this.publicMqtt.client.on('message', (topic, message) => {
+  const data = JSON.parse(message.toString()); // message 是 Buffer，必须先 toString
+});
+```
+
+### 7. 发送消息
+
+```js
+this.publicMqtt.client.publish('/furnace/msg', JSON.stringify({ id: 1 }));
+```
+
+### 8. 地址换算 `getUrl(wsUrl, NODE_ENV, proxy = true)` → String
+
+把配置里的地址按运行环境/协议拼成前端可用的 WebSocket 地址。
+
+| 参数 | 类型 | 必填 | 默认 | 说明 |
+| --- | --- | --- | --- | --- |
+| wsUrl | String | √ | — | 如 `//192.168.1.100:8083/mqtt` |
+| NODE_ENV | String | √ | — | `development` / `test` / `production` |
+| proxy | Boolean | × | `true` | 非开发环境时是否拼当前 `location.host`（走 nginx 代理） |
+
+协议自动跟随页面：`http:` → `ws:`，`https:` → `wss:`。
+
+```js
+const mqttUrl = this.publicMqtt.getUrl(import.meta.env.VITE_APP_MQTT_URL, import.meta.env.VITE_NODE_ENV);
+```
+
+⚠️ **`proxy=true` 时 nginx 需配置 WebSocket 升级**（`/mqtt` 整段代理到 broker 的 `/mqtt`，并带 `Upgrade`/`Connection` 头），否则连接 400。
+
+### 完整最小示例（Vue3 选项式）
+
+```js
+import mqtt from 'mqtt';
+import LjsTools from 'ljs-tools';
+const { mqttCreateds } = LjsTools;
+
+export default {
+  data() {
+    return { publicMqtt: null, timer: null };
+  },
+  mounted() {
+    this.publicMqtt = new mqttCreateds('/furnace/msg');
+    const mqttUrl = this.publicMqtt.getUrl(import.meta.env.VITE_APP_MQTT_URL, import.meta.env.VITE_NODE_ENV);
+    this.publicMqtt.init(mqtt, { username: 'admin', password: '你的密码' }, mqttUrl);
+    this.publicMqtt.link();
+    this.publicMqtt.client.on('message', (topic, message) => {
+      this.list.push(JSON.parse(message.toString()));
+    });
+  },
+  async beforeUnmount() {
+    if (!this.publicMqtt) return;
+    try { await this.publicMqtt.unsubscribes(); } catch (e) { console.warn(e); }
+    this.publicMqtt.over();
+  },
+};
+```

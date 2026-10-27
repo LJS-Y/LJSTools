@@ -45,7 +45,7 @@ export default {
       this.publicMqtt.init(mqtt,
       {
         username: 'admin',
-        password: '123456'
+        password: '你的密码'
       }, mqttUrl);
       //链接mqtt
       this.publicMqtt.link();
@@ -77,7 +77,9 @@ this.publicMqtt = new mqttCreateds('/furnace/msg'); // 获取Mqtt
 
 ### 2.初始化
 
-方法：init(opts: Object, url: Object)
+方法：init(mqtt, opts: Object, url: String)
+
+> **位置参数，共 3 个入参**：第一个是 `mqtt` 包本身，第二个才是连接选项对象。
 
 ##### 示例
 ```js
@@ -85,7 +87,7 @@ import mqtt from 'mqtt';
 this.publicMqtt.init(mqtt,
 {
   username: 'admin',
-  password: '123456'
+  password: '你的密码'
 }, 'ws://192.168.1.100:8083/mqtt');
 ```
 
@@ -97,6 +99,15 @@ this.publicMqtt.init(mqtt,
 | opts.username | String | √ | | 用户名。 |
 | opts.password | String | √ | | 密码。 |
 | url | String | √ | | 链接地址，前端可用的真实地址。例如：ws://192.168.1.100:8083/mqtt。 |
+
+#### 内部写死的连接选项（不可通过入参覆盖）
+
+| 选项 | 固定值 | 含义 |
+| --- | --- | --- |
+| clientId | `'mqttjs_' + 8 位随机 hex` | 每次初始化随机生成 |
+| clean | `true` | 不留存会话 |
+| connectTimeout | `4000` | 连接超时（毫秒） |
+| reconnectPeriod | `5000` | 断线重连间隔（毫秒） |
 
 
 ### 3.链接
