@@ -26,7 +26,6 @@
 | `$LJSsm` | 国密 | SM2Util（generateKeyPair/encrypt/decrypt/sign/verify）、SM3Util.digest、SM4Util（generateKey/encrypt/decrypt） |
 | `$LJSrgbC` | 颜色 | c16ToRgb、rgbToC16、random16Color |
 | `$LJSurl` | 地址/文件 | getUrlAllParameter、getUrlParameter、getFileType、getFileName、isIPValid、isIPV4ValidIP、isIPV6ValidIP、formatParamsByAscii |
-| `$LJSlicense` | 鉴权 | licenseDateCheck（依赖 window.g.SRKJ_APP，特定项目鉴权场景，详见 index.d.ts） |
 | `$LJSEl` | Element Plus | delMessageBox（删除确认框） |
 | `$LJSWatermark` | 水印 | set |
 | `$LJSprivacy` | 脱敏 | desensitizationName、desensitizationPhone、desensitizationStr |
@@ -121,7 +120,6 @@ const {
   LJSsm,
   LJSrgbC,
   LJSurl,
-  LJSlicense,
   LJSEl,
   LJSWatermark,
   LJSprivacy,

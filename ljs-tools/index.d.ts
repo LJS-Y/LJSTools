@@ -200,12 +200,6 @@ export interface LJSurlModule {
   formatParamsByAscii(params: Record<string, any>, excludeKeys?: string[]): string;
 }
 
-/** $LJSlicense — 日期鉴权 */
-export interface LJSlicenseModule {
-  /** 解密 window.g.SRKJ_APP 得到起始日期，30 天内返回 true */
-  licenseDateCheck(): boolean;
-}
-
 /** $LJSEl — Element Plus 封装 */
 export interface LJSElModule {
   /** ElMessageBox 删除确认框封装；confirm 执行 doSomething，其余执行 cancelDoSomething */
@@ -447,7 +441,6 @@ export interface LjsToolsPlugin {
   LJSsm: LJSsmModule;
   LJSrgbC: LJSrgbCModule;
   LJSurl: LJSurlModule;
-  LJSlicense: LJSlicenseModule;
   LJSEl: LJSElModule;
   LJSWatermark: LJSWatermarkModule;
   LJSprivacy: LJSprivacyModule;
@@ -480,7 +473,6 @@ export declare const LJScryptoJs: LJScryptoJsModule;
 export declare const LJSsm: LJSsmModule;
 export declare const LJSrgbC: LJSrgbCModule;
 export declare const LJSurl: LJSurlModule;
-export declare const LJSlicense: LJSlicenseModule;
 export declare const LJSEl: LJSElModule;
 export declare const LJSWatermark: LJSWatermarkModule;
 export declare const LJSprivacy: LJSprivacyModule;
@@ -502,7 +494,6 @@ declare module 'vue' {
     $LJSsm: LJSsmModule;
     $LJSrgbC: LJSrgbCModule;
     $LJSurl: LJSurlModule;
-    $LJSlicense: LJSlicenseModule;
     $LJSEl: LJSElModule;
     $LJSWatermark: LJSWatermarkModule;
     $LJSprivacy: LJSprivacyModule;

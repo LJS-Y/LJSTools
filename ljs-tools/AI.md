@@ -63,7 +63,6 @@ const { LJSdate, LJSLoading } = LjsTools; // ✅ 最保险写法
 | `$LJSsm` | 国密 | SM2Util（generateKeyPair/encrypt/decrypt/sign/verify）、SM3Util.digest、SM4Util（generateKey/encrypt/decrypt） |
 | `$LJSrgbC` | 颜色 | c16ToRgb、rgbToC16、random16Color |
 | `$LJSurl` | 地址/文件 | getUrlAllParameter、getUrlParameter、getFileType、getFileName、isIPValid、isIPV4ValidIP、isIPV6ValidIP、formatParamsByAscii |
-| `$LJSlicense` | 鉴权 | licenseDateCheck（依赖 window.g.SRKJ_APP） |
 | `$LJSEl` | Element Plus | delMessageBox（删除确认框） |
 | `$LJSWatermark` | 水印 | set |
 | `$LJSprivacy` | 脱敏 | desensitizationName、desensitizationPhone、desensitizationStr |
@@ -161,7 +160,6 @@ this.$LJSfc.downloadBlobData(res.data, '导出结果.xlsx');
 - **Node 直导安全（1.0.0 起）**：模块加载不再触碰 window/document——除 pagerCount 惰性默认外，Particles 的浏览器全局垫片（requestAnimFrame/particlesJS 等）已加 typeof window 守卫；Node/构建工具可直接 import 本包。
 - **`mqttCreateds` 不是即插即用**：它只做「连接 + 订阅 + 地址换算」的薄封装，`mqtt` 包需调用方自行 `import mqtt from 'mqtt'` 并作为 `init` 第一个入参注入（本库零 mqtt 依赖）；收消息/发消息直接透传底层 `client`（见「MQTT 详细 API」）。
 - **JSDoc 与实现不一致**：`$LJSfc.numDxsCheck` 的 zs/ws 实际默认 10/2（注释写不限位）。
-- **`$LJSlicense.licenseDateCheck`** 依赖全局 `window.g.SRKJ_APP` 与硬编码密钥，非通用鉴权方案。
 - **`Particles`** 会设置 `document.body.style.overflow='hidden'`，页面级副作用。
 - **`$LJSsession.clearVuex`** 约定了一组固定 mutation 名（SET_token 等），非若依 store 结构勿用。
 - **`SM2Util.sign/verify` 互操作约定**：按国密标准 SM2 杂凑（ZA‖M，内部 SM3），非裸摘要签名；userId 默认 `'1234567812345678'`（国密默认值），后端验签必须同 userId；签名载体 base64、内容为 r‖s 拼接（各 32 字节），后端若用 DER 编码验签需转换格式。

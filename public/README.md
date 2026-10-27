@@ -20,7 +20,6 @@ Vue3 前端工具库与常用组件全家桶（基于 Element Plus）：日期/�
 | `$LJSsm` | 国密 | SM2Util（generateKeyPair/encrypt/decrypt/sign/verify）、SM3Util.digest、SM4Util（generateKey/encrypt/decrypt） |
 | `$LJSrgbC` | 颜色 | c16ToRgb、rgbToC16、random16Color |
 | `$LJSurl` | 地址/文件 | getUrlAllParameter、getUrlParameter、getFileType、getFileName、isIPValid、isIPV4ValidIP、isIPV6ValidIP、formatParamsByAscii |
-| `$LJSlicense` | 鉴权 | licenseDateCheck |
 | `$LJSEl` | Element Plus | delMessageBox（删除确认框） |
 | `$LJSWatermark` | 水印 | set |
 | `$LJSprivacy` | 脱敏 | desensitizationName、desensitizationPhone、desensitizationStr |

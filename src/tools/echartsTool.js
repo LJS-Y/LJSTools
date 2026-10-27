@@ -5,7 +5,7 @@
 <div id="TEST" style="width: 100%; height: 300px;"></div>
  *  */
 import * as EC from 'echarts';
-import $pie3D from '@/tools/pie3D.min.js';
+import $pie3D from '@/tools/pie3D.js';
 
 const _color = [
   '#014EB5',

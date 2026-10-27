@@ -10,7 +10,6 @@ import LJScryptoJs from '@/tools/cryptoJs.js';
 import LJSsm from '@/tools/smCrypto.js';
 import LJSrgbC from '@/tools/rgbColor';
 import LJSurl from '@/tools/url';
-import LJSlicense from '@/tools/license';
 import LJSEl from '@/tools/elementPlus';
 import LJSWatermark from '@/tools/watermark';
 import LJSprivacy from '@/tools/privacy';
@@ -60,7 +59,6 @@ const tools = [
   {type: 'function', name: 'sm', entity: LJSsm},
   {type: 'function', name: 'rgbC', entity: LJSrgbC},
   {type: 'function', name: 'url', entity: LJSurl},
-  {type: 'function', name: 'license', entity: LJSlicense},
   {type: 'function', name: 'El', entity: LJSEl},
   {type: 'function', name: 'Watermark', entity: LJSWatermark},
   {type: 'function', name: 'privacy', entity: LJSprivacy},
@@ -106,7 +104,7 @@ const globals = {
   // 插件
   LJSLoading, Pagination, RightMenu, DatetypeChooseDate, DatetypeChooseDateRange, DateRange, DictTag, Particles, TextAbbreviation, LJSprivacy,
   // 方法
-  LJSmenu, LJSbase, LJSnum, LJSdate, LJSfc, LJSecDC, LJSsession, LJScryptoJs, LJSsm, LJSrgbC, LJSurl, LJSlicense, LJSEl, LJSWatermark, DateRange_spanLimit,
+  LJSmenu, LJSbase, LJSnum, LJSdate, LJSfc, LJSecDC, LJSsession, LJScryptoJs, LJSsm, LJSrgbC, LJSurl, LJSEl, LJSWatermark, DateRange_spanLimit,
   // 全局变量
   LJSws, htmlPdf, 
   // class，需独立引入
