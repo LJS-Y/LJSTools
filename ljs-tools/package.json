@@ -30,9 +30,13 @@
   ],
   "homepage": "https://ljs-y.github.io/ljs-vue3",
   "bugs": {
-    "url": "https://github.com/LJS-Y/ljs-vue3/issues"
+    "url": "https://github.com/LJS-Y/LJSTools/issues"
   },
   "license": "MIT",
   "author": "龙九山",
-  "type": "module"
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LJS-Y/LJSTools.git"
+  }
 }
