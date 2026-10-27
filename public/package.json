@@ -1,6 +1,6 @@
 {
   "name": "ljs-tools",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "description": "Vue3 前端工具库与常用组件全家桶（基于 Element Plus）：日期/数字/判空/字典/树处理/表单限制/国密 SM2-SM4 加解密/水印/脱敏/HTML 转 PDF/WebSocket/MQTT + 9 个常用组件，适合若依等中后台项目开箱即用",
   "main": "./index.umd.cjs",
@@ -30,9 +30,21 @@
   ],
   "homepage": "https://ljs-y.github.io/ljs-vue3",
   "bugs": {
-    "url": "https://github.com/LJS-Y/ljs-vue3/issues"
+    "url": "https://github.com/LJS-Y/LJSTools/issues"
   },
   "license": "MIT",
   "author": "龙九山",
-  "type": "module"
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LJS-Y/LJSTools.git"
+  },
+  "files": [
+    "index.js",
+    "index.umd.cjs",
+    "index.css",
+    "index.d.ts",
+    "AI.md",
+    "README.md"
+  ]
 }
